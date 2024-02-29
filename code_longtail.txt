@@ -1,0 +1,2201 @@
+setwd("D:/longtail_effect")
+data<-read.csv("meshtree2021_diseases.csv")
+term1<-as.character(data[,1])
+len1<-length(term1)
+getCount <- function(x)
+{   
+  require(RCurl)   
+  require(XML)   
+  require(httr)   
+  x <- RCurl::curlEscape(x)   
+  Sys.sleep(0.01)   
+  baseURL <- "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/egquery.fcgi?retmode=xml&term="   
+  x <- paste(baseURL,x,sep="")   
+  n <- 0   
+  while(n!=10)
+   {      
+        y <- try(GET(x,timeout(30)),silent=TRUE)      
+        y <- try(content(y,encoding="UTF-8"),silent=TRUE)       
+        y <- try(xmlParse(y),silent=TRUE)       
+        if (class(y)[1L]=="try-error") 
+ {           
+             cat("ERROR1: ", y, "\n")           
+             Sys.sleep(10)           
+             print("reconnecting...")          
+             n <- n+1           
+             print(n)
+       }       
+         else 
+       {
+          break
+       }  
+              }  
+         y <- xmlToList(y)  
+         y <- y$eGQueryResult$ResultItem$Count   
+         as.numeric(y)
+}   
+result_a<-matrix(0,len1,2)
+result_a[,1]<-term1
+colnames(result_a)<-c("Diseases","Counts")
+for (i in 1:len1){
+   Sys.sleep(1)
+   if (i %% 100==0) Sys.sleep(20)
+   result_a[i,2]<-getCount(term1[i])
+   }
+write.csv(result_a,"Report_diseases.csv",row.names=FALSE)
+
+##Further filtering
+#Filter "Report_diseases.csv" manually and get "Report_diseases_filter.csv"
+library(stringr)
+data00<-readLines("TCGA_topics.txt")
+result_a<-read.csv("Report_diseases_manually_filtered.csv")
+lena<-dim(result_a)[1]
+term_a<-as.character(result_a[,1])
+len00<-length(data00)
+data01<-data00
+for (i in 1:len00){
+    temp<-strsplit(data00[i],split=" [(]")[[1]][1]
+    data01[i]<-gsub("GDC TCGA ","",temp)
+   }
+data02<-data01[which(!is.na(data01))]
+len02<-length(data02)
+matrix03<-matrix(0,len02,lena)
+rownames(matrix03)<-data02
+colnames(matrix03)<-term_a
+for (i in 1:lena){
+   if (i %% 3==0) Sys.sleep(20)
+   temp<-getCount(term_a[i])
+   if (temp==0) next
+   for (j in 1:len02){
+        Sys.sleep(1)
+        temp<-getCount(data02[j])
+        if (temp==0) next
+        topic<-paste(data02[j],"and",term_a[i],sep=" ")
+        matrix03[j,i]<-getCount(topic)
+              }
+           }
+write.csv(matrix03,"co_occurrence_diseases.csv")
+######
+
+
+###Survival checking
+library(stringr)
+gepia_survival <- function(gene,dir=getwd(),dataset="LIHC")
+{
+   require(RCurl)
+   require(rjson)
+   require(data.table)
+   require(pdftools)
+   url <- 'http://gepia2.cancer-pku.cn/assets/PHP4/GET_survival_zf.php?&axisunit=month&groupcutoff1=50&groupcutoff2=50&highcol=%23ff0000&ifconf=conf&ifhr=hr&is_sub=false&lowcol=%230000ff&methodoption=os&signature_norm=&subtype=&'
+   dat <- paste0("dataset=",dataset)
+   sig <- gene
+   pdf_file <- paste0(sig,".pdf")
+   dir <- file.path(dir,pdf_file)
+   sig <- paste0("&signature=",sig)
+   url <- paste0(url,dat,sig,collapse="&")
+   opt <- curlOptions(connecttimeout=200)
+   txt <- RCurl::getURL(url,.opts=opt)
+   jsn <- fromJSON(txt)
+   pdf <- jsn$outdir
+   pdf <- paste0("http://gepia2.cancer-pku.cn/tmp/",pdf)
+   #download.file(pdf,destfile=dir)
+   x <- pdf_text(pdf)
+   x <- strsplit(x," +")[[1]]
+   id <- grep("p=",x)
+   logrank <- gsub("p=","",x[id])
+   logrank <- as.numeric(gsub("\\\n","",logrank))
+   id <- grep("HR\\(high\\)",x)
+   hrhigh <- gsub("HR\\(high\\)=","",x[id])
+   hrhigh <- as.numeric(gsub("\\\n","",hrhigh))
+   id <- grep("p\\(HR\\)",x)
+   phr <- gsub("p\\(HR\\)=","",x[id])
+   phr <- as.numeric(gsub("\\\n","",phr))   
+   list(logrank=logrank,hrhigh=hrhigh,phr=phr)
+}
+data00<-readLines("TCGA_topics.txt")
+len00<-length(data00)
+data01<-data00
+for (i in 1:len00){
+    temp<-strsplit(data00[i],split=" [(]")[[1]][2]
+    data01[i]<-gsub("[)]","",temp)
+   }
+data02<-data01[which(!is.na(data01))]
+len02<-length(data02)
+hit<-read.table("GRCh38_gene.gtf",sep="\t",header=FALSE)
+gene0<-as.character(hit[,12])
+gene00<-gene0[which(!str_detect(gene0,"-"))]
+gene00<-gene00[which(!str_detect(gene00,"_"))]
+gene00<-gene00[which(!str_detect(gene00,"[.]"))]
+gene00<-gene00[which(!str_detect(gene00,"[0-9][0-9][0-9][0-9]"))]
+gene00<-gene00[which(!str_detect(gene00,"orf"))]
+geneh<-gene00
+lenh<-length(geneh)
+result<-matrix(0,lenh,len02)
+rownames(result)<-geneh
+colnames(result)<-data02
+fileout<-data02
+for (ss in 1:len02) fileout[ss]<-paste("Survival_",data02[ss],".csv",sep="")
+for (ss in 1:len02){
+    yy<-list()
+    yy[length(geneh)]<-0
+    for (i in 1:length(geneh)){
+        if (i %% 100==0) Sys.sleep(10)
+        Sys.sleep(1)
+        fit0<-try(gepia_survival(geneh[i],dir="D:/longtail_effect/survival",dataset=data02[ss]),silent=TRUE)
+        if (class(fit0)[1L]=="try-error") next
+        cat("iteration = ",i,"\n")
+        yy[[i]] <- fit0
+        }
+    yyy<-matrix(0,length(geneh),4)
+    colnames(yyy)<-c("Gene","survival_p","HR_high","pHR")
+    yyy[,1]<-geneh
+    for (i in 1:length(geneh)){
+        if (length(yy[[i]])==0) next
+        yyy[i,2]<-as.numeric(unlist(yy[[i]][1]))
+        yyy[i,3]<-as.numeric(unlist(yy[[i]][2]))
+        yyy[i,4]<-as.numeric(unlist(yy[[i]][3]))
+        }
+    pyy<-as.numeric(yyy[,2])
+    yyy2<-yyy[intersect(which(pyy>0),which(!is.na(pyy))),]
+    write.csv(yyy2,fileout[ss],row.names=FALSE)
+   }
+
+##Code_further_procession
+##Step 1  Training
+train_data<-read.csv("longtail_cor_diseases_train.csv")
+surv<-list.files()
+surv2<-surv[which(str_detect(surv,"Survival"))]
+surv2<-surv2[which(surv2!="Survival_matrix.csv")]
+lens<-length(surv2)
+surv3<-surv2
+for (i in 1:lens) surv3[i]<-strsplit(surv2[i],split="_")[[1]][2]
+surv3<-gsub(".csv","",surv3)
+   #derepeat
+for (ss in 1:lens){
+   anna4<-read.csv(surv2[ss])
+   len<-dim(anna4)[1]
+   num<-dim(anna4)[2]
+   mark<-0
+   count<-1
+   pre<-2  #The column for first appeared numeric
+   for (i in 1:len) mark[i]<-0
+   for (i in 1:len) count[i]<-1
+   for (i in 1:(len-1)) {
+     if (mark[i]==1) next
+     j<-which(anna4[i,1]==anna4[,1])
+     if (length(j)==1) next
+     lenj<-length(j)    
+     for (jj in 2:lenj) {
+            mark[j[jj]]<-1
+            count[i]<-count[i]+1
+            for (k in pre:num)   anna4[i,k]<-as.numeric(anna4[i,k])+as.numeric(anna4[j[jj],k])            	
+        }
+   }
+   for (k in pre:num)  anna4[,k]<-as.numeric(anna4[,k])/count 
+   write.csv(anna4,"anna4.csv",row.names=FALSE)
+   anna<-read.csv("anna4.csv")
+   anna$mark<-mark
+   anna2<-anna[which(mark==0),]
+   anna2$mark<-NULL
+   write.csv(anna2,surv2[ss],row.names=FALSE)
+   }
+
+
+   #Constructing survival matrix
+survdata0<-read.csv(surv2[1])
+colnames(survdata0)[2]<-paste(surv3[1],"_survival_p",sep="")
+survdata0<-survdata0[,1:2]
+for (i in 2:lens){
+   survdata<-read.csv(surv2[i])
+    colnames(survdata)[2]<-paste(surv3[i],"_survival_p",sep="")
+    survdata<-survdata[,1:2]   
+    survdata0<-merge(survdata0,survdata,by="Gene",all=TRUE)
+   }
+survdata0[is.na(survdata0)]<-1
+write.csv(survdata0,"Survival_matrix.csv",row.names=FALSE)
+   ##Construcing HR matrix
+survdata0<-read.csv(surv2[1])
+colnames(survdata0)[3]<-paste(surv3[1],"_HR",sep="")
+survdata0<-survdata0[,c(1,3)]
+for (i in 2:lens){
+   survdata<-read.csv(surv2[i])
+    colnames(survdata)[3]<-paste(surv3[i],"_HR",sep="")
+    survdata<-survdata[,c(1,3)]   
+    survdata0<-merge(survdata0,survdata,by="Gene",all=TRUE)
+   }
+survdata0[is.na(survdata0)]<-1
+write.csv(survdata0,"HR_matrix.csv",row.names=FALSE)
+   ###
+
+
+   ##Survival Data Migration -- 2023.7.9
+pro_data<-read.csv("longtail_cor_diseases_check.csv")
+   ##Next taking obesity for example, column 4 for obesity
+sort3<-sort(pro_data[,4],decreasing=TRUE)      ##Change 4 if for other target diseases
+sort30<-sort3[10]  ##Adjust according to data
+pro_data2<-pro_data[which(pro_data[,4]>=sort30),1]    ##Change 4 if for other target diseases
+tmdata<-read.csv("longtail_cor_diseases_train.csv")
+rowt<-tmdata[,1]
+tmdata<-tmdata[,-1]
+tmdata<-apply(tmdata,2,as.numeric)
+rownames(tmdata)<-rowt
+rowt2<-sort(rowt)
+tmdata<-tmdata[rowt2,]
+tmdata<-tmdata[,rowt2]
+numt<-dim(tmdata)[2]
+survdata<-read.csv("Survival_matrix.csv")
+rowsurv<-survdata[,1]
+survdata<-survdata[,-1]
+survdata<-apply(survdata,2,as.numeric)
+rownames(survdata)<-rowsurv
+survdata0<-survdata
+     ##mapping tmdata to match survdata-- use 30% in training  
+training<-0.3
+matrix5<-tmdata
+rule5<-survdata
+rule50<-rule5[which(rule5!=0)]
+quantr5<-quantile(rule50,probs=seq(0,1,0.01))
+max5<-max(matrix5)
+rul5<-max(rule5)
+sss0<-Inf
+ITER<-2000000
+scoress<-0
+scorett<-0
+numsurv<-dim(survdata)[2]
+colt<-colnames(tmdata)
+kkselect<-which(colt %in% pro_data2)
+kkleft<-setdiff(1:numsurv,kkselect)    
+value<-0.05
+for (ss in 1:ITER){
+    switch<-sample(0:3,1)
+    if (switch==0) {
+         if (max5==0) next
+         if (rul5>=max5) k1<-runif(1,1,rul5/max5)
+         if (rul5<max5) k1<-runif(1,0,rul5/max5)
+         matrix61<-matrix5*k1
+         }
+    if (switch==1) {
+         kk<-runif(1,1.1,30)
+         matrix6<-log(matrix5)/log(kk)
+         max6<-max(matrix6)
+         if (max6==0) next
+         if (rul5>=max6) k1<-runif(1,1,rul5/max6)
+         if (rul5<max6) k1<-runif(1,0,rul5/max6)
+         matrix61<-matrix6*k1
+         matrix61[which(matrix61==-Inf)]<-0
+         }
+    if (switch==2){
+        kk<-runif(1,0.01,30)
+        matrix6<-matrix5^kk
+        max6<-max(matrix6)
+       if (max6==Inf) next
+       if (max6==0) next
+        if (rul5>=max6) k1<-runif(1,1,rul5/max6)
+        if (rul5<max6) k1<-runif(1,0,rul5/max6)
+        matrix61<-matrix6*k1
+        }
+    if (switch==3){
+       kk<-runif(1,1,10)
+       matrix6<-kk^matrix5
+        max6<-max(matrix6)
+        if (max6==Inf) next
+        if (max6==0) next
+        if (rul5>=max6) k1<-runif(1,1,rul5/max6)
+        if (rul5<max6) k1<-runif(1,0,rul5/max6)
+        matrix61<-matrix6*k1
+        }    
+     mean1<-runif(1,0,0.1*rul5)
+    mean2<-runif(1,0,0.1*max(matrix61))
+    tmdata<-matrix61+mean1
+    survdata<-rule5+mean2
+    survdata3<-survdata[,kkleft]
+    tmdata3<-tmdata[kkleft,kkselect]
+    tmdata4<-tmdata[kkselect,kkselect]
+    if (class(try(solve(tmdata4),silent=TRUE))[1]=="try-error") next
+    survmig<-(survdata3 %*% tmdata3) %*% solve(tmdata4)
+    survmig[is.na(survmig)]<-1
+    colmaxsurv<-rep(0,dim(survmig)[2])
+    colminsurv<-rep(0,dim(survmig)[2])
+    for (i in 1:dim(survmig)[2]) {colmaxsurv[i]<-max(survmig[,i]);  colminsurv[i]<-min(survmig[,i]) }
+    for (i in 1:dim(survmig)[2]) survmig[,i]<-(survmig[,i]-colminsurv[i])/(colmaxsurv[i]-colminsurv[i])   ##for p value only 
+    survmig[is.na(survmig)]<-1
+    survleft<-survdata0[,kkleft]
+    nsurv<-as.integer(length(which(survleft<value))/(dim(survleft)[1]*dim(survleft)[2])*100)
+    for (i in 1:dim(survmig)[2]){
+         standard<-quantile(survmig[,i],probs=seq(0,1,0.01))[nsurv+1]
+         survmig33<-survmig[,i]/standard*value
+         survmig33up<-survmig33[which(survmig33<value)]
+         survmig33down<-survmig33[which(survmig33>value)]
+         survmig33up<-(survmig33up-min(survmig33up))/max(survmig33up-min(survmig33up))*value
+         survmig33down<-value+(survmig33down-min(survmig33down))/max(survmig33down-min(survmig33down))*(1-value)
+         labelup<-names(survmig33up)
+         labeldown<-names(survmig33down)
+         survmig33[labelup]<-survmig33up[labelup]
+         survmig33[labeldown]<-survmig33down[labeldown]
+         survmig[,i]<-survmig33
+          }
+     survmig[is.na(survmig)]<-1
+     markscore<-0
+     for (i in 1:dim(survmig)[2])   
+          if (abs(quantile(survmig[,i],na.rm=TRUE)[2]-quantile(survmig[,i],na.rm=TRUE)[4])<0.001)    {markscore<-1; break}
+    survtemp<-survdata0[,kkselect] 
+    score00<-length(intersect(which(survtemp<0.05),which(survmig<0.05)))   
+    score00<-score00+length(intersect(which(survtemp>0.05),which(survmig>0.05))) 
+    if (score00>scoress){
+      if (markscore==0){
+         scoress<-score00
+         switchss<-switch
+         if (switch==0) kkss<-0
+         if (switch>0)  kkss<-kk
+         k1ss<-k1
+         mean1ss<-mean1
+        mean2ss<-mean2
+        survmigss<-survmig
+        kkselectss<-kkselect
+           }
+        }
+     nportion<-abs(survmig-survdata0[,kkselect])/survdata0[,kkselect]     
+     len00<-length(which(nportion==0))
+     len05<-length(intersect(which(nportion<0.05),which(nportion>0)))     
+     len10<-length(intersect(which(nportion<0.10),which(nportion>=0.05)))
+     len20<-length(intersect(which(nportion<0.20),which(nportion>=0.10)))
+     score11<-len20+2*len10+3*len05+5*len00
+    if (score11>scorett){
+      if (markscore==0){
+         scorett<-score11
+         switchtt<-switch
+         if (switch==0) kktt<-0
+         if (switch>0)  kktt<-kk
+         k1tt<-k1
+         mean1tt<-mean1
+        mean2tt<-mean2
+        survmigtt<-survmig
+        kkselecttt<-kkselect
+           }
+        }
+    }
+survtemp<-survdata0[,kkselect]
+survtemp0<-survtemp-0.05
+survmigtt0<-survmigtt-0.05
+multi0<-survtemp0*survmigtt0
+survmark<-matrix(0,dim(survmigtt)[1],dim(survmigtt)[2])
+rownames(survmark)<-rownames(survmigtt)
+colnames(survmark)<-colnames(survmigtt)
+survmark[which(multi0<0)]<-1
+write.csv(survmigss,"Survival_vague.csv")
+write.csv(survmigtt,"Survival_exact.csv")
+write.csv(survmark,"Survival_mark_1diff.csv")
+result_ss<-matrix(0,8,3)
+colnames(result_ss)<-c("model_factor","number_exact","number_vague")
+kkselect_allss<-kkselectss[1]
+for (i in 2:length(kkselectss)) kkselect_allss<-paste(kkselect_allss,kkselectss[i],sep=",")
+kkselect_alltt<-kkselecttt[1]
+for (i in 2:length(kkselecttt)) kkselect_alltt<-paste(kkselect_alltt,kkselecttt[i],sep=",")
+result_ss[,1]<-c("score","switch","kk","k1","mean1","mean2","kkselect","gene")
+result_ss[,2]<-c(scorett,switchtt,kktt,k1tt,mean1tt,mean2tt,kkselect_alltt,0)
+result_ss[,3]<-c(scoress,switchss,kkss,k1ss,mean1ss,mean2ss,kkselect_allss,0)
+write.csv(result_ss,"Model_tm_survival.csv",row.names=FALSE)
+
+
+##HR Data Migration
+pro_data<-read.csv("longtail_cor_diseases_check.csv")
+   ##Next taking obesity for example, column 4 for obesity
+sort3<-sort(pro_data[,4],decreasing=TRUE)    ##Change 4 if using other target disease
+sort30<-sort3[10]  ##Adjust according to data
+pro_data2<-pro_data[which(pro_data[,4]>=sort30),1]  ##Change 4 if using other target disease
+tmdata<-read.csv("longtail_cor_diseases_train.csv")
+rowt<-tmdata[,1]
+tmdata<-tmdata[,-1]
+tmdata<-apply(tmdata,2,as.numeric)
+rownames(tmdata)<-rowt
+rowt2<-sort(rowt)
+tmdata<-tmdata[rowt2,]
+tmdata<-tmdata[,rowt2]
+numt<-dim(tmdata)[2]
+survdata<-read.csv("HR_matrix.csv")
+rowsurv<-survdata[,1]
+survdata<-survdata[,-1]
+survdata<-apply(survdata,2,as.numeric)
+rownames(survdata)<-rowsurv
+survdata[which(survdata>20)]<-20
+survdata0<-survdata
+   ##mapping tmdata to match HR
+training<-0.3
+matrix5<-tmdata
+rule5<-survdata
+rule50<-rule5[which(rule5!=0)]
+quantr5<-quantile(rule50,probs=seq(0,1,0.01))
+max5<-max(matrix5)
+rul5<-max(rule5)
+sss0<-Inf
+ITER<-2000000
+scoress<-0
+scorett<-0
+ numsurv<-dim(survdata)[2]
+colt<-colnames(tmdata)
+kkselect<-which(colt %in% pro_data2)
+kkleft<-setdiff(1:numsurv,kkselect)   
+value<-1 
+for (ss in 1:ITER){
+    switch<-sample(0:3,1)
+    if (switch==0) {
+         if (max5==0) next
+         if (rul5>=max5) k1<-runif(1,1,rul5/max5)
+         if (rul5<max5) k1<-runif(1,0,rul5/max5)
+         matrix61<-matrix5*k1
+         }
+    if (switch==1) {
+         kk<-runif(1,1.1,30)
+         matrix6<-log(matrix5)/log(kk)
+         max6<-max(matrix6)
+         if (max6==0) next
+         if (rul5>=max6) k1<-runif(1,1,rul5/max6)
+         if (rul5<max6) k1<-runif(1,0,rul5/max6)
+         matrix61<-matrix6*k1
+         matrix61[which(matrix61==-Inf)]<-0
+         }
+    if (switch==2){
+        kk<-runif(1,0.01,30)
+        matrix6<-matrix5^kk
+        max6<-max(matrix6)
+       if (max6==Inf) next
+       if (max6==0) next
+        if (rul5>=max6) k1<-runif(1,1,rul5/max6)
+        if (rul5<max6) k1<-runif(1,0,rul5/max6)
+        matrix61<-matrix6*k1
+        }
+    if (switch==3){
+       kk<-runif(1,1,10)
+       matrix6<-kk^matrix5
+        max6<-max(matrix6)
+        if (max6==Inf) next
+        if (max6==0) next
+        if (rul5>=max6) k1<-runif(1,1,rul5/max6)
+        if (rul5<max6) k1<-runif(1,0,rul5/max6)
+        matrix61<-matrix6*k1
+        }    
+     mean1<-runif(1,0,0.1*rul5)
+    mean2<-runif(1,0,0.1*max(matrix61))
+    tmdata<-matrix61+mean1
+    survdata<-rule5+mean2  
+    survdata3<-survdata[,kkleft]
+    tmdata3<-tmdata[kkleft,kkselect]
+    tmdata4<-tmdata[kkselect,kkselect]
+    if (class(try(solve(tmdata4),silent=TRUE))[1]=="try-error") next
+    survmig<-(survdata3 %*% tmdata3) %*% solve(tmdata4)
+    survmig[is.na(survmig)]<-1
+    colmaxsurv<-rep(0,dim(survmig)[2])
+    colminsurv<-rep(0,dim(survmig)[2])
+    for (i in 1:dim(survmig)[2]) {colmaxsurv[i]<-max(survmig[,i]);  colminsurv[i]<-min(survmig[,i]) }
+    for (i in 1:dim(survmig)[2]) survmig[,i]<-(survmig[,i]-colminsurv[i])/(colmaxsurv[i]-colminsurv[i]) 
+    survmig[is.na(survmig)]<-1
+    survleft<-survdata0[,kkleft]
+    nsurv<-as.integer(length(which(survleft<value))/(dim(survleft)[1]*dim(survleft)[2])*100)
+    maxsurv<-rep(0,dim(survleft)[2])
+    for (i in 1:dim(survleft)[2]) maxsurv[i]<-max(survleft[,i]) 
+    maxmean<-mean(maxsurv)  
+    for (i in 1:dim(survmig)[2]){
+         standard<-quantile(survmig[,i],probs=seq(0,1,0.01))[nsurv+1]
+         survmig33<-survmig[,i]/standard*value
+         survmig33up<-survmig33[which(survmig33<value)]
+         survmig33down<-survmig33[which(survmig33>value)]
+         survmig33up<-(survmig33up-min(survmig33up))/max(survmig33up-min(survmig33up))*value
+         survmig33down<-value+(survmig33down-min(survmig33down))/max(survmig33down-min(survmig33down))*(maxmean-1)
+         labelup<-names(survmig33up)
+         labeldown<-names(survmig33down)
+         survmig33[labelup]<-survmig33up[labelup]
+         survmig33[labeldown]<-survmig33down[labeldown]
+         survmig[,i]<-survmig33
+          }
+     survmig[is.na(survmig)]<-1
+     markscore<-0
+     for (i in 1:dim(survmig)[2])   
+          if (abs(quantile(survmig[,i],na.rm=TRUE)[2]-quantile(survmig[,i],na.rm=TRUE)[4])<0.001)    {markscore<-1; break}
+    survcom<-survdata0[,kkselect]
+    scss1<-length(intersect(which(survcom<1),which(survmig<1)))
+    scss2<-length(intersect(which(survcom>1),which(survmig>1)))    
+     score00<-scss1+scss2
+     if (score00>scoress){
+      if (markscore==0){
+         scoress<-score00
+         switchss<-switch
+         if (switch==0) kkss<-0
+         if (switch>0)  kkss<-kk
+         k1ss<-k1
+         mean1ss<-mean1
+        mean2ss<-mean2
+        survmigss<-survmig
+        kkselectss<-kkselect
+            }
+        }
+     nportion<-abs(survmig-survcom)/survcom   
+     len00<-length(which(nportion==0))
+     len05<-length(intersect(which(nportion<0.05),which(nportion>0)))     
+     len10<-length(intersect(which(nportion<0.10),which(nportion>=0.05)))
+     len20<-length(intersect(which(nportion<0.20),which(nportion>=0.10)))
+     score11<-len20+2*len10+3*len05+5*len00
+      if (score11>scorett){
+        if (markscore==0){
+         scorett<-score11
+         switchtt<-switch
+         if (switch==0) kktt<-0
+         if (switch>0)  kktt<-kk
+         k1tt<-k1
+         mean1tt<-mean1
+        mean2tt<-mean2
+        survmigtt<-survmig
+        kkselecttt<-kkselect
+           }
+        } 
+    }
+survcom<-survdata0[,kkselect]
+multi0<-(survmigtt-1)*(survcom-1)
+survmark<-matrix(0,dim(survmigtt)[1],dim(survmigtt)[2])
+rownames(survmark)<-rownames(survmigtt)
+colnames(survmark)<-colnames(survmigtt)
+survmark[which(multi0<0)]<-1
+write.csv(survmigss,"HR_vague.csv")
+write.csv(survmigtt,"HR_exact.csv")
+write.csv(survmark,"HR_mark_1diff.csv")
+result_ss<-matrix(0,8,3)
+colnames(result_ss)<-c("model_factor","number_exact","number_vague")
+kkselect_allss<-kkselectss[1]
+for (i in 2:length(kkselectss)) kkselect_allss<-paste(kkselect_allss,kkselectss[i],sep=",")
+kkselect_alltt<-kkselecttt[1]
+for (i in 2:length(kkselecttt)) kkselect_alltt<-paste(kkselect_alltt,kkselecttt[i],sep=",")
+result_ss[,1]<-c("score","switch","kk","k1","mean1","mean2","kkselect","gene")
+result_ss[,2]<-c(scorett,switchtt,kktt,k1tt,mean1tt,mean2tt,kkselect_alltt,0)
+result_ss[,3]<-c(scoress,switchss,kkss,k1ss,mean1ss,mean2ss,kkselect_allss,0)
+write.csv(result_ss,"Model_tm_HR.csv",row.names=FALSE)
+
+
+## Using transcriptome in matching data
+   #Step 1-- Data Preparation
+library("stringr")
+file00<-list.files("D:/TCGA_downloads")
+file01<-file00[which(str_detect(file00,"_processed.csv"))]
+file01<-file01[which(!str_detect(file01,"survival"))]
+tmdata<-read.csv("longtail_cor_diseases_train.csv")
+pro_data<-read.csv("longtail_cor_diseases_check.csv")
+   ##Next taking obesity for example, column 4 for obesity
+sort3<-sort(pro_data[,4],decreasing=TRUE)    ##Change 4 if for other target disease
+sort30<-sort3[10] 
+pro_data2<-pro_data[which(pro_data[,4]>=sort30),1]
+len01<-length(file01)
+file02<-file01
+for (i in 1:len01){
+   temp<-strsplit(file01[i],split="_")[[1]][1]
+   file02[i]<-strsplit(temp,split="-")[[1]][2]
+   }
+file03<-file01[which(file02 %in% pro_data2)]
+file04<-setdiff(file01,file03)
+file031<-file03
+len03<-length(file03)
+file041<-file04
+len04<-length(file04)
+for (i in 1:len03){
+   temp<-strsplit(file03[i],split="_")[[1]][1]
+   file031[i]<-strsplit(temp,split="-")[[1]][2]
+   }
+for (i in 1:len04){
+   temp<-strsplit(file04[i],split="_")[[1]][1]
+   file041[i]<-strsplit(temp,split="-")[[1]][2]
+   }
+
+   ##Standalize TCGA genes
+setwd("D:/TCGA_downloads")
+bulkaa<-list()
+bulkaa[len01]<-0
+aa<-read.csv(file01[1])
+genea<-aa[,1]
+for (i in 2:len01){
+     bb<-read.csv(file01[i])
+     geneb<-bb[,1]  
+     genea<-intersect(genea,geneb)
+   }
+numcc<-rep(0,len01)
+for (i in 1:len01){
+   aa<-read.csv(file01[i])
+   rownames(aa)<-aa[,1]
+   aa<-aa[,-1]
+   numcc[i]<-dim(aa)[2]
+   bulkaa[[i]]<-aa[genea,]
+  }
+   ##Normalization
+merge00<-bulkaa[[1]] 
+for (i in 2:len01){
+   merge00<-cbind(merge00,bulkaa[[i]])
+  }
+susu<-merge00
+lens<-dim(susu)[1]
+nums<-dim(susu)[2]
+sum_col<-rep(0,nums)
+for (j in 1:nums) {
+      sum_col[j]<-sum(as.numeric(susu[,j]))
+   }
+standard<-min(sum_col)
+standard1<-standard
+susu2<-susu
+for (j in 1:nums) {
+       susu2[,j]<-as.numeric(susu[,j])*standard/sum_col[j]
+       }
+sum_stan<-rep(0,nums)
+for (j in 1:nums) {
+      sum_stan[j]<-sqrt(var(as.numeric(susu2[,j])))
+   }
+standard<-min(sum_stan)
+standard2<-standard
+meana<-mean(as.numeric(susu2[,2]))
+susu3<-susu2
+ for (j in 1:nums) {
+       susu3[,j]<-meana+(as.numeric(susu2[,j])-meana)*standard/sum_stan[j]
+       }
+  ##map back to bulks
+row0<-rownames(susu3)
+end1<-numcc[1]
+bulkaa[[1]]<-susu3[,1:end1]
+for (i in 2:len01){
+   start1<-end1+1
+   end1<-start1+numcc[i]-1
+   bulkaa[[i]]<-susu3[,start1:end1]
+   rownames(bulkaa[[i]])<-row0
+   }
+
+ ##Sort inputted sample data for non-tumor diseases -- taking obesity for example
+library(stringr)
+path0<-"D:/wen_data/fat_v_thin/"    ##Set according to data path for target disease
+filelist<-list.files(path0,recursive=TRUE)
+filelist2<-filelist[which(str_detect(filelist,"_processed.csv"))]
+lenf2<-length(filelist2)
+filelist20<-paste(path0,filelist2,sep="")
+matrix_obj_all<-list()
+matrix_obj_all[lenf2]<-0
+for (sss in 1:lenf2){
+     data_sample<-read.csv(filelist20[sss])
+     cold<-colnames(data_sample)
+     genes<-data_sample[,1]
+     cold2<-cold[which(!str_detect(cold,"fold_"))]
+     cold2<-cold2[which(!str_detect(cold2,"p_"))]
+     data_sample2<-data_sample[,which(cold %in% cold2)]
+     data_sample2<-as.matrix(data_sample2)
+     data_sample2<-apply(data_sample2,2,as.numeric)
+     rownames(data_sample2)<-genes
+     lens<-dim(data_sample2)[1]
+     nums<-dim(data_sample2)[2]
+     tt_count<-rep(0,nums)
+     for (j in 1:nums) tt_count[j]<-length(which(is.na(data_sample2[,j])))    
+     data_sample2<-data_sample2[,which(tt_count<0.1*lens)]
+     nums<-dim(data_sample2)[2]
+     zero_count<-rep(0,nums)
+     for (j in 1:nums) 
+        if (max(data_sample2[,j])==min(data_sample2[,j]))
+           zero_count[j]<-1
+    data_sample2<-data_sample2[,which(zero_count==0)]
+     susu<-data_sample2
+     nums<-dim(susu)[2]
+    sum_col<-rep(0,nums)
+    for (j in 1:nums) {
+         sum_col[j]<-sum(as.numeric(susu[,j]))
+        }
+    standard<-standard1
+    susu2<-susu
+    for (j in 1:nums) {
+       susu2[,j]<-as.numeric(susu[,j])*standard/sum_col[j]
+       }
+    sum_stan<-rep(0,nums)
+    for (j in 1:nums) {
+      sum_stan[j]<-sqrt(var(as.numeric(susu2[,j])))
+       }
+    standard<-min(sum_stan)
+    meana<-mean(as.numeric(susu2[,2]))
+    susu3<-susu2
+    for (j in 1:nums) {
+       susu3[,j]<-meana+(as.numeric(susu2[,j])-meana)*standard/sum_stan[j]
+       }
+    data_sample3<-susu3
+    data_sample3[is.na(data_sample3)]<-0
+        ##intellectually grouping based on column name
+    cols2<-colnames(data_sample3)
+    nums2<-length(cols2)
+    stage2<-rep(0,nums2)
+    for (i in 1:nums2) {
+     temp<-strsplit(cols2[i],split="[.][.]")[[1]][2]
+     stage2[i]<-strsplit(temp,split="[.]")[[1]][1]
+        }
+    stage2<-as.numeric(stage2)
+     gene_obj<-rownames(data_sample3)
+       gene_tcga<-rownames(bulkaa[[1]])
+       gene_inter<-intersect(gene_obj,gene_tcga)
+       sample_data4<-data_sample3[gene_inter,]
+       matrix_obj<-matrix(0,length(gene_inter),5)
+       rownames(matrix_obj)<-gene_inter
+       colnames(matrix_obj)<-c("s_0","s_1","s_2","s_3","s_4")
+   if (length(which(is.na(stage2)))==0) {
+      quant2<-quantile(stage2,probs=c(0,0.2,0.4,0.6,0.8,1))
+       ss4<-which(stage2>quant2[5])
+       ss3<-which(stage2>quant2[4] & stage2<=quant2[5])
+       ss2<-which(stage2>quant2[3] & stage2<=quant2[4])
+       ss1<-which(stage2>quant2[2] & stage2<=quant2[3])
+       ss0<-which(stage2<=quant2[2])
+       matrix_obj[,1]<-rowMeans(sample_data4[,ss0])
+       matrix_obj[,2]<-rowMeans(sample_data4[,ss1])
+       matrix_obj[,3]<-rowMeans(sample_data4[,ss2])
+       matrix_obj[,4]<-rowMeans(sample_data4[,ss3])
+       matrix_obj[,5]<-rowMeans(sample_data4[,ss4])           
+      colstat<-colMeans(matrix_obj)
+      lenna<-length(which(is.na(colstat)))
+      stage<-colnames(matrix_obj)[which(!is.na(colstat))]
+      if (lenna==0)  {matrix_obj_all[[sss]]<-matrix_obj;   next }
+      if (lenna>0) {            
+          lenus<-5-lenna
+          setss<-rep(0,lenus)
+          for (j in 1:lenus) setss[j]<-as.numeric(strsplit(stage[j],split="_")[[1]][2])+1
+          if (lenus==1) {
+               matrix_obj[,setdiff(1:5,setss)]<-matrix_obj[,setss]
+               }
+          if (lenus==2){
+              if (setss[1]-1>=1) matrix_obj[,1:(setss[1]-1)]<-matrix_obj[,setss[1]]
+              if (setss[2]+1<=5) matrix_obj[,(setss[2]+1):5]<-matrix_obj[,setss[2]]
+              if (setss[1]+1<=setss[2]-1) matrix_obj[,(setss[1]+1):(setss[2]-1)]<-(matrix_obj[,setss[1]]+matrix_obj[,setss[2]])/2
+              }
+          if (lenus==3){
+             if (setss[1]-1>=1) matrix_obj[,1:(setss[1]-1)]<-matrix_obj[,setss[1]]
+             if (setss[3]+1<=5) matrix_obj[,(setss[3]+1):5]<-matrix_obj[,setss[3]]
+             if (setss[1]+1<=setss[2]-1) matrix_obj[,(setss[1]+1):(setss[2]-1)]<-(matrix_obj[,setss[1]]+matrix_obj[,setss[2]])/2
+             if (setss[2]+1<=setss[3]-1) matrix_obj[,(setss[2]+1):(setss[3]-1)]<-(matrix_obj[,setss[2]]+matrix_obj[,setss[3]])/2
+             }   
+          if (lenus==4){
+             if (setss[1]-1>=1) matrix_obj[,1:(setss[1]-1)]<-matrix_obj[,setss[1]]
+             if (setss[4]+1<=5) matrix_obj[,(setss[4]+1):5]<-matrix_obj[,setss[4]]
+             if (setss[1]+1<=setss[2]-1) matrix_obj[,(setss[1]+1):(setss[2]-1)]<-(matrix_obj[,setss[1]]+matrix_obj[,setss[2]])/2
+             if (setss[2]+1<=setss[3]-1) matrix_obj[,(setss[2]+1):(setss[3]-1)]<-(matrix_obj[,setss[2]]+matrix_obj[,setss[3]])/2
+             if (setss[3]+1<=setss[4]-1) matrix_obj[,(setss[3]+1):(setss[4]-1)]<-(matrix_obj[,setss[3]]+matrix_obj[,setss[4]])/2
+             }   
+           matrix_obj_all[[sss]]<-matrix_obj
+           }
+       }  
+   else{
+        stage<-rep(0,nums)
+        for (i in 1:nums){
+             if (str_detect(toupper(cols2[i]),"METABOLIC.SYNDROME")) {stage[i]<-4; next} 
+             temp<-strsplit(cols2[i],split="[.]")[[1]][1]   
+             if (!is.na(temp)){
+                if (toupper(substr(temp,1,3))=="OBE") {stage[i]<-3; next}    ##For this part, manually set the column name containing the following keywords to illustrate level of severity
+                if (toupper(substr(temp,1,4))=="LEAN") {stage[i]<-1; next}
+                if (toupper(substr(temp,1,4))=="OVER") {stage[i]<-2; next}
+                if (toupper(substr(temp,1,3))=="NON") {stage[i]<-1; next}
+                if (toupper(substr(temp,1,5))=="HEAVY") {stage[i]<-3; next}
+                if (toupper(substr(temp,1,8))=="DIABETES") {stage[i]<-4; next}
+                }
+              temp<-strsplit(cols2[i],split="[.]")[[1]][2]   
+              if (!is.na(temp)){
+                if (toupper(substr(temp,1,3))=="OBE") {stage[i]<-3; next}
+                if (toupper(substr(temp,1,4))=="LEAN") {stage[i]<-1; next}
+                if (toupper(substr(temp,1,4))=="OVER") {stage[i]<-2; next}
+                if (toupper(substr(temp,1,3))=="NON") {stage[i]<-1; next}
+                if (toupper(substr(temp,1,5))=="HEAVY") {stage[i]<-3; next}
+                if (toupper(substr(temp,1,8))=="DIABETES") {stage[i]<-4; next}
+                }
+             temp<-strsplit(cols2[i],split="[.]")[[1]][3]   
+             if (!is.na(temp)){
+                if (toupper(substr(temp,1,3))=="OBE") {stage[i]<-3; next}
+                if (toupper(substr(temp,1,4))=="LEAN") {stage[i]<-1; next}
+                if (toupper(substr(temp,1,4))=="OVER") {stage[i]<-2; next}
+                if (toupper(substr(temp,1,3))=="NON") {stage[i]<-1; next}
+                if (toupper(substr(temp,1,5))=="HEAVY") {stage[i]<-3; next}
+                if (toupper(substr(temp,1,8))=="DIABETES") {stage[i]<-4; next}
+                }
+             temp<-strsplit(cols2[i],split="[.]")[[1]][4]   
+             if (!is.na(temp)){
+                if (toupper(substr(temp,1,3))=="OBE") {stage[i]<-3; next}
+                if (toupper(substr(temp,1,4))=="LEAN") {stage[i]<-1; next}
+                if (toupper(substr(temp,1,4))=="OVER") {stage[i]<-2; next}
+                if (toupper(substr(temp,1,3))=="NON") {stage[i]<-1: next}
+                if (toupper(substr(temp,1,5))=="HEAVY") {stage[i]<-3; next}
+                if (toupper(substr(temp,1,8))=="DIABETES") {stage[i]<-4; next}
+                }
+             temp<-strsplit(cols2[i],split="_")[[1]][2]   
+             if (!is.na(temp)){
+               if (toupper(substr(temp,1,3))=="OBE") {stage[i]<-3; next}
+               if (toupper(substr(temp,1,4))=="LEAN") {stage[i]<-1; next}
+               if (toupper(substr(temp,1,4))=="OVER") {stage[i]<-2; next}
+               if (toupper(substr(temp,1,3))=="NON") {stage[i]<-1; next}
+               if (toupper(substr(temp,1,5))=="HEAVY") {stage[i]<-3; next}
+               if (toupper(substr(temp,1,8))=="DIABETES") {stage[i]<-4; next}
+               }
+             temp<-strsplit(cols2[i],split="_")[[1]][3]   
+             if (!is.na(temp)){
+                if (toupper(substr(temp,1,3))=="OBE") {stage[i]<-3; next}
+                if (toupper(substr(temp,1,4))=="LEAN") {stage[i]<-1; next}
+                if (toupper(substr(temp,1,4))=="OVER") {stage[i]<-2; next}
+                if (toupper(substr(temp,1,3))=="NON") {stage[i]<-1; next}
+                if (toupper(substr(temp,1,5))=="HEAVY") {stage[i]<-3; next}
+                if (toupper(substr(temp,1,8))=="DIABETES") {stage[i]<-4; next}
+                }
+             temp<-strsplit(cols2[i],split="[.][.]")[[1]][1]  
+             if (!is.na(temp)){ 
+                if (toupper(substr(temp,1,3))=="OBE") {stage[i]<-3; next}
+                if (toupper(substr(temp,1,4))=="LEAN") {stage[i]<-1; next}
+                if (toupper(substr(temp,1,4))=="OVER") {stage[i]<-2; next}
+                if (toupper(substr(temp,1,3))=="NON") {stage[i]<-1; next}
+                if (toupper(substr(temp,1,5))=="HEAVY") {stage[i]<-3; next}
+                if (toupper(substr(temp,1,3))=="OIS") {stage[i]<-2; next}
+                if (toupper(substr(temp,1,3))=="OIR") {stage[i]<-3; next}
+                if (toupper(substr(temp,1,8))=="DIABETES") {stage[i]<-4; next}
+                }
+             temp<-strsplit(cols2[i],split="[.][.]")[[1]][2]   
+             if (!is.na(temp)){
+                if (toupper(substr(temp,1,3))=="OBE") {stage[i]<-3; next}
+                if (toupper(substr(temp,1,4))=="LEAN") {stage[i]<-1; next}
+                if (toupper(substr(temp,1,4))=="OVER") {stage[i]<-2; next}
+                if (toupper(substr(temp,1,3))=="NON") {stage[i]<-1; next}
+                if (toupper(substr(temp,1,5))=="HEAVY") {stage[i]<-3; next}
+                if (toupper(substr(temp,1,8))=="DIABETES") {stage[i]<-4; next}
+                }
+             }        
+        ustage<-unique(stage)
+        ustage<-ustage[which(ustage!=0)]
+        ss1<-which(stage==1)
+        ss2<-which(stage==2)
+        ss3<-which(stage==3)
+        ss4<-which(stage==4)
+        lenus<-length(ustage)
+        if (length(ss1)>0) matrix_obj[,2]<-rowMeans(sample_data4[,ss1])
+        if (length(ss2)>0) matrix_obj[,3]<-rowMeans(sample_data4[,ss2])
+        if (length(ss3)>0) matrix_obj[,4]<-rowMeans(sample_data4[,ss3])
+        if (length(ss4)>0) matrix_obj[,5]<-rowMeans(sample_data4[,ss4])
+        if (lenus==1) {
+            setss<-which(colSums(matrix_obj)>0)
+            matrix_obj[,setdiff(1:5,setss)]<-matrix_obj[,setss]
+           }
+        if (lenus==2){
+            setss<-sort(which(colSums(matrix_obj)>0))
+            if (setss[1]-1>=1) matrix_obj[,1:(setss[1]-1)]<-matrix_obj[,setss[1]]
+            if (setss[2]+1<=5) matrix_obj[,(setss[2]+1):5]<-matrix_obj[,setss[2]]
+            if (setss[1]+1<=setss[2]-1) matrix_obj[,(setss[1]+1):(setss[2]-1)]<-(matrix_obj[,setss[1]]+matrix_obj[,setss[2]])/2
+            }
+        if (lenus==3){
+           setss<-sort(which(colSums(matrix_obj)>0))
+            if (setss[1]-1>=1) matrix_obj[,1:(setss[1]-1)]<-matrix_obj[,setss[1]]
+            if (setss[3]+1<=5) matrix_obj[,(setss[3]+1):5]<-matrix_obj[,setss[3]]
+            if (setss[1]+1<=setss[2]-1) matrix_obj[,(setss[1]+1):(setss[2]-1)]<-(matrix_obj[,setss[1]]+matrix_obj[,setss[2]])/2
+            if (setss[2]+1<=setss[3]-1) matrix_obj[,(setss[2]+1):(setss[3]-1)]<-(matrix_obj[,setss[2]]+matrix_obj[,setss[3]])/2
+            }
+        matrix_obj_all[[sss]]<-matrix_obj   
+        }
+    }
+     ##combining matrix_obj_all  + derepeat
+markf2<-rep(0,lenf2)
+for (i in 1:(lenf2-1)){
+  for (j in (i+1):lenf2){
+        if (markf2[j]==1) next
+        if (identical(matrix_obj_all[[i]],matrix_obj_all[[j]])) markf2[j]<-1
+         }
+     } 
+matrix_obj_all2<-matrix_obj_all[which(markf2==0)]
+filelist3<-filelist2[which(markf2==0)]
+filelist4<-filelist3
+for (i in 1:length(filelist3)) filelist4[i]<-strsplit(filelist3[i],split="_")[[1]][1]
+     ##Expand the genes
+lenf2<-length(matrix_obj_all2)
+matrix_obj_all3<-matrix_obj_all2
+gene11<-rownames(matrix_obj_all2[[1]])
+for (i in 2:lenf2){
+    gene22<-rownames(matrix_obj_all2[[i]])
+    gene11<-union(gene11,gene22)
+   }
+for (i in 1:lenf2){
+   matrix_obj<-matrix_obj_all2[[i]]
+   gene_plus<-setdiff(gene11,rownames(matrix_obj))
+   matrix_obj_plus<-matrix(0,length(gene_plus),5)
+   colnames(matrix_obj_plus)<-colnames(matrix_obj)
+   rownames(matrix_obj_plus)<-gene_plus
+   matrix_obj_add<-rbind(matrix_obj_plus,matrix_obj)
+   matrix_obj_all3[[i]]<-matrix_obj_add[gene11,]
+   }
+gene_obj<-gene11
+gene_tcga<-rownames(bulkaa[[1]])
+gene_inter<-intersect(gene_obj,gene_tcga)
+for (i in 1:lenf2) matrix_obj_all3[[i]]<-matrix_obj_all3[[i]][gene_inter,]
+  
+
+
+   ##Calculate Disease-Disease Matrix for all TCGAs
+bulkbb<-list()
+bulkbb[len01]<-0
+for (i in 1:len01){
+    temp<-bulkaa[[i]]
+    colt<-colnames(temp)
+    numt<-length(colt)
+    staget<-rep(0,numt)
+    typesub<-rep(0,numt)
+    for (j in 1:numt) {
+             staget[j]<-strsplit(colt[j],split="_")[[1]][2] 
+             staget[j]<-substr(staget[j],1,2)
+             staget[j]<-as.numeric(gsub("s","",staget[j]))              
+             typetemp<-strsplit(colt[j],split="[.]")[[1]][4]
+             typesub[j]<-as.numeric(substr(typetemp,1,2))
+             if (typesub[j]>9) staget[j]<-0
+             }
+    stageleft<-setdiff(unique(staget),c(NA,"0"))
+    if (length(stageleft)==0) {
+           temp2<-temp
+           if (max(typesub)<10) staget<-rep(2,numt)
+           if (max(typesub)>=10) {
+                for (j in 1:numt){
+                    if (typesub[j]<=9) staget[j]<-2             
+                    if (typesub[j]>9) staget[j]<-0
+                   }
+                }
+          }
+    if (length(stageleft)>0){
+        napos<-which(is.na(staget))
+        staget<-staget[setdiff(1:numt,napos)]
+        temp2<-temp[,setdiff(1:numt,napos)]
+         }  
+    staget<-as.matrix(staget)
+     staget<-apply(staget,2,as.numeric)
+    row2<-rownames(temp2)
+    temp2<-apply(temp2,2,as.numeric)
+    rownames(temp2)<-row2
+       ustage<-sort(unique(staget[,1]))
+       lenus<-length(ustage)
+       temp3<-matrix(0,dim(temp2)[1],lenus)
+       rownames(temp3)<-row2
+       colnames(temp3)<-paste("s",ustage,sep="_")
+       for (k in 1:lenus){
+           kk<-which(ustage[k]==staget[,1])
+           if (length(kk)>1) temp3[,k]<-rowMeans(temp2[,kk])
+           if (length(kk)==1) temp3[,k]<-temp2[,kk]
+           }
+      bulkbb[[i]]<-temp3[gene_inter,]
+      bulkbb[[i]]<-as.matrix(bulkbb[[i]])
+    }
+
+   ##Parsing for bulkbb
+for (i in 1:len01){
+     aa<-bulkbb[[i]]
+     lenaa<-dim(aa)[1]
+     if (dim(aa)[2]==1) colnames(aa)[1]<-"s_2"
+     matrix_tcga<-matrix(0,lenaa,5)
+     rownames(matrix_tcga)<-rownames(aa)
+     colnames(matrix_tcga)<-c("s_0","s_1","s_2","s_3","s_4")
+     stage<-colnames(aa)
+     matrix_tcga[,stage]<-aa
+     lenus<-length(stage)
+     setss<-rep(0,lenus)
+     for (j in 1:lenus) setss[j]<-as.numeric(strsplit(stage[j],split="_")[[1]][2])+1
+     if (lenus==1) {
+            matrix_tcga[,setdiff(1:5,setss)]<-matrix_tcga[,setss]
+           }
+     if (lenus==2){
+            if (setss[1]-1>=1) matrix_tcga[,1:(setss[1]-1)]<-matrix_tcga[,setss[1]]
+            if (setss[2]+1<=5) matrix_tcga[,(setss[2]+1):5]<-matrix_tcga[,setss[2]]
+            if (setss[1]+1<=setss[2]-1) matrix_tcga[,(setss[1]+1):(setss[2]-1)]<-(matrix_tcga[,setss[1]]+matrix_tcga[,setss[2]])/2
+            }
+        if (lenus==3){
+            if (setss[1]-1>=1) matrix_tcga[,1:(setss[1]-1)]<-matrix_tcga[,setss[1]]
+            if (setss[3]+1<=5) matrix_tcga[,(setss[3]+1):5]<-matrix_tcga[,setss[3]]
+            if (setss[1]+1<=setss[2]-1) matrix_tcga[,(setss[1]+1):(setss[2]-1)]<-(matrix_tcga[,setss[1]]+matrix_tcga[,setss[2]])/2
+            if (setss[2]+1<=setss[3]-1) matrix_tcga[,(setss[2]+1):(setss[3]-1)]<-(matrix_tcga[,setss[2]]+matrix_tcga[,setss[3]])/2
+            }   
+        if (lenus==4){
+            if (setss[1]-1>=1) matrix_tcga[,1:(setss[1]-1)]<-matrix_tcga[,setss[1]]
+            if (setss[4]+1<=5) matrix_tcga[,(setss[4]+1):5]<-matrix_tcga[,setss[4]]
+            if (setss[1]+1<=setss[2]-1) matrix_tcga[,(setss[1]+1):(setss[2]-1)]<-(matrix_tcga[,setss[1]]+matrix_tcga[,setss[2]])/2
+            if (setss[2]+1<=setss[3]-1) matrix_tcga[,(setss[2]+1):(setss[3]-1)]<-(matrix_tcga[,setss[2]]+matrix_tcga[,setss[3]])/2
+            if (setss[3]+1<=setss[4]-1) matrix_tcga[,(setss[3]+1):(setss[4]-1)]<-(matrix_tcga[,setss[3]]+matrix_tcga[,setss[4]])/2
+            }   
+     bulkbb[[i]]<-matrix_tcga
+     }   
+
+   ##Calculate correlation for TCGA and Objective Disease
+setwd("D:/longtail_effect")
+matrix0<-matrix(0,len01,len01)
+colnames(matrix0)<-file02
+rownames(matrix0)<-file02
+for (i in 1:len01){
+    for (j in 1:len01){
+        if (i==j) {matrix0[i,j]<-1 ;next }
+       aa<-bulkbb[[i]]
+       bb<-bulkbb[[j]]   
+       colaa<-colnames(aa)
+       colbb<-colnames(bb)
+       intercol<-intersect(colaa,colbb)
+       aa2<-as.matrix(aa[,intercol])
+       bb2<-as.matrix(bb[,intercol])
+       lenii<-length(intercol)
+       cora<-0
+       for (k in 1:lenii) cora<-cora+cor(aa2[,k],bb2[,k])
+       matrix0[i,j]<-cora/lenii
+       }
+    }
+write.csv(matrix0,"TCGA_malignancy_matrix.csv")  
+    ##Calculate correlation matrix for obesity
+objdata<-matrix(0,len01,lenf2)
+colnames(objdata)<-filelist4
+rownames(objdata)<-file02
+for (i in 1:len01){
+  for (j in 1:lenf2){
+     aa<-bulkbb[[i]]
+     bb<-matrix_obj_all3[[j]]
+     cora<-0
+     for (k in 1:5) cora<-cora+cor(aa[,k],bb[,k])
+     objdata[i,j]<-cora/5
+    }
+ }
+objdata2<-objdata[,which(!is.na(colSums(objdata)))]
+  ##Use random summing of geo datasets to close the relationship between tm and expr
+row2<-rownames(objdata2)
+pro_data<-read.csv("longtail_cor_diseases_check.csv")
+rownames(pro_data)<-pro_data[,1]
+pro_data<-pro_data[row2,]
+obj_tm<-rank(pro_data[,4])
+ITER<-1000000
+set.seed(1022)
+scoress0<-10000000
+numj2<-dim(objdata2)[2]
+for (tttt in 1:ITER){
+     ttt<-sample(1:numj2,1)
+    samples<-sample(1:numj2,ttt)
+    objdata3<-as.matrix(objdata2[,samples])
+    rowrank<-rank(rowMeans(objdata3))
+     scoress<-sum((rowrank-obj_tm)^2)
+    if (scoress<scoress0) {
+       scoress0<-scoress
+       objdata4<-as.matrix(rowMeans(objdata3))
+       }
+   }
+colnames(objdata4)<-"Obesity"
+write.csv(objdata4,"Obesity_malignancy_matrix.csv")
+ 
+    ##Survival Data Migration -- 2023.11.1
+pro_data<-read.csv("longtail_cor_diseases_check.csv")
+   ##Next taking obesity for example, column 4 for obesity
+sort3<-sort(pro_data[,4],decreasing=TRUE)   ##Change 4 for other target disease
+sort30<-sort3[10]  ##Adjust according to data
+pro_data2<-pro_data[which(pro_data[,4]>=sort30),1]   ##Change 4 for other target disease
+tmdata<-read.csv("TCGA_malignancy_matrix.csv")
+rowt<-tmdata[,1]
+tmdata<-tmdata[,-1]
+tmdata<-apply(tmdata,2,as.numeric)
+rownames(tmdata)<-rowt
+rowt2<-sort(rowt)
+tmdata<-tmdata[rowt2,]
+tmdata<-tmdata[,rowt2]
+numt<-dim(tmdata)[2]
+survdata<-read.csv("Survival_matrix.csv")
+rowsurv<-survdata[,1]
+survdata<-survdata[,-1]
+survdata<-apply(survdata,2,as.numeric)
+rownames(survdata)<-rowsurv
+survdata0<-survdata
+     ##mapping tmdata to match survdata-- use 30% in training  
+training<-0.3
+matrix5<-tmdata
+rule5<-survdata
+rule50<-rule5[which(rule5!=0)]
+quantr5<-quantile(rule50,probs=seq(0,1,0.01))
+max5<-max(matrix5)
+rul5<-max(rule5)
+sss0<-Inf
+ITER<-2000000
+scoress<-0
+scorett<-0
+numsurv<-dim(survdata)[2]
+colt<-colnames(tmdata)
+kkselect<-which(colt %in% pro_data2)
+kkleft<-setdiff(1:numsurv,kkselect)    
+value<-0.05
+for (ss in 1:ITER){
+    switch<-sample(0:3,1)
+    if (switch==0) {
+         if (max5==0) next
+         if (rul5>=max5) k1<-runif(1,1,rul5/max5)
+         if (rul5<max5) k1<-runif(1,0,rul5/max5)
+         matrix61<-matrix5*k1
+         }
+    if (switch==1) {
+         kk<-runif(1,1.1,30)
+         matrix6<-log(matrix5)/log(kk)
+         max6<-max(matrix6)
+         if (max6==0) next
+         if (rul5>=max6) k1<-runif(1,1,rul5/max6)
+         if (rul5<max6) k1<-runif(1,0,rul5/max6)
+         matrix61<-matrix6*k1
+         matrix61[which(matrix61==-Inf)]<-0
+         }
+    if (switch==2){
+        kk<-runif(1,0.01,30)
+        matrix6<-matrix5^kk
+        max6<-max(matrix6)
+       if (max6==Inf) next
+       if (max6==0) next
+        if (rul5>=max6) k1<-runif(1,1,rul5/max6)
+        if (rul5<max6) k1<-runif(1,0,rul5/max6)
+        matrix61<-matrix6*k1
+        }
+    if (switch==3){
+       kk<-runif(1,1,10)
+       matrix6<-kk^matrix5
+        max6<-max(matrix6)
+        if (max6==Inf) next
+        if (max6==0) next
+        if (rul5>=max6) k1<-runif(1,1,rul5/max6)
+        if (rul5<max6) k1<-runif(1,0,rul5/max6)
+        matrix61<-matrix6*k1
+        }    
+     mean1<-runif(1,0,0.1*rul5)
+    mean2<-runif(1,0,0.1*max(matrix61))
+    tmdata<-matrix61+mean1
+    survdata<-rule5+mean2   
+    survdata3<-survdata[,kkleft]
+    tmdata3<-tmdata[kkleft,kkselect]
+    tmdata4<-tmdata[kkselect,kkselect]
+    if (class(try(solve(tmdata4),silent=TRUE))[1]=="try-error") next
+    survmig<-(survdata3 %*% tmdata3) %*% solve(tmdata4)
+    survmig[is.na(survmig)]<-1
+    colmaxsurv<-rep(0,dim(survmig)[2])
+    colminsurv<-rep(0,dim(survmig)[2])
+    for (i in 1:dim(survmig)[2]) {colmaxsurv[i]<-max(survmig[,i]);  colminsurv[i]<-min(survmig[,i]) }
+    for (i in 1:dim(survmig)[2]) survmig[,i]<-(survmig[,i]-colminsurv[i])/(colmaxsurv[i]-colminsurv[i])   ##for p value only 
+    survmig[is.na(survmig)]<-1
+    survleft<-survdata0[,kkleft]
+    nsurv<-as.integer(length(which(survleft<value))/(dim(survleft)[1]*dim(survleft)[2])*100)
+    for (i in 1:dim(survmig)[2]){
+         standard<-quantile(survmig[,i],probs=seq(0,1,0.01))[nsurv+1]
+         survmig33<-survmig[,i]/standard*value
+         survmig33up<-survmig33[which(survmig33<value)]
+         survmig33down<-survmig33[which(survmig33>value)]
+         survmig33up<-(survmig33up-min(survmig33up))/max(survmig33up-min(survmig33up))*value
+         survmig33down<-value+(survmig33down-min(survmig33down))/max(survmig33down-min(survmig33down))*(1-value)
+         labelup<-names(survmig33up)
+         labeldown<-names(survmig33down)
+         survmig33[labelup]<-survmig33up[labelup]
+         survmig33[labeldown]<-survmig33down[labeldown]
+         survmig[,i]<-survmig33
+          }
+     survmig[is.na(survmig)]<-1
+     markscore<-0
+     for (i in 1:dim(survmig)[2])   
+          if (abs(quantile(survmig[,i],na.rm=TRUE)[2]-quantile(survmig[,i],na.rm=TRUE)[4])<0.001)    {markscore<-1; break}
+    survtemp<-survdata0[,kkselect] 
+    score00<-length(intersect(which(survtemp<0.05),which(survmig<0.05)))   
+    score00<-score00+length(intersect(which(survtemp>0.05),which(survmig>0.05))) 
+    if (score00>scoress){
+      if (markscore==0){
+         scoress<-score00
+         switchss<-switch
+         if (switch==0) kkss<-0
+         if (switch>0)  kkss<-kk
+         k1ss<-k1
+         mean1ss<-mean1
+        mean2ss<-mean2
+        survmigss<-survmig
+        kkselectss<-kkselect
+           }
+        }
+     nportion<-abs(survmig-survdata0[,kkselect])/survdata0[,kkselect]     
+     len00<-length(which(nportion==0))
+     len05<-length(intersect(which(nportion<0.05),which(nportion>0)))     
+     len10<-length(intersect(which(nportion<0.10),which(nportion>=0.05)))
+     len20<-length(intersect(which(nportion<0.20),which(nportion>=0.10)))
+     score11<-len20+2*len10+3*len05+5*len00
+    if (score11>scorett){
+      if (markscore==0){
+         scorett<-score11
+         switchtt<-switch
+         if (switch==0) kktt<-0
+         if (switch>0)  kktt<-kk
+         k1tt<-k1
+         mean1tt<-mean1
+        mean2tt<-mean2
+        survmigtt<-survmig
+        kkselecttt<-kkselect
+           }
+        }
+    }
+survtemp<-survdata0[,kkselect]
+survtemp0<-survtemp-0.05
+survmigtt0<-survmigtt-0.05
+multi0<-survtemp0*survmigtt0
+survmark<-matrix(0,dim(survmigtt)[1],dim(survmigtt)[2])
+rownames(survmark)<-rownames(survmigtt)
+colnames(survmark)<-colnames(survmigtt)
+survmark[which(multi0<0)]<-1
+write.csv(survmigss,"Survival_expr_vague.csv")
+write.csv(survmigtt,"Survival_expr_exact.csv")
+write.csv(survmark,"Survival_expr_mark_1diff.csv")
+result_ss<-matrix(0,8,3)
+colnames(result_ss)<-c("model_factor","number_exact","number_vague")
+kkselect_allss<-kkselectss[1]
+for (i in 2:length(kkselectss)) kkselect_allss<-paste(kkselect_allss,kkselectss[i],sep=",")
+kkselect_alltt<-kkselecttt[1]
+for (i in 2:length(kkselecttt)) kkselect_alltt<-paste(kkselect_alltt,kkselecttt[i],sep=",")
+result_ss[,1]<-c("score","switch","kk","k1","mean1","mean2","kkselect","gene")
+result_ss[,2]<-c(scorett,switchtt,kktt,k1tt,mean1tt,mean2tt,kkselect_alltt,0)
+result_ss[,3]<-c(scoress,switchss,kkss,k1ss,mean1ss,mean2ss,kkselect_allss,0)
+write.csv(result_ss,"Model_expr_survival.csv",row.names=FALSE)
+
+##HR Data Migration -- 2023.11.1
+pro_data<-read.csv("longtail_cor_diseases_check.csv")
+   ##Next taking obesity for example, column 4 for obesity
+sort3<-sort(pro_data[,4],decreasing=TRUE)   ##Change 4 for other target disease
+sort30<-sort3[10]  ##Adjust according to data
+pro_data2<-pro_data[which(pro_data[,4]>=sort30),1]   ##Change 4 for other target disease
+tmdata<-read.csv("TCGA_malignancy_matrix.csv")
+rowt<-tmdata[,1]
+tmdata<-tmdata[,-1]
+tmdata<-apply(tmdata,2,as.numeric)
+rownames(tmdata)<-rowt
+rowt2<-sort(rowt)
+tmdata<-tmdata[rowt2,]
+tmdata<-tmdata[,rowt2]
+numt<-dim(tmdata)[2]
+survdata<-read.csv("HR_matrix.csv")
+rowsurv<-survdata[,1]
+survdata<-survdata[,-1]
+survdata<-apply(survdata,2,as.numeric)
+rownames(survdata)<-rowsurv
+survdata[which(survdata>20)]<-20
+survdata0<-survdata
+   ##mapping tmdata to match HR
+training<-0.3
+matrix5<-tmdata
+rule5<-survdata
+rule50<-rule5[which(rule5!=0)]
+quantr5<-quantile(rule50,probs=seq(0,1,0.01))
+max5<-max(matrix5)
+rul5<-max(rule5)
+sss0<-Inf
+ITER<-2000000
+scoress<-0
+scorett<-0
+ numsurv<-dim(survdata)[2]
+colt<-colnames(tmdata)
+kkselect<-which(colt %in% pro_data2)
+   # kkselect<-sample(1:numsurv,ceiling(numsurv*training))
+    kkleft<-setdiff(1:numsurv,kkselect)   
+ value<-1 
+for (ss in 1:ITER){
+    switch<-sample(0:3,1)
+    if (switch==0) {
+         if (max5==0) next
+         if (rul5>=max5) k1<-runif(1,1,rul5/max5)
+         if (rul5<max5) k1<-runif(1,0,rul5/max5)
+         matrix61<-matrix5*k1
+         }
+    if (switch==1) {
+         kk<-runif(1,1.1,30)
+         matrix6<-log(matrix5)/log(kk)
+         max6<-max(matrix6)
+         if (max6==0) next
+         if (rul5>=max6) k1<-runif(1,1,rul5/max6)
+         if (rul5<max6) k1<-runif(1,0,rul5/max6)
+         matrix61<-matrix6*k1
+         matrix61[which(matrix61==-Inf)]<-0
+         }
+    if (switch==2){
+        kk<-runif(1,0.01,30)
+        matrix6<-matrix5^kk
+        max6<-max(matrix6)
+       if (max6==Inf) next
+       if (max6==0) next
+        if (rul5>=max6) k1<-runif(1,1,rul5/max6)
+        if (rul5<max6) k1<-runif(1,0,rul5/max6)
+        matrix61<-matrix6*k1
+        }
+    if (switch==3){
+       kk<-runif(1,1,10)
+       matrix6<-kk^matrix5
+        max6<-max(matrix6)
+        if (max6==Inf) next
+        if (max6==0) next
+        if (rul5>=max6) k1<-runif(1,1,rul5/max6)
+        if (rul5<max6) k1<-runif(1,0,rul5/max6)
+        matrix61<-matrix6*k1
+        }    
+     mean1<-runif(1,0,0.1*rul5)
+    mean2<-runif(1,0,0.1*max(matrix61))
+    tmdata<-matrix61+mean1
+    survdata<-rule5+mean2  
+    survdata3<-survdata[,kkleft]
+    tmdata3<-tmdata[kkleft,kkselect]
+    tmdata4<-tmdata[kkselect,kkselect]
+    if (class(try(solve(tmdata4),silent=TRUE))[1]=="try-error") next
+    survmig<-(survdata3 %*% tmdata3) %*% solve(tmdata4)
+    survmig[is.na(survmig)]<-1
+    colmaxsurv<-rep(0,dim(survmig)[2])
+    colminsurv<-rep(0,dim(survmig)[2])
+    for (i in 1:dim(survmig)[2]) {colmaxsurv[i]<-max(survmig[,i]);  colminsurv[i]<-min(survmig[,i]) }
+    for (i in 1:dim(survmig)[2]) survmig[,i]<-(survmig[,i]-colminsurv[i])/(colmaxsurv[i]-colminsurv[i]) 
+    survmig[is.na(survmig)]<-1
+    survleft<-survdata0[,kkleft]
+    nsurv<-as.integer(length(which(survleft<value))/(dim(survleft)[1]*dim(survleft)[2])*100)
+    maxsurv<-rep(0,dim(survleft)[2])
+    for (i in 1:dim(survleft)[2]) maxsurv[i]<-max(survleft[,i]) 
+    maxmean<-mean(maxsurv)  
+    for (i in 1:dim(survmig)[2]){
+         standard<-quantile(survmig[,i],probs=seq(0,1,0.01))[nsurv+1]
+         survmig33<-survmig[,i]/standard*value
+         survmig33up<-survmig33[which(survmig33<value)]
+         survmig33down<-survmig33[which(survmig33>value)]
+         survmig33up<-(survmig33up-min(survmig33up))/max(survmig33up-min(survmig33up))*value
+         survmig33down<-value+(survmig33down-min(survmig33down))/max(survmig33down-min(survmig33down))*(maxmean-1)
+         labelup<-names(survmig33up)
+         labeldown<-names(survmig33down)
+         survmig33[labelup]<-survmig33up[labelup]
+         survmig33[labeldown]<-survmig33down[labeldown]
+         survmig[,i]<-survmig33
+          }
+     survmig[is.na(survmig)]<-1
+     markscore<-0
+     for (i in 1:dim(survmig)[2])   
+          if (abs(quantile(survmig[,i],na.rm=TRUE)[2]-quantile(survmig[,i],na.rm=TRUE)[4])<0.001)    {markscore<-1; break}
+    survcom<-survdata0[,kkselect]
+    scss1<-length(intersect(which(survcom<1),which(survmig<1)))
+    scss2<-length(intersect(which(survcom>1),which(survmig>1)))    
+     score00<-scss1+scss2
+     if (score00>scoress){
+      if (markscore==0){
+         scoress<-score00
+         switchss<-switch
+         if (switch==0) kkss<-0
+         if (switch>0)  kkss<-kk
+         k1ss<-k1
+         mean1ss<-mean1
+        mean2ss<-mean2
+        survmigss<-survmig
+        kkselectss<-kkselect
+            }
+        }
+     nportion<-abs(survmig-survcom)/survcom   
+     len00<-length(which(nportion==0))
+     len05<-length(intersect(which(nportion<0.05),which(nportion>0)))     
+     len10<-length(intersect(which(nportion<0.10),which(nportion>=0.05)))
+     len20<-length(intersect(which(nportion<0.20),which(nportion>=0.10)))
+     score11<-len20+2*len10+3*len05+5*len00
+      if (score11>scorett){
+        if (markscore==0){
+         scorett<-score11
+         switchtt<-switch
+         if (switch==0) kktt<-0
+         if (switch>0)  kktt<-kk
+         k1tt<-k1
+         mean1tt<-mean1
+        mean2tt<-mean2
+        survmigtt<-survmig
+        kkselecttt<-kkselect
+           }
+        } 
+    }
+survcom<-survdata0[,kkselect]
+multi0<-(survmigtt-1)*(survcom-1)
+survmark<-matrix(0,dim(survmigtt)[1],dim(survmigtt)[2])
+rownames(survmark)<-rownames(survmigtt)
+colnames(survmark)<-colnames(survmigtt)
+survmark[which(multi0<0)]<-1
+write.csv(survmigss,"HR_expr_vague.csv")
+write.csv(survmigtt,"HR_expr_exact.csv")
+write.csv(survmark,"HR_expr_mark_1diff.csv")
+result_ss<-matrix(0,8,3)
+colnames(result_ss)<-c("model_factor","number_exact","number_vague")
+kkselect_allss<-kkselectss[1]
+for (i in 2:length(kkselectss)) kkselect_allss<-paste(kkselect_allss,kkselectss[i],sep=",")
+kkselect_alltt<-kkselecttt[1]
+for (i in 2:length(kkselecttt)) kkselect_alltt<-paste(kkselect_alltt,kkselecttt[i],sep=",")
+result_ss[,1]<-c("score","switch","kk","k1","mean1","mean2","kkselect","gene")
+result_ss[,2]<-c(scorett,switchtt,kktt,k1tt,mean1tt,mean2tt,kkselect_alltt,0)
+result_ss[,3]<-c(scoress,switchss,kkss,k1ss,mean1ss,mean2ss,kkselect_allss,0)
+write.csv(result_ss,"Model_expr_HR.csv",row.names=FALSE)
+
+
+  ##Data integration
+#For survival p-value
+result_tmss<-read.csv("Survival_vague.csv")
+result_tmtt<-read.csv("Survival_exact.csv")
+result_tmm<-read.csv("Survival_mark_1diff.csv")
+gene_tmss<-result_tmss[,1]
+gene_tmtt<-result_tmtt[,1]
+gene_tmm<-result_tmm[,1]
+result_tmss<-as.matrix(result_tmss[,-1])
+result_tmtt<-as.matrix(result_tmtt[,-1])
+result_tmm<-as.matrix(result_tmm[,-1])
+rownames(result_tmss)<-gene_tmss
+rownames(result_tmtt)<-gene_tmtt
+rownames(result_tmm)<-gene_tmm
+result_tm<-result_tmtt
+result_tm[which(result_tmm==1)]<-result_tmss[which(result_tmm==1)]
+result_exss<-read.csv("Survival_expr_vague.csv")
+result_extt<-read.csv("Survival_expr_exact.csv")
+result_exm<-read.csv("Survival_expr_mark_1diff.csv")
+gene_exss<-result_exss[,1]
+gene_extt<-result_extt[,1]
+gene_exm<-result_exm[,1]
+result_exss<-as.matrix(result_exss[,-1])
+result_extt<-as.matrix(result_extt[,-1])
+result_exm<-as.matrix(result_exm[,-1])
+rownames(result_exss)<-gene_exss
+rownames(result_extt)<-gene_extt
+rownames(result_exm)<-gene_exm
+result_ex<-result_extt
+result_ex[which(result_exm==1)]<-result_exss[which(result_exm==1)]
+survdata<-read.csv("Survival_matrix.csv")
+genesurv<-survdata[,1]
+survdata<-as.matrix(survdata[,-1])
+rownames(survdata)<-genesurv
+geneex<-rownames(result_ex)
+genetm<-rownames(result_tm)
+lens<-length(genesurv)
+cols<-colnames(survdata)
+numcs<-length(cols)
+cols2<-cols
+for (i in 1:numcs) cols2[i]<-strsplit(cols[i],split="_")[[1]][1] 
+if (identical(colnames(result_tmss),colnames(result_exss))) survdata<-survdata[,which(cols2 %in% colnames(result_tmss))]
+survresult<-survdata
+survmark<-survdata
+for (i in 1:lens){
+     if (!(genesurv[i] %in% geneex))
+          if (!(genesurv[i] %in% genetm)) {survresult[i,]<-0; survmark[i,]<-0; next}
+      if (genesurv[i] %in% geneex)
+          if (!(genesurv[i] %in% genetm)) {ii<-which(genesurv[i]==geneex)[1]; survresult[i,]<-result_ex[ii,]; survmark[i,]<-"ex"; next}
+      if (genesurv[i] %in% genetm)
+          if (!(genesurv[i] %in% geneex)) {ii<-which(genesurv[i]==genetm)[1]; survresult[i,]<-result_tm[ii,]; survmark[i,]<-"tm"; next} 
+     iiex<-which(genesurv[i]==geneex)[1]
+     iitm<-which(genesurv[i]==genetm)[1]
+     absex<-abs(result_ex[iiex,]-survdata[i,])
+     abstm<-abs(result_tm[iitm,]-survdata[i,])
+     absdiff<-absex-abstm
+     survresult[i,which(absdiff<0)]<-result_ex[which(absdiff<0)]
+     survresult[i,which(absdiff>=0)]<-result_tm[which(absdiff>=0)]   
+     survmark[i,which(absdiff<0)]<-"ex"
+     survmark[i,which(absdiff>=0)]<-"tm"
+     }
+write.csv(survresult,"Survival_inte_results.csv")
+write.csv(survmark,"Survival_inte_mark.csv")
+     ##Model evaluation
+mark1<-survmark[,1]
+survresult2<-survresult[which(mark1!=0),]
+survdata2<-survdata[which(mark1!=0),]
+nportion<-abs(survresult2-survdata2)/survdata2   
+len00<-length(which(nportion==0))
+len05<-length(intersect(which(nportion<0.05),which(nportion>0)))     
+len10<-length(intersect(which(nportion<0.10),which(nportion>=0.05)))
+len20<-length(intersect(which(nportion<0.20),which(nportion>=0.10)))
+score11<-len20+2*len10+3*len05+5*len00
+scss1<-length(intersect(which(survdata2<0.05),which(survresult2<0.05)))
+scss2<-length(intersect(which(survdata2>0.05),which(survresult2>0.05)))    
+score00<-scss1+scss2
+
+   #For survival HR
+result_tmss<-read.csv("HR_vague.csv")
+result_tmtt<-read.csv("HR_exact.csv")
+result_tmm<-read.csv("HR_mark_1diff.csv")
+gene_tmss<-result_tmss[,1]
+gene_tmtt<-result_tmtt[,1]
+gene_tmm<-result_tmm[,1]
+result_tmss<-as.matrix(result_tmss[,-1])
+result_tmtt<-as.matrix(result_tmtt[,-1])
+result_tmm<-as.matrix(result_tmm[,-1])
+rownames(result_tmss)<-gene_tmss
+rownames(result_tmtt)<-gene_tmtt
+rownames(result_tmm)<-gene_tmm
+result_tm<-result_tmtt
+result_tm[which(result_tmm==1)]<-result_tmss[which(result_tmm==1)]
+result_exss<-read.csv("HR_expr_vague.csv")
+result_extt<-read.csv("HR_expr_exact.csv")
+result_exm<-read.csv("HR_expr_mark_1diff.csv")
+gene_exss<-result_exss[,1]
+gene_extt<-result_extt[,1]
+gene_exm<-result_exm[,1]
+result_exss<-as.matrix(result_exss[,-1])
+result_extt<-as.matrix(result_extt[,-1])
+result_exm<-as.matrix(result_exm[,-1])
+rownames(result_exss)<-gene_exss
+rownames(result_extt)<-gene_extt
+rownames(result_exm)<-gene_exm
+result_ex<-result_extt
+result_ex[which(result_exm==1)]<-result_exss[which(result_exm==1)]
+survdata<-read.csv("HR_matrix.csv")
+genesurv<-survdata[,1]
+survdata<-as.matrix(survdata[,-1])
+rownames(survdata)<-genesurv
+geneex<-rownames(result_ex)
+genetm<-rownames(result_tm)
+lens<-length(genesurv)
+cols<-colnames(survdata)
+numcs<-length(cols)
+cols2<-cols
+for (i in 1:numcs) cols2[i]<-strsplit(cols[i],split="_")[[1]][1] 
+if (identical(colnames(result_tmss),colnames(result_exss))) survdata<-survdata[,which(cols2 %in% colnames(result_tmss))]
+survresult<-survdata
+survmark<-survdata
+for (i in 1:lens){
+     if (!(genesurv[i] %in% geneex))
+          if (!(genesurv[i] %in% genetm)) {survresult[i,]<-0; survmark[i,]<-0; next}
+      if (genesurv[i] %in% geneex)
+          if (!(genesurv[i] %in% genetm)) {ii<-which(genesurv[i]==geneex)[1]; survresult[i,]<-result_ex[ii,]; survmark[i,]<-"ex"; next}
+      if (genesurv[i] %in% genetm)
+          if (!(genesurv[i] %in% geneex)) {ii<-which(genesurv[i]==genetm)[1]; survresult[i,]<-result_tm[ii,]; survmark[i,]<-"tm"; next} 
+     iiex<-which(genesurv[i]==geneex)[1]
+     iitm<-which(genesurv[i]==genetm)[1]
+     absex<-abs(result_ex[iiex,]-survdata[i,])
+     abstm<-abs(result_tm[iitm,]-survdata[i,])
+     absdiff<-absex-abstm
+     survresult[i,which(absdiff<0)]<-result_ex[which(absdiff<0)]
+     survresult[i,which(absdiff>=0)]<-result_tm[which(absdiff>=0)]   
+     survmark[i,which(absdiff<0)]<-"ex"
+     survmark[i,which(absdiff>=0)]<-"tm"
+     }
+write.csv(survresult,"HR_inte_results.csv")
+write.csv(survmark,"HR_inte_mark.csv")
+     ##Model evaluation
+mark1<-survmark[,1]
+survresult2<-survresult[which(mark1!=0),]
+survdata2<-survdata[which(mark1!=0),]
+nportion<-abs(survresult2-survdata2)/survdata2   
+len00<-length(which(nportion==0))
+len05<-length(intersect(which(nportion<0.05),which(nportion>0)))     
+len10<-length(intersect(which(nportion<0.10),which(nportion>=0.05)))
+len20<-length(intersect(which(nportion<0.20),which(nportion>=0.10)))
+score11<-len20+2*len10+3*len05+5*len00
+scss1<-length(intersect(which(survdata2<1),which(survresult2<1)))
+scss2<-length(intersect(which(survdata2>1),which(survresult2>1)))    
+score00<-scss1+scss2
+
+
+    ##Using the models
+ #Survival -- expr results
+survdata<-read.csv("Survival_matrix.csv")
+rowsurv<-survdata[,1]
+survdata<-as.matrix(survdata[,-1])
+survdata<-apply(survdata,2,as.numeric)
+rownames(survdata)<-rowsurv
+checkdata<-read.csv("Obesity_malignancy_matrix.csv")
+rowt<-checkdata[,1]
+checkdata<-as.matrix(checkdata[,-1])
+checkdata<-apply(checkdata,2,as.numeric)
+rownames(checkdata)<-rowt
+rowt2<-sort(rowt)
+checkdata<-checkdata[rowt2,]
+checkdata<-as.matrix(checkdata)
+colnames(checkdata)<-"Obesity"
+tmdata_inte<-checkdata
+result_ss<-read.csv("Model_expr_survival.csv")
+switchtt<-as.integer(result_ss[2,2])
+kktt<-as.numeric(result_ss[3,2])
+k1tt<-as.numeric(result_ss[4,2])
+mean1tt<-as.numeric(result_ss[5,2])
+mean2tt<-as.numeric(result_ss[6,2])
+switchss<-as.integer(result_ss[2,3])
+kkss<-as.numeric(result_ss[3,3])
+k1ss<-as.numeric(result_ss[4,3])
+mean1ss<-as.numeric(result_ss[5,3])
+mean2ss<-as.numeric(result_ss[6,3])
+kkselect_all<-result_ss[7,2]
+kkselecttt<-strsplit(kkselect_all,split=",")[[1]]
+numsurv<-dim(survdata)[2]
+kklefttt<-setdiff(1:numsurv,kkselecttt)
+kkselect_all<-result_ss[7,3]
+kkselectss<-strsplit(kkselect_all,split=",")[[1]]
+kkleftss<-setdiff(1:numsurv,kkselectss)
+matrix5<-tmdata_inte
+rule5<-survdata
+max5<-max(matrix5)
+rul5<-max(rule5)
+if (switchss==0) {
+      if (max5==0) next
+      matrix61<-matrix5*k1ss
+      }
+ if (switchss==1) {
+      matrix6<-log(matrix5)/log(kkss)
+      matrix61<-matrix6*k1ss
+      matrix61[which(matrix61==-Inf)]<-0
+      }
+ if (switchss==2){
+     matrix6<-matrix5^kkss
+     matrix61<-matrix6*k1ss
+     }
+ if (switchss==3){
+     matrix6<-kkss^matrix5
+     matrix61<-matrix6*k1ss
+     }    
+ tmdata<-matrix61+mean1ss
+ survdata<-rule5+mean2ss
+    survdata3<-survdata[,kkleftss]
+    tmdata31<-tmdata[kkleftss,]
+    survmigss<-survdata3 %*% tmdata31
+    colmaxsurv<-rep(0,dim(survmigss)[2])
+    colminsurv<-rep(0,dim(survmigss)[2])
+    for (i in 1:dim(survmigss)[2]) {colmaxsurv[i]<-max(survmigss[,i]);  colminsurv[i]<-min(survmigss[,i]) }
+    for (i in 1:dim(survmigss)[2]) survmigss[,i]<-(survmigss[,i]-colminsurv[i])/(colmaxsurv[i]-colminsurv[i])   ##for p value only 
+ matrix5<-tmdata_inte
+rule5<-survdata
+max5<-max(matrix5)
+rul5<-max(rule5)
+if (switchtt==0) {
+      if (max5==0) next
+      matrix61<-matrix5*k1tt
+      }
+ if (switchtt==1) {
+      matrix6<-log(matrix5)/log(kktt)
+      matrix61<-matrix6*k1tt
+      matrix61[which(matrix61==-Inf)]<-0
+      }
+ if (switchtt==2){
+     matrix6<-matrix5^kktt
+     matrix61<-matrix6*k1tt
+     }
+ if (switchtt==3){
+     matrix6<-kktt^matrix5
+     matrix61<-matrix6*k1tt
+     }    
+ tmdata<-matrix61+mean1tt
+ survdata<-rule5+mean2tt
+survdata3<-survdata[,kklefttt]
+    tmdata31<-tmdata[kklefttt,]
+    survmigtt<-survdata3 %*% tmdata31
+    colmaxsurv<-rep(0,dim(survmigtt)[2])
+    colminsurv<-rep(0,dim(survmigtt)[2])
+    for (i in 1:dim(survmigtt)[2]) {colmaxsurv[i]<-max(survmigtt[,i]);  colminsurv[i]<-min(survmigtt[,i]) }
+    for (i in 1:dim(survmigtt)[2]) survmigtt[,i]<-(survmigtt[,i]-colminsurv[i])/(colmaxsurv[i]-colminsurv[i])   ##for p value only 
+result_exm<-read.csv("Survival_mark_1diff.csv")
+gene_exm<-result_exm[,1]
+result_exm<-as.matrix(result_exm[,-1])
+rownames(result_exm)<-gene_exm
+row_exm<-rowSums(result_exm)
+num_exm<-dim(result_exm)[2]
+row_exmn<-row_exm/num_exm
+result_ex<-survmigss*row_exmn+survmigtt*(1-row_exmn)
+write.csv(result_ex,"Survival_expr_Obesity.csv")
+
+
+#Survival -- tm results
+survdata<-read.csv("Survival_matrix.csv")
+rowsurv<-survdata[,1]
+survdata<-as.matrix(survdata[,-1])
+survdata<-apply(survdata,2,as.numeric)
+rownames(survdata)<-rowsurv
+checkdata<-read.csv("longtail_cor_diseases_check.csv")
+rowt<-checkdata[,1]
+checkdata<-checkdata[,-1]
+checkdata<-apply(checkdata,2,as.numeric)
+rownames(checkdata)<-rowt
+rowt2<-sort(rowt)
+checkdata<-checkdata[rowt2,]
+checkdata<-as.matrix(checkdata[,4])
+colnames(checkdata)<-"Obesity"
+tmdata_inte<-checkdata
+result_ss<-read.csv("Model_tm_survival.csv")
+switchtt<-as.integer(result_ss[2,2])
+kktt<-as.numeric(result_ss[3,2])
+k1tt<-as.numeric(result_ss[4,2])
+mean1tt<-as.numeric(result_ss[5,2])
+mean2tt<-as.numeric(result_ss[6,2])
+switchss<-as.integer(result_ss[2,3])
+kkss<-as.numeric(result_ss[3,3])
+k1ss<-as.numeric(result_ss[4,3])
+mean1ss<-as.numeric(result_ss[5,3])
+mean2ss<-as.numeric(result_ss[6,3])
+kkselect_all<-result_ss[7,2]
+kkselecttt<-strsplit(kkselect_all,split=",")[[1]]
+numsurv<-dim(survdata)[2]
+kklefttt<-setdiff(1:numsurv,kkselecttt)
+kkselect_all<-result_ss[7,3]
+kkselectss<-strsplit(kkselect_all,split=",")[[1]]
+kkleftss<-setdiff(1:numsurv,kkselectss)
+matrix5<-tmdata_inte
+rule5<-survdata
+max5<-max(matrix5)
+rul5<-max(rule5)
+if (switchss==0) {
+      if (max5==0) next
+      matrix61<-matrix5*k1ss
+      }
+ if (switchss==1) {
+      matrix6<-log(matrix5)/log(kkss)
+      matrix61<-matrix6*k1ss
+      matrix61[which(matrix61==-Inf)]<-0
+      }
+ if (switchss==2){
+     matrix6<-matrix5^kkss
+     matrix61<-matrix6*k1ss
+     }
+ if (switchss==3){
+     matrix6<-kkss^matrix5
+     matrix61<-matrix6*k1ss
+     }    
+ tmdata<-matrix61+mean1ss
+ survdata<-rule5+mean2ss
+    survdata3<-survdata[,kkleftss]
+    tmdata31<-tmdata[kkleftss,]
+    survmigss<-survdata3 %*% tmdata31
+    colmaxsurv<-rep(0,dim(survmigss)[2])
+    colminsurv<-rep(0,dim(survmigss)[2])
+    for (i in 1:dim(survmigss)[2]) {colmaxsurv[i]<-max(survmigss[,i]);  colminsurv[i]<-min(survmigss[,i]) }
+    for (i in 1:dim(survmigss)[2]) survmigss[,i]<-(survmigss[,i]-colminsurv[i])/(colmaxsurv[i]-colminsurv[i])   ##for p value only 
+ matrix5<-tmdata_inte
+ rule5<-survdata
+ max5<-max(matrix5)
+ rul5<-max(rule5)
+ if (switchtt==0) {
+      if (max5==0) next
+      matrix61<-matrix5*k1tt
+      }
+ if (switchtt==1) {
+      matrix6<-log(matrix5)/log(kktt)
+      matrix61<-matrix6*k1tt
+      matrix61[which(matrix61==-Inf)]<-0
+      }
+ if (switchtt==2){
+     matrix6<-matrix5^kktt
+     matrix61<-matrix6*k1tt
+     }
+ if (switchtt==3){
+     matrix6<-kktt^matrix5
+     matrix61<-matrix6*k1tt
+     }    
+ tmdata<-matrix61+mean1tt
+ survdata<-rule5+mean2tt
+ survdata3<-survdata[,kklefttt]
+    tmdata31<-tmdata[kklefttt,]
+    survmigtt<-survdata3 %*% tmdata31
+    colmaxsurv<-rep(0,dim(survmigtt)[2])
+    colminsurv<-rep(0,dim(survmigtt)[2])
+    for (i in 1:dim(survmigtt)[2]) {colmaxsurv[i]<-max(survmigtt[,i]);  colminsurv[i]<-min(survmigtt[,i]) }
+    for (i in 1:dim(survmigtt)[2]) survmigtt[,i]<-(survmigtt[,i]-colminsurv[i])/(colmaxsurv[i]-colminsurv[i])   ##for p value only 
+result_exm<-read.csv("Survival_mark_1diff.csv")
+gene_exm<-result_exm[,1]
+result_exm<-as.matrix(result_exm[,-1])
+rownames(result_exm)<-gene_exm
+row_exm<-rowSums(result_exm)
+num_exm<-dim(result_exm)[2]
+row_exmn<-row_exm/num_exm
+result_ex<-survmigss*row_exmn+survmigtt*(1-row_exmn)
+write.csv(result_ex,"Survival_tm_Obesity.csv")
+
+#HR -- tm results
+survdata<-read.csv("HR_matrix.csv")
+rowsurv<-survdata[,1]
+survdata<-as.matrix(survdata[,-1])
+survdata<-apply(survdata,2,as.numeric)
+rownames(survdata)<-rowsurv
+checkdata<-read.csv("Obesity_malignancy_matrix.csv")
+rowt<-checkdata[,1]
+checkdata<-as.matrix(checkdata[,-1])
+checkdata<-apply(checkdata,2,as.numeric)
+rownames(checkdata)<-rowt
+rowt2<-sort(rowt)
+checkdata<-checkdata[rowt2,]
+checkdata<-as.matrix(checkdata)
+colnames(checkdata)<-"Obesity"
+tmdata_inte<-checkdata
+result_ss<-read.csv("Model_tm_HR.csv")
+switchtt<-as.integer(result_ss[2,2])
+kktt<-as.numeric(result_ss[3,2])
+k1tt<-as.numeric(result_ss[4,2])
+mean1tt<-as.numeric(result_ss[5,2])
+mean2tt<-as.numeric(result_ss[6,2])
+switchss<-as.integer(result_ss[2,3])
+kkss<-as.numeric(result_ss[3,3])
+k1ss<-as.numeric(result_ss[4,3])
+mean1ss<-as.numeric(result_ss[5,3])
+mean2ss<-as.numeric(result_ss[6,3])
+kkselect_all<-result_ss[7,2]
+kkselecttt<-strsplit(kkselect_all,split=",")[[1]]
+numsurv<-dim(survdata)[2]
+kklefttt<-setdiff(1:numsurv,kkselecttt)
+kkselect_all<-result_ss[7,3]
+kkselectss<-strsplit(kkselect_all,split=",")[[1]]
+kkleftss<-setdiff(1:numsurv,kkselectss)
+matrix5<-tmdata_inte
+rule5<-survdata
+max5<-max(matrix5)
+rul5<-max(rule5)
+if (switchss==0) {
+      if (max5==0) next
+      matrix61<-matrix5*k1ss
+      }
+ if (switchss==1) {
+      matrix6<-log(matrix5)/log(kkss)
+      matrix61<-matrix6*k1ss
+      matrix61[which(matrix61==-Inf)]<-0
+      }
+ if (switchss==2){
+     matrix6<-matrix5^kkss
+     matrix61<-matrix6*k1ss
+     }
+ if (switchss==3){
+     matrix6<-kkss^matrix5
+     matrix61<-matrix6*k1ss
+     }    
+ tmdata<-matrix61+mean1ss
+ survdata<-rule5+mean2ss
+    survdata3<-survdata[,kkleftss]
+    tmdata31<-tmdata[kkleftss,]
+    survmigss<-survdata3 %*% tmdata31
+   colminsurv<-rep(0,dim(survmigss)[2])
+   for (i in 1:dim(survmigss)[2]) colminsurv[i]<-min(survmigss[,i]) 
+   for (i in 1:dim(survmigss)[2]) survmigss[,i]<-log(survmigss[,i]-colminsurv[i])
+    survmigss[which(survmigss==-Inf)]<-0
+    colmaxsurv<-rep(0,dim(survmigss)[2])
+    colminsurv<-rep(0,dim(survmigss)[2])
+     for (i in 1:dim(survmigss)[2]) {colmaxsurv[i]<-max(survmigss[,i]);  colminsurv[i]<-min(survmigss[,i]) }
+     for (i in 1:dim(survmigss)[2]) survmigss[,i]<-2.713^(((survmigss[,i]-colminsurv[i])/(colmaxsurv[i]-colminsurv[i])+0.5)/1.8) 
+   matrix5<-tmdata_inte
+  rule5<-survdata
+  max5<-max(matrix5)
+  rul5<-max(rule5)
+  if (switchtt==0) {
+      if (max5==0) next
+      matrix61<-matrix5*k1tt
+      }
+ if (switchtt==1) {
+      matrix6<-log(matrix5)/log(kktt)
+      matrix61<-matrix6*k1tt
+      matrix61[which(matrix61==-Inf)]<-0
+      }
+ if (switchtt==2){
+     matrix6<-matrix5^kktt
+     matrix61<-matrix6*k1tt
+     }
+ if (switchtt==3){
+     matrix6<-kktt^matrix5
+     matrix61<-matrix6*k1tt
+     }    
+ tmdata<-matrix61+mean1tt
+ survdata<-rule5+mean2tt
+survdata3<-survdata[,kklefttt]
+    tmdata31<-tmdata[kklefttt,]
+    survmigtt<-survdata3 %*% tmdata31
+  colminsurv<-rep(0,dim(survmigtt)[2])
+   for (i in 1:dim(survmigtt)[2]) colminsurv[i]<-min(survmigtt[,i]) 
+   for (i in 1:dim(survmigtt)[2]) survmigtt[,i]<-log(survmigtt[,i]-colminsurv[i])
+    survmigtt[which(survmigtt==-Inf)]<-0
+    colmaxsurv<-rep(0,dim(survmigtt)[2])
+    colminsurv<-rep(0,dim(survmigtt)[2])
+     for (i in 1:dim(survmigtt)[2]) {colmaxsurv[i]<-max(survmigtt[,i]);  colminsurv[i]<-min(survmigtt[,i]) }
+     for (i in 1:dim(survmigtt)[2]) survmigtt[,i]<-2.713^(((survmigtt[,i]-colminsurv[i])/(colmaxsurv[i]-colminsurv[i])+0.5)/1.8)
+result_exm<-read.csv("HR_mark_1diff.csv")
+gene_exm<-result_exm[,1]
+result_exm<-as.matrix(result_exm[,-1])
+rownames(result_exm)<-gene_exm
+row_exm<-rowSums(result_exm)
+num_exm<-dim(result_exm)[2]
+row_exmn<-row_exm/num_exm
+result_ex<-survmigss*row_exmn+survmigtt*(1-row_exmn)
+write.csv(result_ex,"HR_expr_Obesity.csv")
+
+#HR -- tm results
+survdata<-read.csv("HR_matrix.csv")
+rowsurv<-survdata[,1]
+survdata<-as.matrix(survdata[,-1])
+survdata<-apply(survdata,2,as.numeric)
+rownames(survdata)<-rowsurv
+checkdata<-read.csv("longtail_cor_diseases_check.csv")
+rowt<-checkdata[,1]
+checkdata<-checkdata[,-1]
+checkdata<-apply(checkdata,2,as.numeric)
+rownames(checkdata)<-rowt
+rowt2<-sort(rowt)
+checkdata<-checkdata[rowt2,]
+checkdata<-as.matrix(checkdata[,4])
+colnames(checkdata)<-"Obesity"
+tmdata_inte<-checkdata
+result_ss<-read.csv("Model_tm_HR.csv")
+switchtt<-as.integer(result_ss[2,2])
+kktt<-as.numeric(result_ss[3,2])
+k1tt<-as.numeric(result_ss[4,2])
+mean1tt<-as.numeric(result_ss[5,2])
+mean2tt<-as.numeric(result_ss[6,2])
+switchss<-as.integer(result_ss[2,3])
+kkss<-as.numeric(result_ss[3,3])
+k1ss<-as.numeric(result_ss[4,3])
+mean1ss<-as.numeric(result_ss[5,3])
+mean2ss<-as.numeric(result_ss[6,3])
+kkselect_all<-result_ss[7,2]
+kkselecttt<-strsplit(kkselect_all,split=",")[[1]]
+numsurv<-dim(survdata)[2]
+kklefttt<-setdiff(1:numsurv,kkselecttt)
+kkselect_all<-result_ss[7,3]
+kkselectss<-strsplit(kkselect_all,split=",")[[1]]
+kkleftss<-setdiff(1:numsurv,kkselectss)
+matrix5<-tmdata_inte
+rule5<-survdata
+max5<-max(matrix5)
+rul5<-max(rule5)
+if (switchss==0) {
+      if (max5==0) next
+      matrix61<-matrix5*k1ss
+      }
+ if (switchss==1) {
+      matrix6<-log(matrix5)/log(kkss)
+      matrix61<-matrix6*k1ss
+      matrix61[which(matrix61==-Inf)]<-0
+      }
+ if (switchss==2){
+     matrix6<-matrix5^kkss
+     matrix61<-matrix6*k1ss
+     }
+ if (switchss==3){
+     matrix6<-kkss^matrix5
+     matrix61<-matrix6*k1ss
+     }    
+ tmdata<-matrix61+mean1ss
+ survdata<-rule5+mean2ss
+    survdata3<-survdata[,kkleftss]
+    tmdata31<-tmdata[kkleftss,]
+    survmigss<-survdata3 %*% tmdata31
+   colminsurv<-rep(0,dim(survmigss)[2])
+   for (i in 1:dim(survmigss)[2]) colminsurv[i]<-min(survmigss[,i]) 
+   for (i in 1:dim(survmigss)[2]) survmigss[,i]<-log(survmigss[,i]-colminsurv[i])
+    survmigss[which(survmigss==-Inf)]<-0
+    colmaxsurv<-rep(0,dim(survmigss)[2])
+    colminsurv<-rep(0,dim(survmigss)[2])
+     for (i in 1:dim(survmigss)[2]) {colmaxsurv[i]<-max(survmigss[,i]);  colminsurv[i]<-min(survmigss[,i]) }
+     for (i in 1:dim(survmigss)[2]) survmigss[,i]<-2.713^(((survmigss[,i]-colminsurv[i])/(colmaxsurv[i]-colminsurv[i])+0.5)/1.8) 
+  matrix5<-tmdata_inte
+  rule5<-survdata
+  max5<-max(matrix5)
+  rul5<-max(rule5)
+  if (switchtt==0) {
+      if (max5==0) next
+      matrix61<-matrix5*k1tt
+      }
+ if (switchtt==1) {
+      matrix6<-log(matrix5)/log(kktt)
+      matrix61<-matrix6*k1tt
+      matrix61[which(matrix61==-Inf)]<-0
+      }
+ if (switchtt==2){
+     matrix6<-matrix5^kktt
+     matrix61<-matrix6*k1tt
+     }
+ if (switchtt==3){
+     matrix6<-kktt^matrix5
+     matrix61<-matrix6*k1tt
+     }    
+ tmdata<-matrix61+mean1tt
+ survdata<-rule5+mean2tt
+ survdata3<-survdata[,kklefttt]
+    tmdata31<-tmdata[kklefttt,]
+    survmigtt<-survdata3 %*% tmdata31
+  colminsurv<-rep(0,dim(survmigtt)[2])
+   for (i in 1:dim(survmigtt)[2]) colminsurv[i]<-min(survmigtt[,i]) 
+   for (i in 1:dim(survmigtt)[2]) survmigtt[,i]<-log(survmigtt[,i]-colminsurv[i])
+    survmigtt[which(survmigtt==-Inf)]<-0
+    colmaxsurv<-rep(0,dim(survmigtt)[2])
+    colminsurv<-rep(0,dim(survmigtt)[2])
+     for (i in 1:dim(survmigtt)[2]) {colmaxsurv[i]<-max(survmigtt[,i]);  colminsurv[i]<-min(survmigtt[,i]) }
+     for (i in 1:dim(survmigtt)[2]) survmigtt[,i]<-2.713^(((survmigtt[,i]-colminsurv[i])/(colmaxsurv[i]-colminsurv[i])+0.5)/1.8)
+  result_exm<-read.csv("HR_mark_1diff.csv")
+  gene_exm<-result_exm[,1]
+  result_exm<-as.matrix(result_exm[,-1])
+  rownames(result_exm)<-gene_exm
+  row_exm<-rowSums(result_exm)
+  num_exm<-dim(result_exm)[2]
+  row_exmn<-row_exm/num_exm
+  result_ex<-survmigss*row_exmn+survmigtt*(1-row_exmn)
+  write.csv(result_ex,"HR_tm_Obesity.csv")
+
+##Merging
+#For survival
+marks<-read.csv("Survival_inte_mark.csv")
+genes<-as.character(marks[,1])
+nmarks<-dim(marks)[2]-1
+result_tm<-read.csv("Survival_tm_Obesity.csv")
+gene_tm<-as.character(result_tm[,1])
+result_expr<-read.csv("Survival_expr_Obesity.csv")
+gene_expr<-as.character(result_expr[,1])
+gene2<-union(gene_tm,gene_expr)
+len2<-length(gene2)
+result2<-matrix(0,len2,2)
+colnames(result2)<-c("Gene","Obesity")
+result2[,1]<-gene2
+for (i in 1:len2){
+    ktm<-which(gene2[i] %in% gene_tm)
+    kexpr<-which(gene2[i] %in% gene_expr)
+    if (gene2[i] %in% gene_tm)
+       if (!(gene2[i] %in% gene_expr))
+           result2[i,2]<-result_tm[ktm,2]
+    if (!(gene2[i] %in% gene_tm))
+        if (gene2[i] %in% gene_expr)
+            result2[i,2]<-result_expr[kexpr,2]
+     if (gene2[i] %in% gene_tm)
+       if (gene2[i] %in% gene_expr){
+           ii<-which(gene2[i]==genes)
+           nnex<-length(which(marks[ii,]=="ex"))/nmarks
+           nntm<-length(which(marks[ii,]=="tm"))/nmarks
+           result2[i,2]<-result_tm[ktm,2]*nntm+result_expr[kexpr,2]*nnex
+          }           
+    }
+   
+    ##Parsing
+survdata<-read.csv("Survival_matrix.csv")
+nums<-dim(survdata)[2]
+p<-100    ##执行百分化的数量
+surv2<-rep(0,p)
+surv2<-quantile(as.matrix(survdata[,2:nums]),probs= seq(0,1,by=1/p))
+c<-surv2
+b<-quantile(as.numeric(result2[,2]),probs=seq(0,1,by=1/p))
+data<-result2
+data3<-result2
+data4<-result2
+ub<-unique(b)
+lenub<-length(ub)
+mb<-rep(0,lenub)
+ for (j in 1:lenub) {
+        temp<-which(ub[j]==b)
+        mb[temp]<-j
+         }
+bstart<-b
+ bend<-b
+ for (j in 1:(p+1)){
+       temp<-which(mb==mb[j])
+       bstart[j]<-min(temp)
+       bend[j]<-max(temp)
+        }
+a<-as.numeric(result2[,2])
+a2<-rank(a)
+maxa2<-which(a2==max(a2))
+mina2<-which(a2==min(a2))
+lens<-dim(result2)[1]
+brank<-lens/p
+arank<-a2/brank
+k1<-as.integer(floor(arank))
+k2<-as.integer(ceiling(arank))
+k3<-as.integer(round(arank))
+kk1<-paste(k1,"%",sep="")
+kk2<-paste(k2,"%",sep="")
+kk3<-paste(k3,"%",sep="")
+b1<-b[kk1]
+b2<-b[kk2]
+c1<-c[kk1]
+c2<-c[kk2]     
+data3[,2]<-c1+(a-b1)*(c2-c1)/(b2-b1)
+data3[maxa2,2]<-c[p+1] 
+data3[mina2,2]<-c[1]
+ minb<-as.integer(bstart[kk3])
+ maxb<-as.integer(bend[kk3])
+ minc<-c[minb]
+ maxc<-c[maxb]
+data4[,2]<-minc+(k3-minb)*(maxc-minc)/(maxb-minb)
+data5<-data4
+data5[which(data4=="NaN")]<-data3[which(data4=="NaN")]
+write.csv(data5,"Survival_Calculated_Obesity.csv",row.names=FALSE)
+
+    ##Notice if too many NAs were in data5, use the following code
+    #write.csv(data3,"Survival_Calculated_Obesity.csv",row.names=FALSE)    
+    ##If still too many NAs were in data3, use the following code
+    #write.csv(data4,"Survival_Calculated_Obesity.csv",row.names=FALSE)    
+    ############
+
+
+#For HR
+marks<-read.csv("HR_inte_mark.csv")
+genes<-as.character(marks[,1])
+nmarks<-dim(marks)[2]-1
+result_tm<-read.csv("HR_tm_Obesity.csv")
+gene_tm<-as.character(result_tm[,1])
+result_expr<-read.csv("HR_expr_Obesity.csv")
+gene_expr<-as.character(result_expr[,1])
+gene2<-union(gene_tm,gene_expr)
+len2<-length(gene2)
+result2<-matrix(0,len2,2)
+colnames(result2)<-c("Gene","Obesity")
+result2[,1]<-gene2
+for (i in 1:len2){
+    ktm<-which(gene2[i] %in% gene_tm)
+    kexpr<-which(gene2[i] %in% gene_expr)
+    if (gene2[i] %in% gene_tm)
+       if (!(gene2[i] %in% gene_expr))
+           result2[i,2]<-result_tm[ktm,2]
+    if (!(gene2[i] %in% gene_tm))
+        if (gene2[i] %in% gene_expr)
+            result2[i,2]<-result_expr[kexpr,2]
+     if (gene2[i] %in% gene_tm)
+       if (gene2[i] %in% gene_expr){
+           ii<-which(gene2[i]==genes)
+           nnex<-length(which(marks[ii,]=="ex"))/nmarks
+           nntm<-length(which(marks[ii,]=="tm"))/nmarks
+           result2[i,2]<-result_tm[ktm,2]*nntm+result_expr[kexpr,2]*nnex
+          }           
+    }
+
+   ##Parsing
+survdata<-read.csv("HR_matrix.csv")
+nums<-dim(survdata)[2]
+p<-100    ##执行百分化的数量
+surv2<-rep(0,p)
+surv2<-quantile(as.matrix(survdata[,2:nums]),probs= seq(0,1,by=1/p))
+c<-surv2
+b<-quantile(as.numeric(result2[,2]),probs=seq(0,1,by=1/p))
+data<-result2
+data3<-result2
+data4<-result2
+ub<-unique(b)
+lenub<-length(ub)
+mb<-rep(0,lenub)
+ for (j in 1:lenub) {
+        temp<-which(ub[j]==b)
+        mb[temp]<-j
+         }
+bstart<-b
+ bend<-b
+ for (j in 1:(p+1)){
+       temp<-which(mb==mb[j])
+       bstart[j]<-min(temp)
+       bend[j]<-max(temp)
+        }
+a<-as.numeric(result2[,2])
+a2<-rank(a)
+maxa2<-which(a2==max(a2))
+mina2<-which(a2==min(a2))
+lens<-dim(result2)[1]
+brank<-lens/p
+arank<-a2/brank
+k1<-as.integer(floor(arank))
+k2<-as.integer(ceiling(arank))
+k3<-as.integer(round(arank))
+kk1<-paste(k1,"%",sep="")
+kk2<-paste(k2,"%",sep="")
+kk3<-paste(k3,"%",sep="")
+b1<-b[kk1]
+b2<-b[kk2]
+c1<-c[kk1]
+c2<-c[kk2]     
+data3[,2]<-c1+(a-b1)*(c2-c1)/(b2-b1)
+data3[maxa2,2]<-c[p+1] 
+data3[mina2,2]<-c[1]
+ minb<-as.integer(bstart[kk3])
+ maxb<-as.integer(bend[kk3])
+ minc<-c[minb]
+ maxc<-c[maxb]
+data4[,2]<-minc+(k3-minb)*(maxc-minc)/(maxb-minb)
+data5<-data4
+data5[which(data4=="NaN")]<-data3[which(data4=="NaN")]
+write.csv(data5,"HR_Calculated_Obesity.csv",row.names=FALSE)
+
+    ##Notice if too many NAs were in data5, use the following code
+    #write.csv(data3,"HR_Calculated_Obesity.csv",row.names=FALSE)    
+    ##If still too many NAs were in data3, use the following code
+    #write.csv(data4,"HR_Calculated_Obesity.csv",row.names=FALSE)    
+    ############
+
+
+
+##Validation of calculated results-- Survival differential genes checking
+survdata<-read.csv("Survival_Calculated_Obesity.csv")
+hrdata<-read.csv("HR_Calculated_Obesity.csv")
+colnames(survdata)[1]<-"Gene"
+colnames(hrdata)[1]<-"Gene"
+data0<-merge(survdata,hrdata,by="Gene",all=TRUE)
+data0[is.na(data0)]<-0
+colnames(data0)<-c("Gene","Survival","HR")
+data1<-data0[which(data0[,2]<0.05 & data0[,3]>1),]
+write.csv(data1,"Obesity_validating_genes.csv", row.names=FALSE)
+
+
+
+
+

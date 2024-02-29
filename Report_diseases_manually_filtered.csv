@@ -1,0 +1,4003 @@
+Diseases,Counts
+Necrosis,676380
+Diabetes Mellitus,591130
+Hypertension,590670
+Recurrence,572381
+Myocardial Ischemia,538797
+Hemorrhage,460969
+Hypersensitivity,426030
+Stroke,419581
+Obesity,413187
+Pneumonia,396182
+Arthritis,386094
+Fibrosis,374932
+Coronary Disease,363050
+Infarction,360639
+COVID-19,347576
+Heart Failure,307672
+Lymphoma,300154
+Overweight,299963
+Tuberculosis,286205
+Hepatitis,285691
+Shock,283276
+Myocardial Infarction,281782
+Neoplasm Metastasis,272615
+Overnutrition,268860
+Dementia,261627
+"Hypersensitivity, Immediate",260158
+Thrombosis,260062
+Gastroenteritis,257173
+Embolism and Thrombosis,254345
+"Arrhythmias, Cardiac",252533
+Fever,252477
+Anemia,251051
+Poisoning,242511
+"Trauma, Nervous System",239960
+"Pneumonia, Viral",229535
+Laboratory Infection,217680
+Renal Insufficiency,216909
+Asthma,214063
+Sepsis,209911
+Arteriosclerosis,201591
+Carcinogenesis,199183
+Sarcoma,194102
+Edema,193421
+"Diabetes Mellitus, type 2",188324
+Sclerosis,187911
+Hypoxia,184212
+Respiratory Hypersensitivity,177388
+Craniocerebral Trauma,177305
+Protein Deficiency,176142
+Ulcer,175083
+Epilepsy,174999
+"Heart Defects, Congenital",174678
+Atherosclerosis,170360
+Weight Loss,170067
+Aneurysm,167669
+"Arthritis, Rheumatoid",166626
+"Hepatitis, Viral, Human",165940
+Malnutrition,165037
+Genetic Predisposition to Disease,164025
+Cysts,158292
+Melanoma,155670
+Rupture,152944
+Systemic Inflammatory Response Syndrome,152799
+Insulin Resistance,150316
+"Neoplasm Recurrence, Local",149441
+Chronic Pain,149005
+"Carcinoma, Hepatocellular",144347
+Atrophy,143038
+Brain Ischemia,142843
+Cross Infection,142104
+Liver Cirrhosis,140998
+Seizures,140966
+"Renal Insufficiency, Chronic",140264
+Mycoses,139284
+Dermatitis,138346
+Hypertrophy,138327
+Alzheimer Disease,135846
+Fatigue,135485
+Helminthiasis,134697
+Diarrhea,134031
+"Leukemia, Myeloid",133168
+"Carcinoma, Small Cell",133160
+Adenoma,132672
+"Pain, Postoperative",131287
+Hyperplasia,130486
+Birth Weight,124496
+"Lymphoma, Non-Hodgkin",123028
+"Kidney Failure, Chronic",122253
+Tauopathies,121523
+Vasculitis,120052
+Paralysis,119804
+Nevi and Melanomas,118577
+Fistula,117842
+Intellectual Disability,115593
+Glioma,115157
+Cardiomyopathies,114425
+Burns,113309
+Infertility,113023
+Osteoarthritis,110897
+Surgical Wound,110555
+Hepatitis B,110501
+Embolism,109416
+Abdominal Pain,109160
+Malaria,109117
+Multiple Sclerosis,106331
+Hyperinsulinism,105930
+Acute Pain,105409
+Headache,104933
+Atrial Fibrillation,104502
+Lymphatic Metastasis,103425
+"Hepatitis, Chronic",103214
+Cardiac Conduction System Disease,103148
+Osteoporosis,102926
+Metabolic Syndrome,102830
+Hernia,102306
+Hearing Loss,102274
+Weight Gain,102103
+Hepatitis C,101979
+Fatty Liver,101345
+"Hypertension, Renal",99929
+"Tuberculosis, Pulmonary",99374
+Parkinson Disease,99194
+Ischemic Stroke,98079
+Small Cell Lung Carcinoma,98047
+"Pulmonary Disease, Chronic Obstructive",96048
+Venous Thrombosis,95701
+Neoplasm Invasiveness,94980
+Acquired Immunodeficiency Syndrome,94871
+Chest Pain,94636
+Colitis,94229
+Alcoholism,93850
+Vomiting,93721
+"Lymphoma, B-Cell",93306
+Lung Injury,91899
+"Leukemia, Lymphoid",91573
+Abscess,91178
+Brain Death,90798
+Dyskinesias,89836
+"Leukemia, Myeloid, Acute",89598
+Peptic Ulcer,89539
+"Diabetes Mellitus, Type 1",89372
+Thromboembolism,89268
+Nephritis,88986
+Iatrogenic Disease,88350
+Suppuration,88157
+Wound Infection,87782
+Dyslipidemias,87335
+Back Pain,86689
+Synucleinopathies,86524
+"Anemia, Hemolytic",86479
+"Cell Transformation, Neoplastic",86303
+Tachycardia,86275
+Thrombocytopenia,85652
+Body Temperature Changes,84540
+Drug Hypersensitivity,84530
+Hyperglycemia,84032
+"Carcinoma, Bronchogenic",83923
+"Carcinoma, Non-Small-Cell Lung",83734
+Liver Failure,83091
+Meningitis,82726
+Glaucoma,82625
+"Lupus Erythematosus, Systemic",82516
+Ventricular Dysfunction,82172
+Dyssomnias,81685
+Cataract,81169
+Intracranial Hemorrhages,81072
+Metaplasia,80492
+Avitaminosis,80259
+"Hypertension, Pulmonary",78507
+Acute Kidney Injury,78431
+Nausea,78414
+Aortic Valve Disease,77345
+Respiratory Insufficiency,77169
+Pancreatitis,76787
+Aortic Aneurysm,76787
+Encephalitis,75954
+Infant Death,75695
+Hypotension,74923
+"Hypersensitivity, Delayed",74651
+Heart Arrest,74310
+"Influenza, Human",73730
+Cancer Pain,73609
+Neutropenia,73603
+Reperfusion Injury,71740
+Critical Illness,71674
+Hematoma,70844
+"Infertility, Female",70686
+Hyperlipidemias,70541
+Apnea,70373
+Proteinuria,69587
+Dyspnea,69203
+Cerebral Hemorrhage,68445
+"Death, Sudden",67935
+Pulmonary Heart Disease,67397
+"Ventricular Dysfunction, Left",67310
+Sexual Infantilism,67298
+Cough,67153
+Cadaver,67000
+Bone Resorption,66996
+Water-Electrolyte Imbalance,66954
+Ocular Hypertension,65553
+Dental Caries,65484
+Calculi,65260
+"Diabetes Mellitus, Experimental",64991
+Premature Birth,64857
+Emergencies,64501
+Pulmonary Embolism,64391
+"Carcinoma, Renal Cell",62928
+Retinal Degeneration,62711
+Adenocarcinoma of Lung,62496
+Prosthesis Failure,62354
+Psoriasis,61819
+Myosarcoma,61603
+Paraproteinemias,61573
+Glomerulonephritis,61083
+Multiple Myeloma,60896
+Gastrointestinal Hemorrhage,60813
+Cardiomegaly,60652
+Cystic Fibrosis,60541
+Brain Infarction,60258
+Intestinal Obstruction,60056
+Coma,59721
+Aortic Valve Stenosis,59624
+Respiratory Distress Syndrome,59552
+Heart Block,58895
+Cerebral Infarction,58579
+Pulmonary Fibrosis,58542
+"Neovascularization, Pathologic",58388
+Surgical Wound Infection,58222
+"Colitis, Ulcerative",57906
+Foreign Bodies,57841
+Aneuploidy,57568
+Acidosis,57455
+Diabetic Angiopathies,56885
+"Infertility, Male",56626
+Skin Ulcer,55766
+Hypoglycemia,55732
+Carcinoma in Situ,55611
+Femoral Fractures,55523
+"Anemia, Hemolytic, Congenital",55497
+Severe Acute Respiratory Syndrome,55464
+Tooth Demineralization,54936
+"Blood Loss, Surgical",54444
+Herpes Simplex,53957
+Coronary Stenosis,53940
+Granuloma,53706
+Fetal Weight,53478
+Blindness,53242
+"Lymphoma, T-Cell",53159
+Hyperthyroidism,52746
+Muscle Weakness,52660
+"Pneumonia, Bacterial",52294
+Bacteremia,52151
+Angina Pectoris,52120
+Confusion,51816
+Glioblastoma,51617
+Hemoglobinopathies,51554
+Body Remains,51297
+Hemolysis,51197
+Ataxia,51196
+Calcinosis,50739
+Rhinitis,50405
+Hypothyroidism,50353
+Ascites,50251
+Polyps,50243
+Urinary Incontinence,50110
+Leukopenia,49947
+Hodgkin Disease,49891
+Chromosome Deletion,49467
+Hypothermia,49438
+Erythema,49398
+Astrocytoma,49211
+Hypercholesterolemia,49160
+Fetal Death,49081
+"Brain Damage, Chronic",48703
+"Osteoarthritis, Knee",47945
+Crohn Disease,47617
+Periodontitis,47484
+"Hypertension, Pregnancy-Induced",47159
+Squamous Cell Carcinoma of Head and Neck,47094
+Neuroblastoma,46885
+Low Back Pain,46792
+Unconsciousness,46726
+Jaundice,45847
+Deafness,45817
+Ventricular Fibrillation,45699
+"Translocation, Genetic",45620
+Ventricular Outflow Obstruction,45394
+Eclampsia,45262
+Hip Fractures,45168
+"Tachycardia, Ventricular",45152
+Joint Dislocations,45042
+"Carcinoma, Ductal",44877
+Endocarditis,44730
+Urolithiasis,44710
+Peritonitis,44603
+Spondylitis,44539
+Occupational Stress,44528
+Cicatrix,44423
+Bronchitis,43701
+"Abortion, Spontaneous",43522
+Cholestasis,43317
+Dehydration,43228
+Angiolymphoid Hyperplasia with Eosinophilia,43032
+Diabetic Retinopathy,42923
+Hemangioma,42861
+Down Syndrome,42781
+"Wounds, Nonpenetrating",42526
+Postoperative Hemorrhage,42452
+Nerve Degeneration,42408
+Uveitis,42335
+"Dermatitis, Contact",42080
+Osteosarcoma,41903
+Goiter,41895
+Hyperthermia,41884
+Dizziness,41840
+Airway Obstruction,41717
+Acute Coronary Syndrome,41694
+"Carcinoma, Papillary",41577
+"Malaria, Falciparum",41575
+Acid-Base Imbalance,41541
+"Wounds, Penetrating",41405
+"Shock, Septic",41390
+Candidiasis,40981
+Multiple Trauma,40775
+"Leukemia, B-Cell",40570
+Cholelithiasis,40525
+Urinary Calculi,40501
+Pre-Eclampsia,40460
+Macular Degeneration,40445
+Stomach Ulcer,40345
+Emphysema,40247
+Clinical Deterioration,40201
+"Sleep Apnea, Obstructive",40176
+Syphilis,40113
+Motor Neuron Disease,40054
+"Death, Sudden, Cardiac",39566
+Otitis,38918
+Malocclusion,38877
+"Leukemia, Experimental",38818
+Anorexia,38660
+Eosinophilia,38613
+Starvation,38508
+"Hernia, Abdominal",38503
+Neck Pain,38426
+Heart Septal Defects,38327
+Vitamin D Deficiency,38264
+Purpura,38110
+Hydrocephalus,38093
+Coccidiosis,38051
+Neuralgia,37418
+Intracranial Aneurysm,37120
+"Meningitis, Bacterial",37099
+"Encephalitis, Viral",36933
+Peripheral Arterial Disease,36929
+Gastroesophageal Reflux,36879
+"Hypertension, Portal",36643
+Amyloidosis,36523
+"Hearing Loss, Sensorineural",36322
+Essential Hypertension,36192
+Subarachnoid Hemorrhage,35861
+Leukoencephalopathies,35688
+"Leukemia, T-Cell",35322
+"Obstetric Labor, Premature",35254
+"Constriction, Pathologic",35185
+Pleural Effusion,35107
+"Rhinitis, Allergic",34944
+Venous Thromboembolism,34927
+Cerebral Palsy,34904
+"Hypertrophy, Left Ventricular",34841
+Joint Instability,34744
+"Carcinoma, Large Cell",34711
+"Hepatitis C, Chronic",34685
+Prolapse,34632
+"Hypoxia, Brain",34539
+Osteomyelitis,34379
+Musculoskeletal Pain,34335
+"Dermatitis, Atopic",34294
+Pulmonary Edema,34282
+"Fatty Liver, Alcoholic",34058
+Sarcoidosis,34038
+Chemical and Drug Induced Liver Injury,34007
+Hepatic Insufficiency,33899
+Hyperparathyroidism,33844
+Neural Tube Defects,33776
+Encephalomyelitis,33717
+Precursor Cell Lymphoblastic Leukemia-Lymphoma,33658
+"Aneurysm, Dissecting",33628
+"Sexual Dysfunction, Physiological",33594
+"Aortic Aneurysm, Abdominal",33543
+Anaphylaxis,33530
+Constipation,33515
+"Hemorrhagic Fevers, Viral",33456
+Amyotrophic Lateral Sclerosis,33386
+Coronary Occlusion,33372
+Muscular Atrophy,33299
+Duodenal Ulcer,33281
+Otitis Media,33071
+Endometriosis,32983
+Gastritis,32822
+Digestive System Fistula,32663
+Hyperbilirubinemia,32639
+Osteochondrodysplasias,32606
+Zoonoses,32374
+Stomatitis,32347
+Leishmaniasis,32302
+Polyneuropathies,31896
+"Pregnancy, Ovarian",31836
+"Lymphoma, Large B-Cell, Diffuse",31779
+Retinal Detachment,31747
+Measles,31643
+Infectious Encephalitis,31601
+Brain Edema,31590
+"Carcinoma, Basal Cell",31578
+Vitamin B Deficiency,31520
+Thalassemia,31476
+Cleft Palate,31194
+"Obesity, Morbid",31188
+Pelvic Pain,31114
+Muscular Dystrophies,31051
+Thrombophilia,31009
+Keratosis,30967
+Pneumothorax,30775
+Uremia,30759
+Leprosy,30632
+Tetanus,30612
+Spondylarthritis,30593
+Non-alcoholic Fatty Liver Disease,30575
+Sinusitis,30563
+Systemic Vasculitis,30560
+Learning Disabilities,30522
+Vascular Fistula,30473
+Prostatic Hyperplasia,30438
+Cholera,30396
+Myelitis,30107
+Dermatomycoses,30022
+Scoliosis,29909
+Coronary Thrombosis,29909
+Mitral Valve Insufficiency,29860
+Hepatitis A,29846
+Graft vs Host Disease,29771
+Dental Plaque,29678
+ST Elevation Myocardial Infarction,29675
+Acute Lung Injury,29571
+Diabetic Nephropathies,29486
+Celiac Disease,29473
+Menstruation Disturbances,29411
+Schistosomiasis,29337
+"Heart Failure, Systolic",29281
+"Diabetes, Gestational",29280
+Bradycardia,29235
+Hematuria,29189
+"Carcinoma, Ductal, Breast",29087
+Newcastle Disease,28905
+Spinal Curvatures,28863
+Myopia,28766
+Dengue,28648
+Food Hypersensitivity,28620
+Ovarian Cysts,28609
+Maternal Death,28565
+"Rupture, Spontaneous",28530
+Heart Aneurysm,28517
+Carotid Stenosis,28440
+Erectile Dysfunction,28426
+"Ischemic Attack, Transient",28413
+Monosomy,28413
+Genomic Instability,28365
+"Epilepsy, Generalized",28281
+Keratitis,28270
+Arteritis,28266
+Shoulder Pain,28179
+Phlebitis,28046
+Spondylarthropathies,27959
+Spinal Fractures,27953
+Neuroma,27951
+Drug Eruptions,27859
+"Endocarditis, Bacterial",27843
+Appendicitis,27758
+"Aneurysm, Ruptured",27743
+"Anemia, Sickle Cell",27672
+"Fractures, Open",27667
+Pruritus,27632
+Leg Ulcer,27592
+Agranulocytosis,27570
+TDP-43 Proteinopathies,27417
+Ventricular Remodeling,27387
+Spasm,27285
+Uterine Hemorrhage,27158
+Meningioma,26981
+Diabetic Neuropathies,26948
+Teratoma,26883
+Arteriovenous Fistula,26851
+"Obesity, Abdominal",26788
+Conjunctivitis,26779
+Lymphadenopathy,26687
+"Plaque, Atherosclerotic",26621
+Tremor,26516
+Myositis,26487
+"Limb Deformities, Congenital",26471
+Urticaria,26429
+Vascular Remodeling,26410
+Trypanosomiasis,26383
+Alopecia,26349
+"Epilepsies, Partial",26242
+"Hepatitis B, Chronic",26234
+"Cardiomyopathy, Dilated",26206
+HIV Seropositivity,26096
+Strabismus,26034
+Paraganglioma,25974
+Pulmonary Arterial Hypertension,25956
+Toxoplasmosis,25838
+Leiomyoma,25816
+Frailty,25726
+Myocarditis,25720
+Skull Fractures,25657
+Exophthalmos,25641
+"Scleroderma, Diffuse",25606
+Histiocytosis,25603
+Kidney Calculi,25580
+"Scleroderma, Systemic",25446
+Nephrolithiasis,25427
+"Vision, Low",25260
+Nephrotic Syndrome,25233
+Thrombotic Microangiopathies,25202
+Pediatric Obesity,25194
+"Neoplasm, Residual",25180
+Rheumatic Fever,25142
+Pulmonary Emphysema,25076
+Myocardial Reperfusion Injury,25042
+"Aortic Aneurysm, Thoracic",25027
+Substance Withdrawal Syndrome,24970
+Transfusion Reaction,24959
+Papilloma,24930
+Esophageal Squamous Cell Carcinoma,24893
+Eczema,24765
+Graves Disease,24621
+Thrombophlebitis,24610
+Hemophilia A,24500
+"Nephritis, Interstitial",24294
+Retinoblastoma,24284
+"Carcinoma, Transitional Cell",24232
+"Liver Failure, Acute",24229
+"Cell Transformation, Viral",24169
+Poliomyelitis,24142
+Pheochromocytoma,24140
+Paraplegia,24009
+Chromosome Duplication,23946
+Syncope,23915
+Adrenocortical Hyperfunction,23843
+Coinfection,23717
+Mitral Valve Stenosis,23650
+Drug Overdose,23642
+"Cardiomyopathy, Hypertrophic",23560
+Bites and Stings,23551
+"Remission, Spontaneous",23540
+Diverticulum,23437
+"Pancreatitis, Chronic",23366
+Delirium,23297
+Latent Infection,23279
+Neurilemmoma,23260
+Nevus,23225
+Intracranial Hypertension,23223
+Contracture,23219
+Nephrosis,23161
+Albuminuria,23140
+Trisomy,23083
+Intracranial Embolism and Thrombosis,23017
+Ankylosis,22921
+"Arthritis, Infectious",22910
+Aspergillosis,22849
+Internal Hernia,22795
+Dystonia,22760
+Hypercalcemia,22718
+Multiple Organ Failure,22643
+Ectoparasitic Infestations,22588
+Mononeuropathies,22540
+Pelvic Infection,22466
+Dental Deposits,22416
+Lipidoses,22395
+Fetal Growth Retardation,22344
+Diphtheria,22321
+Aortic Valve Insufficiency,22304
+"Anemia, Iron-Deficiency",22280
+Arthralgia,22276
+Osteonecrosis,22273
+"Osteoporosis, Postmenopausal",22248
+Enteritis,22213
+"Osteoarthritis, Hip",22211
+"Epilepsy, Temporal Lobe",22179
+Retinitis,22164
+Splenomegaly,22137
+Panuveitis,22136
+Echinococcosis,22119
+Thyroiditis,22028
+Varicella Zoster Virus Infection,21966
+Tooth Loss,21900
+"Leukemia, Myelogenous, Chronic, BCR-ABL Positive",21894
+Gout,21882
+Pneumoconiosis,21856
+Esophagitis,21842
+Heavy Metal Poisoning,21805
+Polycystic Ovary Syndrome,21802
+"Sarcoma, Experimental",21789
+"Hernia, Diaphragmatic",21788
+Viremia,21769
+Nociceptive Pain,21767
+"Purpura, Thrombocytopenic",21735
+"Spondylitis, Ankylosing",21694
+Cholecystitis,21673
+Asphyxia,21640
+"Leukemia, Lymphocytic, Chronic, B-Cell",21629
+"Anemia, Hypochromic",21616
+"Heart Failure, Diastolic",21580
+Xerostomia,21553
+Cleft Lip,21503
+"Melanoma, Experimental",21493
+Varicose Veins,21491
+Facial Pain,21470
+Chagas Disease,21416
+Enterocolitis,21391
+Fibroma,21371
+Cholangitis,21311
+"Abdomen, Acute",21308
+Breast Carcinoma In Situ,21282
+Hyperalgesia,21276
+Vertigo,21258
+Sprains and Strains,21232
+"Pregnancy, Ectopic",21220
+"Glaucoma, Open-Angle",21109
+Iron Overload,21105
+"Adenocarcinoma, Papillary",21059
+Tibial Fractures,20979
+"Carcinoma, Neuroendocrine",20910
+"Liver Cirrhosis, Alcoholic",20763
+Gallstones,20723
+Intracranial Thrombosis,20716
+"Infarction, Middle Cerebral Artery",20702
+Dent Disease,20660
+Hypogonadism,20634
+Myasthenia Gravis,20619
+"Pain, Referred",20618
+Intervertebral Disc Displacement,20617
+Aortic Rupture,20589
+"Anemia, Aplastic",20545
+Mesothelioma,20514
+Abdominal Abscess,20478
+Aphasia,20449
+Hip Dislocation,20418
+Pyelonephritis,20302
+"Pregnancy, Abdominal",20247
+Gonorrhea,20237
+"Arthritis, Experimental",20231
+Chorea,20168
+"Angina, Unstable",20127
+Foot Deformities,20083
+Intestinal Fistula,19963
+"Heart Septal Defects, Atrial",19962
+Glucose Intolerance,19906
+Pressure Ulcer,19875
+"Heart Septal Defects, Ventricular",19842
+Dysostoses,19832
+Cervical Intraepithelial Neoplasia,19782
+"Uveitis, Anterior",19750
+Dwarfism,19718
+Cerebellar Ataxia,19690
+"Hernia, Inguinal",19680
+"Respiratory Distress Syndrome, Newborn",19657
+Pharyngitis,19629
+Spinal Cord Compression,19597
+Intestinal Perforation,19552
+Herpes Zoster,19534
+Laminopathies,19533
+Neuritis,19463
+Hallucinations,19433
+Cholangiocarcinoma,19328
+"Dermatitis, Allergic Contact",19101
+Ureteral Obstruction,19094
+Diabetic Foot,19087
+"Shock, Surgical",19042
+"Fractures, Multiple",19001
+Adrenal Insufficiency,18973
+Paresis,18908
+Intestinal Polyps,18854
+Leukocytosis,18847
+Hamartoma,18838
+Sjogren's Syndrome,18808
+Amenorrhea,18807
+Fibrosarcoma,18780
+Oral Hemorrhage,18690
+"Shock, Cardiogenic",18663
+Nasopharyngeal Carcinoma,18660
+Neurofibroma,18647
+Hyperpigmentation,18615
+"Burnout, Professional",18573
+Ciliopathies,18489
+Filariasis,18434
+Huntington Disease,18340
+Osteoporotic Fractures,18332
+"Wounds, Gunshot",18328
+Lymphedema,18262
+Hydronephrosis,18106
+Environmental Illness,18038
+Hypertriglyceridemia,18030
+"Dementia, Vascular",18028
+"Ventricular Dysfunction, Right",18011
+"Substance Abuse, Intravenous",17975
+Bone Cysts,17805
+Mastitis,17800
+"Aortic Stenosis, Subvalvular",17793
+Rheumatic Heart Disease,17774
+"Shock, Hemorrhagic",17755
+Sleepiness,17741
+Urinary Retention,17715
+Dysentery,17692
+Rickets,17611
+"Thyroid Cancer, Papillary",17527
+Sarcopenia,17521
+Coronary Restenosis,17448
+Rabies,17440
+End Stage Liver Disease,17404
+"Cholestasis, Intrahepatic",17395
+Hypotrichosis,17368
+Irritable Bowel Syndrome,17364
+"Urinary Incontinence, Stress",17338
+Disseminated Intravascular Coagulation,17338
+Hypocalcemia,17323
+Hyperemia,17318
+Rubella,17306
+Fracture Dislocation,17289
+"Mental Retardation, X-Linked",17258
+Pericarditis,17240
+Dysbiosis,17240
+Tissue Adhesions,17190
+"Arthritis, Reactive",17173
+"Bronchitis, Chronic",17068
+Gangrene,17020
+Vaccinia,16988
+beta-Thalassemia,16980
+Periodontal Atrophy,16916
+Median Neuropathy,16870
+Hepatic Encephalopathy,16849
+Hemiplegia,16803
+Facial Paralysis,16793
+Hyponatremia,16741
+Lead Poisoning,16599
+Foot Ulcer,16556
+Thinness,16521
+Tendinopathy,16489
+Perinatal Death,16481
+Sphingolipidoses,16452
+Colonic Polyps,16438
+Coronary Aneurysm,16375
+Carcinoid Tumor,16370
+Femoral Neck Fractures,16366
+"Obesity, Maternal",16322
+Lipoma,16258
+"Encephalitis, Arbovirus",16230
+Synovitis,16201
+Heart Rupture,16166
+Polycythemia,16079
+"Intracranial Hemorrhage, Traumatic",16078
+Cardiotoxicity,16053
+Status Epilepticus,16042
+Cystitis,16030
+Common Cold,16028
+Ileus,16014
+Hypokalemia,15984
+Uterine Cervical Dysplasia,15965
+Pelvic Organ Prolapse,15932
+Pulmonary Infarction,15930
+Eye Hemorrhage,15922
+Tinnitus,15917
+Brucellosis,15835
+"Arthritis, Juvenile",15821
+Pericardial Effusion,15815
+Venous Insufficiency,15809
+Pelvic Inflammatory Disease,15781
+Crystal Arthropathies,15775
+"Adenocarcinoma, Mucinous",15766
+Pyelitis,15742
+"Brain Injury, Chronic",15699
+Rhabdomyosarcoma,15697
+Tobacco Use Disorder,15691
+Gingivitis,15667
+"Liver Cirrhosis, Biliary",15658
+Respiratory Sounds,15619
+"Cardiac Output, Low",15606
+Macular Edema,15589
+Bronchiectasis,15574
+Alexander Disease,15552
+"Arrhythmia, Sinus",15520
+Atrioventricular Block,15511
+Smooth Muscle Tumor,15484
+Ophthalmoplegia,15476
+Hyperpituitarism,15430
+Alveolar Bone Loss,15394
+Radius Fractures,15370
+Sleep Deprivation,15359
+Postmortem Changes,15358
+Dyspepsia,15310
+Bronchiolitis,15270
+Intracranial Embolism,15229
+Lyme Disease,15227
+Gonadal Dysgenesis,15199
+"Pregnancy, Prolonged",15149
+Vascular Calcification,15127
+Bundle-Branch Block,15111
+"Fractures, Compression",15099
+"Encephalomyelitis, Autoimmune, Experimental",15078
+Cellulitis,15076
+Amebiasis,15065
+"Fractures, Stress",15002
+"Aneurysm, False",14998
+"Rhinitis, Allergic, Seasonal",14955
+Esophageal and Gastric Varices,14943
+Amnesia,14939
+Hypercapnia,14919
+"Carcinoma, Pancreatic Ductal",14877
+Primary Dysautonomias,14874
+Polyradiculoneuropathy,14822
+Acne Vulgaris,14804
+Pulmonary Valve Stenosis,14801
+"Thyroiditis, Autoimmune",14786
+Idiopathic Pulmonary Fibrosis,14776
+"Nervous System Autoimmune Disease, Experimental",14716
+Warts,14639
+Vaginitis,14638
+Tinea,14592
+Brain Concussion,14559
+Embryo Loss,14544
+"Fractures, Closed",14524
+"Dilatation, Pathologic",14469
+Typhoid Fever,14459
+Kyphosis,14393
+Cushing Syndrome,14310
+"Neoplastic Cells, Circulating",14185
+Urethral Obstruction,14151
+Hemoptysis,14147
+Retinitis Pigmentosa,14134
+"Multiple Sclerosis, Relapsing-Remitting",14118
+"Lymphoma, T-Cell, Cutaneous",14104
+Pregnancy in Diabetics,14097
+"Graft Occlusion, Vascular",14094
+Wilms Tumor,14012
+Alcoholic Intoxication,13994
+Acneiform Eruptions,13975
+"Tachycardia, Supraventricular",13952
+"Tuberculosis, Multidrug-Resistant",13925
+Astigmatism,13922
+"Leishmaniasis, Visceral",13906
+Fecal Incontinence,13872
+Polymyositis,13798
+Fibromyalgia,13782
+Cholecystolithiasis,13753
+"Hyperparathyroidism, Secondary",13737
+Liver Abscess,13710
+Muscle Hypertonia,13690
+"Carcinoma, Ovarian Epithelial",13676
+"Hypoxia-Ischemia, Brain",13673
+"Muscular Dystrophy, Duchenne",13666
+"Ductus Arteriosus, Patent",13639
+Polyploidy,13608
+Osteolysis,13579
+Empyema,13536
+"Lymphoma, Follicular",13520
+"Arthritis, Psoriatic",13493
+Lupus Nephritis,13454
+Hypopigmentation,13436
+Nasal Obstruction,13427
+Flushing,13408
+Stillbirth,13402
+Neurofibromatoses,13387
+Tetralogy of Fallot,13377
+Spinal Stenosis,13359
+"Mouth, Edentulous",13333
+Focal Infection,13277
+Lymphopenia,13272
+Mucinoses,13266
+Retinal Neovascularization,13231
+"Hyperparathyroidism, Primary",13137
+Neonatal Sepsis,13125
+Hemorrhagic Stroke,13122
+Burkitt Lymphoma,13121
+"Hepatitis, Animal",13107
+Postpartum Hemorrhage,13085
+"Leishmaniasis, Cutaneous",13083
+Antiphospholipid Syndrome,13018
+Fetal Distress,13017
+Yang Deficiency,13012
+Optic Neuritis,12988
+Leiomyosarcoma,12931
+"Hematoma, Subdural",12924
+Osteitis,12915
+Lymphadenitis,12895
+Hepatomegaly,12868
+Colic,12803
+Paresthesia,12791
+Hashimoto Disease,12765
+"Histiocytosis, Non-Langerhans-Cell",12753
+"Sarcoma, Kaposi",12728
+Sudden Infant Death,12716
+Anti-Neutrophil Cytoplasmic Antibody-Associated Vasculitis,12711
+"Hepatitis, Autoimmune",12689
+Muscle Spasticity,12677
+Intracranial Arteriosclerosis,12621
+Microcephaly,12614
+Acute Chest Syndrome,12587
+Diplopia,12582
+"Pneumonia, Aspiration",12581
+Synostosis,12547
+Guillain-Barre Syndrome,12508
+"Dermatitis, Occupational",12457
+Carpal Tunnel Syndrome,12442
+"Hernia, Ventral",12433
+Dermatomyositis,12426
+Brain Abscess,12415
+Thyroid Nodule,12364
+"Erythroblastosis, Fetal",12336
+Cachexia,12331
+"Pneumonia, Pneumocystis",12323
+Ankle Fractures,12296
+Facial Neuralgia,12294
+Microsatellite Instability,12273
+Foot-and-Mouth Disease,12260
+Hypopituitarism,12224
+Cold Injury,12223
+"Histiocytosis, Langerhans-Cell",12217
+Hyperphagia,12205
+Thymoma,12195
+Germinoma,12164
+Gliosis,12155
+"Carcinoma, Ehrlich Tumor",12149
+Poland Syndrome,12148
+Mania,12137
+"Ossification, Heterotopic",12135
+"Angina, Stable",12130
+Mental Fatigue,12111
+Out-of-Hospital Cardiac Arrest,12076
+Ketosis,12071
+Mumps,12066
+Humeral Fractures,12061
+Mucositis,12059
+Fat Necrosis,12051
+Margins of Excision,12032
+"Depression, Postpartum",12031
+Vitamin B 12 Deficiency,12017
+Telangiectasis,11999
+Retinal Dystrophies,11991
+Chromosomal Instability,11959
+Plague,11943
+Postoperative Nausea and Vomiting,11941
+Hyperlipoproteinemias,11935
+Intussusception,11932
+Schistosomiasis mansoni,11911
+Meningoencephalitis,11903
+Aortic Coarctation,11896
+Diabetes Insipidus,11893
+Bulimia,11864
+Chronic Periodontitis,11857
+Adenomatous Polyps,11856
+Esophageal Stenosis,11820
+"Cardiac Output, High",11808
+"Leukemia, Promyelocytic, Acute",11784
+Intestinal Polyposis,11764
+"Mesothelioma, Malignant",11728
+Periodontal Pocket,11719
+Surgical Wound Dehiscence,11712
+Intervertebral Disc Degeneration,11696
+Cryptococcosis,11683
+Lichenoid Eruptions,11668
+Optic Atrophy,11661
+Pemphigus,11660
+Myoclonus,11619
+Turner Syndrome,11596
+Hyperventilation,11573
+Endophthalmitis,11562
+Neurofibromatosis 1,11562
+Ataxia Telangiectasia,11553
+Foreign-Body Reaction,11550
+Adrenogenital Syndrome,11515
+Gas Poisoning,11512
+Long QT Syndrome,11507
+"Fractures, Ununited",11505
+Acromegaly,11500
+Renal Artery Obstruction,11493
+"Pain, Intractable",11491
+Eye Pain,11487
+Illusions,11486
+"Nevus, Pigmented",11476
+Spondylosis,11455
+Lichen Planus,11434
+Hyperkalemia,11420
+Urinary Fistula,11408
+Barotrauma,11388
+"Cholecystitis, Acute",11380
+"Vasculitis, Central Nervous System",11347
+Hyperuricemia,11347
+Dyslexia,11341
+Hemochromatosis,11322
+Retinal Hemorrhage,11307
+Cardiac Tamponade,11284
+Frontotemporal Dementia,11281
+Plasmacytoma,11248
+Rhabdomyolysis,11223
+Cerebrovascular Trauma,11194
+"Edema, Cardiac",11164
+"Carcinoma, Intraductal, Noninfiltrating",11161
+"Hepatitis, Alcoholic",11149
+Smallpox,11120
+Leptospirosis,11119
+Myalgia,11114
+Philadelphia Chromosome,11111
+"Epilepsy, Absence",11104
+Pneumoperitoneum,11056
+Shoulder Fractures,11052
+Tuberous Sclerosis,11010
+Diabetic Ketoacidosis,11000
+"Tachycardia, Sinus",10961
+Cryptorchidism,10959
+"Foot Deformities, Congenital",10873
+Pancreatic Cyst,10865
+Protein-Energy Malnutrition,10851
+"Pregnancy, Tubal",10846
+Hyperaldosteronism,10843
+Heroin Dependence,10823
+"Urinary Bladder, Neurogenic",10802
+Exanthema,10802
+Oral Ulcer,10777
+Toxemia,10769
+"Lower Extremity Deformities, Congenital",10761
+Intermittent Claudication,10690
+Radiculopathy,10689
+"Anemia, Macrocytic",10683
+Esophageal Fistula,10675
+Atrial Flutter,10665
+Fasciitis,10661
+Foreign-Body Migration,10652
+Kimura Disease,10640
+"Malaria, Vivax",10618
+Choroidal Neovascularization,10617
+"Malocclusion, Angle Class II",10606
+Bacteriuria,10568
+Jaw Fractures,10567
+"Fatigue Syndrome, Chronic",10566
+"Sarcoidosis, Pulmonary",10561
+Medulloblastoma,10542
+Tonsillitis,10533
+Behcet Syndrome,10514
+"Purpura, Thrombocytopenic, Idiopathic",10513
+Endotoxemia,10507
+Sciatic Neuropathy,10472
+"Muscular Atrophy, Spinal",10465
+Hypoparathyroidism,10450
+"Tuberculosis, Osteoarticular",10440
+Marijuana Abuse,10440
+Coronary Vessel Anomalies,10439
+Acute-Phase Reaction,10428
+"Asthma, Occupational",10408
+Chondrosarcoma,10401
+Serotonin Syndrome,10366
+Fetal Hypoxia,10361
+Parasitemia,10354
+"Carcinoma, Medullary",10330
+Thyrotoxicosis,10328
+"Foot Deformities, Acquired",10322
+Reinfection,10300
+Whooping Cough,10277
+Amblyopia,10258
+Border Disease,10256
+"Jaundice, Obstructive",10232
+"Shock, Traumatic",10227
+Quadriplegia,10201
+Myxoma,10198
+"Plaque, Amyloid",10181
+"Pneumonia, Pneumococcal",10177
+Influenza in Birds,10151
+Melanosis,10150
+Torsion Abnormality,10146
+Adenomatous Polyposis Coli,10139
+Trigeminal Neuralgia,10104
+Respiratory Aspiration,10080
+Nasal Polyps,10043
+"Helminthiasis, Animal",10026
+Choriocarcinoma,10023
+Ureteral Calculi,10023
+"Hypertension, Renovascular",10021
+Orthostatic Intolerance,10015
+"Mastitis, Bovine",10002
+Bronchopulmonary Dysplasia,10000
+Developmental Dysplasia of the Hip,9991
+Femur Head Necrosis,9986
+"Sarcoma, Ewing",9980
+"Carcinoma, Lobular",9932
+"Fetal Membranes, Premature Rupture",9928
+"Burns, Chemical",9923
+"Neuroma, Acoustic",9914
+Hyperostosis,9909
+"Hypotension, Orthostatic",9906
+Cyanosis,9885
+Vesicular Stomatitis,9874
+Diverticulitis,9872
+"Acidosis, Lactic",9865
+Porphyrias,9863
+Tooth Resorption,9855
+Swayback,9854
+Listeriosis,9847
+Pulmonary Atelectasis,9817
+Shoulder Dislocation,9793
+Peptic Ulcer Hemorrhage,9792
+Hand Deformities,9780
+Retinopathy of Prematurity,9780
+Angioedema,9773
+Lordosis,9731
+Granulomatosis with Polyangiitis,9731
+"Fractures, Spontaneous",9698
+Spinal Dysraphism,9697
+Blister,9681
+"Glomerulonephritis, IGA",9670
+Folic Acid Deficiency,9670
+"Tuberculosis, Central Nervous System",9666
+Mandibular Fractures,9658
+Pancytopenia,9626
+Febrile Neutropenia,9607
+Pulmonary Aspergillosis,9584
+Vitreous Detachment,9579
+"Jaw, Edentulous",9577
+"Candidiasis, Oral",9541
+"Enterocolitis, Necrotizing",9528
+"Hyperbilirubinemia, Neonatal",9512
+Pulmonary Valve Insufficiency,9508
+Chickenpox,9504
+Cystadenocarcinoma,9499
+"Wounds, Stab",9496
+Epistaxis,9490
+Bronchial Hyperreactivity,9487
+Hyperhomocysteinemia,9461
+"Jaundice, Neonatal",9436
+Parasomnias,9429
+Hemolytic-Uremic Syndrome,9402
+"Abortion, Habitual",9382
+Prediabetic State,9381
+Erythema Multiforme,9377
+"Hemangioma, Cavernous",9368
+"Nystagmus, Pathologic",9361
+Plant Poisoning,9348
+"Parkinson Disease, Secondary",9347
+"Hip Dislocation, Congenital",9339
+Hyperoxia,9331
+Severe Combined Immunodeficiency,9329
+Silicosis,9322
+"Hearing Loss, Noise-Induced",9303
+Adenocarcinoma in Situ,9273
+Respiratory Tract Fistula,9270
+Vitiligo,9270
+Barrett Esophagus,9252
+Tooth Fractures,9230
+Uterine Rupture,9230
+Thrombocytosis,9170
+Spinocerebellar Degenerations,9165
+Latent Tuberculosis,9157
+"Cardiac Complexes, Premature",9146
+Jaw Cysts,9128
+"Hernia, Hiatal",9127
+"Liver Cirrhosis, Experimental",9120
+Drug Resistant Epilepsy,9103
+Tricuspid Valve Insufficiency,9083
+Infectious Mononucleosis,9076
+Angiomatosis,9075
+Agammaglobulinemia,9069
+"Tooth, Impacted",9050
+"Abortion, Veterinary",9045
+"Dyskinesia, Drug-Induced",9034
+"Hearing Loss, Bilateral",9010
+Choristoma,9009
+"Adrenal Hyperplasia, Congenital",8980
+Vesico-Ureteral Reflux,8974
+Giant Cell Arteritis,8955
+Polycythemia Vera,8940
+Megacolon,8934
+Esophageal Achalasia,8921
+Lacerations,8909
+Keratoconus,8897
+Histiocytoma,8890
+Heavy Chain Disease,8888
+Anastomotic Leak,8883
+"Epilepsy, Tonic-Clonic",8881
+Williams Syndrome,8868
+"Stenosis, Pulmonary Artery",8860
+Visceral Pain,8830
+Transposition of Great Vessels,8794
+"Urinary Bladder, Overactive",8763
+"Aging, Premature",8763
+"Carcinoma, Adenoid Cystic",8752
+Ventilator-Induced Lung Injury,8748
+Rectal Fistula,8744
+Gestational Weight Gain,8730
+Tooth Wear,8718
+"Adenoma, Islet Cell",8710
+"Reflex, Abnormal",8694
+Zika Virus Infection,8654
+Snoring,8632
+"Meningitis, Viral",8623
+"Anemia, Megaloblastic",8594
+Subcutaneous Emphysema,8590
+"Granulomatous Disease, Chronic",8586
+Convalescence,8579
+Endolymphatic Hydrops,8560
+"Acidosis, Respiratory",8548
+"Pneumonia, Ventilator-Associated",8538
+Hereditary Sensory and Motor Neuropathy,8534
+Alkalosis,8500
+alpha-Thalassemia,8494
+Gastric Outlet Obstruction,8477
+Marfan Syndrome,8457
+"Rhinitis, Allergic, Perennial",8427
+Yellow Fever,8417
+"Dysentery, Bacillary",8416
+"Lymphoma, T-Cell, Peripheral",8405
+Tracheal Stenosis,8402
+Hand Dermatoses,8378
+Cholesteatoma,8375
+Contusions,8356
+Lung Abscess,8354
+Taeniasis,8350
+"Glomerulosclerosis, Focal Segmental",8333
+"Pleural Effusion, Malignant",8317
+Liposarcoma,8279
+"Anemia, Hemolytic, Autoimmune",8257
+Dysmenorrhea,8243
+Carotid Artery Thrombosis,8236
+Actinomycosis,8230
+"Lupus Erythematosus, Cutaneous",8229
+"Leukemia, Plasma Cell",8211
+"Embolism, Air",8204
+Mycosis Fungoides,8194
+"Uveitis, Posterior",8177
+Multiple Endocrine Neoplasia,8166
+Primary Myelofibrosis,8165
+"Pneumonia, Mycoplasma",8138
+Prostatitis,8136
+Anthrax,8127
+Asphyxia Neonatorum,8127
+Odontogenic Cysts,8126
+Cystadenoma,8126
+Leukemia L1210,8109
+Mastocytosis,8101
+Spinocerebellar Ataxias,8101
+Hyperlipoproteinemia Type II,8083
+"Cholangitis, Sclerosing",8074
+"Hypertrophy, Right Ventricular",8060
+Mesenteric Ischemia,8059
+Facial Dermatoses,8054
+Osteochondritis,8053
+Pleurisy,8045
+Hemangiosarcoma,8033
+Vocal Cord Paralysis,8029
+Mite Infestations,8006
+Dysarthria,8005
+Cerebrospinal Fluid Leak,8002
+Hypoalbuminemia,8002
+Hypospadias,7975
+Meniere Disease,7960
+"Tuberculosis, Lymph Node",7959
+"Anemia, Neonatal",7956
+Glycogen Storage Disease,7921
+Insulinoma,7914
+"Conjunctivitis, Bacterial",7875
+Lethargy,7871
+Duodenal Obstruction,7869
+"Leukemia-Lymphoma, Adult T-Cell",7866
+Multiple System Atrophy,7866
+Healthcare-Associated Pneumonia,7854
+"Tuberculosis, Urogenital",7851
+Pseudarthrosis,7831
+Azoospermia,7826
+Binge Drinking,7826
+Pancreatic Fistula,7818
+Labor Pain,7817
+Raynaud Disease,7816
+Histoplasmosis,7812
+"Diarrhea, Infantile",7810
+"Tachycardia, Paroxysmal",7808
+"Tuberculosis, Meningeal",7775
+Urethral Stricture,7768
+Mitral Valve Prolapse,7758
+Esophageal Perforation,7757
+Talipes,7745
+"Adenocarcinoma, Clear Cell",7729
+Paraparesis,7722
+"Encephalitis, Japanese",7708
+Asthenia,7705
+Potassium Deficiency,7698
+"Psychoses, Substance-Induced",7698
+"Enterocolitis, Pseudomembranous",7695
+Morphological and Microscopic Findings,7693
+"Meningitis, Meningococcal",7686
+Lithiasis,7670
+Spondylolisthesis,7667
+Cysticercosis,7649
+Frontotemporal Lobar Degeneration,7628
+Acute-On-Chronic Liver Failure,7604
+Carcinosarcoma,7600
+Psychomotor Agitation,7600
+Hyperprolactinemia,7567
+Magnesium Deficiency,7544
+Papilledema,7537
+Heart Valve Prolapse,7535
+Ureterolithiasis,7522
+Parotitis,7510
+Stevens-Johnson Syndrome,7509
+Hoarseness,7507
+Otitis Media with Effusion,7500
+Myotonic Dystrophy,7488
+Failure to Thrive,7482
+Osteoma,7480
+Osteomalacia,7468
+"Trypanosomiasis, African",7452
+Periodontal Attachment Loss,7448
+Lewy Body Disease,7420
+Mucopolysaccharidoses,7395
+Iliac Aneurysm,7380
+Fragile X Syndrome,7361
+Hypergammaglobulinemia,7361
+Retinal Vein Occlusion,7358
+Uterine Prolapse,7356
+Lymphangioma,7354
+Mucocutaneous Lymph Node Syndrome,7351
+"Carcinoma, Papillary, Follicular",7346
+"Hepatitis, Viral, Animal",7344
+Ependymoma,7326
+"Tuberculosis, Pleural",7322
+Leukoplakia,7319
+Vitamin A Deficiency,7304
+Sciatica,7298
+Polyarteritis Nodosa,7271
+Fever of Unknown Origin,7270
+Phenylketonurias,7253
+Craniosynostoses,7243
+Hypophosphatemia,7233
+Facial Asymmetry,7221
+Multiple Chemical Sensitivity,7214
+"Lymphoma, B-Cell, Marginal Zone",7208
+Pyoderma,7202
+Parental Death,7201
+Hemorrhoids,7194
+Endometrial Hyperplasia,7193
+"Malocclusion, Angle Class I",7178
+Gestational Trophoblastic Disease,7171
+Lipodystrophy,7167
+Cryptosporidiosis,7148
+"Empyema, Pleural",7141
+"Hemorrhagic Fever, Ebola",7135
+Dystocia,7098
+Root Resorption,7092
+Mobility Limitation,7086
+Ichthyosis,7082
+Chromosome Inversion,7082
+"Toxoplasmosis, Animal",7072
+"Amputation, Traumatic",7072
+Creutzfeldt-Jakob Syndrome,7067
+Gastric Fistula,7024
+Congenital Hypothyroidism,7021
+"Hypertension, Malignant",6991
+Hirsutism,6988
+Peptic Ulcer Perforation,6983
+"Purpura, Thrombotic Thrombocytopenic",6965
+"Echinococcosis, Hepatic",6963
+AIDS-Related Complex,6960
+Vascular Ring,6959
+Milk Hypersensitivity,6949
+Corneal Ulcer,6932
+"Carcinoma, Embryonal",6929
+Migraine with Aura,6910
+Migraine without Aura,6910
+Embolic Stroke,6906
+Epidermolysis Bullosa,6894
+Ectodermal Dysplasia,6851
+"Adenoma, Pleomorphic",6841
+Keratoconjunctivitis,6835
+"Puberty, Precocious",6833
+Insect Bites and Stings,6832
+Carbon Monoxide Poisoning,6828
+Blepharoptosis,6806
+"Anemia, Refractory",6803
+"Myelitis, Transverse",6797
+Vaginal Discharge,6783
+Bursitis,6778
+"Carcinoma, Endometrioid",6775
+"Lymphoma, Mantle-Cell",6761
+Hypoventilation,6759
+Ventricular Premature Complexes,6755
+"Foramen Ovale, Patent",6754
+Malignant Hyperthermia,6754
+Biliary Fistula,6709
+Xeroderma Pigmentosum,6702
+Lymphocytosis,6696
+Enuresis,6676
+Foot Dermatoses,6676
+Seminoma,6672
+Hypovolemia,6659
+Endometritis,6656
+Urethritis,6630
+Spinal Cord Ischemia,6629
+Giardiasis,6626
+Drowning,6617
+"Hearing Loss, Conductive",6606
+Oligospermia,6600
+Hemoglobinuria,6599
+Osteosclerosis,6595
+"Pemphigoid, Bullous",6592
+Bronchopneumonia,6587
+"Anemia, Pernicious",6579
+Hepatitis E,6575
+Chronic Urticaria,6565
+Thiamine Deficiency,6539
+Atrial Remodeling,6520
+Rhinorrhea,6513
+Wolff-Parkinson-White Syndrome,6507
+"Leukemia, Myeloid, Chronic-Phase",6505
+Myoma,6497
+"Tuberculosis, Spinal",6493
+Gilbert Disease,6493
+Spondylolysis,6490
+Pulmonary Eosinophilia,6490
+"Histiocytoma, Benign Fibrous",6473
+Dysphonia,6473
+"Protein Aggregation, Pathological",6473
+Mucormycosis,6468
+Vaginal Fistula,6468
+"Kidney Tubular Necrosis, Acute",6465
+"Glomerulonephritis, Membranous",6455
+Osteogenesis Imperfecta,6439
+Menorrhagia,6409
+Morphine Dependence,6406
+Narcolepsy,6405
+Glycosuria,6404
+"Adenocarcinoma, Follicular",6374
+Craniofacial Dysostosis,6371
+Vitreous Hemorrhage,6364
+Gingival Pocket,6358
+Heartburn,6354
+Polyuria,6352
+Hepatolenticular Degeneration,6351
+Virilism,6348
+Ascariasis,6330
+Respiratory Paralysis,6319
+Splenic Rupture,6316
+Urinary Bladder Fistula,6305
+Gaucher Disease,6303
+Precursor B-Cell Lymphoblastic Leukemia-Lymphoma,6295
+Corneal Edema,6292
+Periapical Periodontitis,6269
+Neointima,6264
+"Sarcoma, Avian",6259
+Dermoid Cyst,6259
+IgG Deficiency,6258
+Fibrous Dysplasia of Bone,6238
+Hypereosinophilic Syndrome,6235
+"Encephalitis, Tick-Borne",6217
+"Esophagitis, Peptic",6214
+Corneal Opacity,6206
+Q Fever,6204
+Mercury Poisoning,6203
+Legionellosis,6202
+"Tuberculosis, Renal",6198
+Ascorbic Acid Deficiency,6198
+Waldenstrom Macroglobulinemia,6191
+"Leukemia, Radiation-Induced",6189
+Mitochondrial Myopathies,6188
+"Sarcoma, Small Cell",6185
+Superinfection,6182
+Airway Remodeling,6159
+Otosclerosis,6156
+Dysgerminoma,6144
+"Sleep Apnea, Central",6144
+Varicose Ulcer,6132
+"Meningitis, Pneumococcal",6131
+"Tuberculosis, Cutaneous",6124
+Ulna Fractures,6120
+Scalp Dermatoses,6116
+"Lameness, Animal",6103
+Hemothorax,6098
+Craniopharyngioma,6089
+Wasting Syndrome,6089
+Situs Inversus,6086
+Vulvitis,6077
+Fanconi Anemia,6061
+Varicocele,6059
+Neuromyelitis Optica,6054
+Oral Fistula,6037
+Drug Hypersensitivity Syndrome,6035
+Seroma,6032
+Chromosome Breakage,6031
+Squamous Intraepithelial Lesions,6030
+"Fractures, Comminuted",6026
+"Polycystic Kidney, Autosomal Dominant",6022
+"Purpura, Schoenlein-Henoch",6022
+"Vasospasm, Intracranial",6014
+Delayed Graft Function,6006
+Cone Dystrophy,5998
+Short Bowel Syndrome,5992
+"Leukemia, Erythroblastic, Acute",5984
+Hydatidiform Mole,5984
+Snake Bites,5981
+Glucosephosphate Dehydrogenase Deficiency,5974
+"Muscular Dystrophy, Animal",5966
+Precursor T-Cell Lymphoblastic Leukemia-Lymphoma,5962
+Albinism,5962
+"Glaucoma, Angle-Closure",5957
+Pulmonary Atresia,5956
+"Epilepsies, Myoclonic",5954
+Chorioamnionitis,5953
+"Pain, Procedural",5951
+Tourette Syndrome,5950
+Biliary Atresia,5945
+"Lymphoma, Large-Cell, Anaplastic",5943
+"Gastritis, Atrophic",5932
+Coronary Vasospasm,5923
+Fungemia,5915
+Maxillary Sinusitis,5901
+Syndactyly,5889
+Condylomata Acuminata,5876
+"Candidiasis, Invasive",5869
+"Cystadenocarcinoma, Serous",5865
+Retinal Perforations,5857
+Brugada Syndrome,5848
+"Leukoplakia, Oral",5839
+West Nile Fever,5830
+Xanthomatosis,5818
+Anuria,5817
+"Hearing Loss, Central",5793
+"Hernia, Umbilical",5793
+"Conjunctivitis, Allergic",5792
+Rib Fractures,5780
+"Tuberculosis, Bovine",5771
+Vertebrobasilar Insufficiency,5764
+"Dermatitis, Irritant",5759
+"Hernias, Diaphragmatic, Congenital",5750
+Takotsubo Cardiomyopathy,5748
+Phagocyte Bactericidal Dysfunction,5736
+"Goiter, Nodular",5730
+"Seizures, Febrile",5729
+Hemophilia B,5722
+Charcot-Marie-Tooth Disease,5719
+Legionnaires' Disease,5718
+"Heavy Metal Poisoning, Nervous System",5709
+Bacterial Zoonoses,5704
+Dyspareunia,5701
+"Bites, Human",5697
+Solitary Pulmonary Nodule,5686
+"Sinus Thrombosis, Intracranial",5678
+Esophageal Atresia,5677
+Cerebral Intraventricular Hemorrhage,5671
+Addison Disease,5671
+Bronchiolitis Obliterans,5666
+Abnormal Karyotype,5656
+"Amyloidosis, Familial",5654
+Keloid,5653
+Tick Infestations,5645
+Hirschsprung Disease,5632
+Alopecia Areata,5630
+Restless Legs Syndrome,5622
+Incisional Hernia,5621
+Vulvovaginitis,5619
+Spontaneous Perforation,5616
+Dental Leakage,5611
+Scrapie,5607
+Babesiosis,5605
+Solitary Kidney,5600
+Intestinal Volvulus,5586
+Tics,5576
+Orbital Fractures,5558
+Granular Cell Tumor,5546
+"Fasciitis, Necrotizing",5546
+Muscle Hypotonia,5541
+Coloboma,5534
+Eye Foreign Bodies,5529
+"Lymphohistiocytosis, Hemophagocytic",5528
+Paratyphoid Fever,5525
+Mesenteric Vascular Occlusion,5522
+Pancreatic Pseudocyst,5509
+Placenta Previa,5508
+"Sarcoma, Synovial",5505
+Zygomycosis,5504
+Cytokine Release Syndrome,5499
+Flank Pain,5496
+Hyperandrogenism,5487
+Essential Tremor,5482
+Anhedonia,5480
+"Leukemia, Hairy Cell",5468
+"Hearing Loss, High-Frequency",5465
+Choledocholithiasis,5462
+Bronchial Fistula,5459
+Viral Zoonoses,5455
+"Cholesteatoma, Middle Ear",5441
+"Hearing Loss, Unilateral",5441
+Mediastinitis,5434
+"Brain Hemorrhage, Traumatic",5434
+"Vaginosis, Bacterial",5432
+Hematemesis,5425
+Gingival Recession,5410
+Hemoperitoneum,5407
+Syringomyelia,5388
+Hyperopia,5388
+Gynecomastia,5388
+Fabry Disease,5375
+"Lichen Planus, Oral",5372
+Pyloric Stenosis,5370
+Endoleak,5366
+Chills,5363
+Oligodendroglioma,5362
+Epidermal Cyst,5355
+Osteitis Deformans,5353
+Central Nervous System Cysts,5349
+Simian Acquired Immunodeficiency Syndrome,5347
+Melena,5347
+Trichinellosis,5346
+Trachoma,5345
+Hyperhidrosis,5340
+Takayasu Arteritis,5334
+"Supranuclear Palsy, Progressive",5319
+"Spasms, Infantile",5316
+Torticollis,5311
+Ototoxicity,5310
+Knee Dislocation,5304
+"Scleroderma, Localized",5296
+"Tuberculosis, Gastrointestinal",5295
+Onchocerciasis,5286
+Tracheoesophageal Fistula,5286
+Urinary Bladder Neck Obstruction,5281
+Scabies,5259
+"Carcinoma, Lewis Lung",5251
+Exostoses,5243
+alpha 1-Antitrypsin Deficiency,5236
+"Thrombocythemia, Essential",5230
+Dysuria,5225
+Panniculitis,5222
+"Corneal Dystrophies, Hereditary",5213
+"Hearing Loss, Functional",5209
+Anterior Wall Myocardial Infarction,5201
+Altitude Sickness,5192
+Stuttering,5188
+Thrombotic Stroke,5184
+Temporomandibular Joint Dysfunction Syndrome,5182
+Agenesis of Corpus Callosum,5182
+"Diverticulosis, Colonic",5174
+"Hand Deformities, Congenital",5172
+Graves Ophthalmopathy,5169
+Moyamoya Disease,5166
+Giant Cell Tumor of Bone,5163
+Asbestosis,5148
+"Paraganglioma, Extra-Adrenal",5147
+Laryngitis,5145
+Premenstrual Syndrome,5109
+Carbon Tetrachloride Poisoning,5093
+Chordoma,5091
+Eye Burns,5091
+Familial Mediterranean Fever,5089
+"Embolism, Fat",5077
+Ameloblastoma,5075
+Herpes Genitalis,5071
+Intra-Articular Fractures,5071
+Hypoproteinemia,5070
+"Diverticulitis, Colonic",5068
+Hemangioendothelioma,5052
+Food Intolerance,5048
+Mucocele,5038
+Lentigo,5037
+"Pancreatitis, Acute Necrotizing",5035
+"Hearing Loss, Sudden",5032
+"Histiocytoma, Malignant Fibrous",5029
+Tenosynovitis,5029
+Sialadenitis,5026
+Autolysis,5021
+Hyperammonemia,5017
+Cryoglobulinemia,5016
+"Mixed Tumor, Malignant",5007
+Encephalocele,5007
+"Epilepsy, Complex Partial",4990
+Ileitis,4980
+Meningomyelocele,4975
+Severe Dengue,4967
+Decerebrate State,4967
+Hot Flashes,4941
+"Leukemia, Monocytic, Acute",4913
+Hyperkinesis,4911
+"Encephalitis, Herpes Simplex",4903
+Blast Crisis,4895
+IgA Deficiency,4895
+Erythema Nodosum,4894
+Retinal Artery Occlusion,4889
+Trichostrongyloidiasis,4887
+Neurogenic Inflammation,4887
+Severe Acute Malnutrition,4880
+Heart Murmurs,4878
+Superior Vena Cava Syndrome,4868
+"Disorder of Sex Development, 46,XY",4867
+Rectal Prolapse,4848
+"Epilepsy, Frontal Lobe",4834
+Rosacea,4822
+"Keratitis, Herpetic",4821
+"Cholestasis, Extrahepatic",4817
+Klinefelter Syndrome,4815
+"Aneurysm, Infected",4814
+Proctitis,4808
+"Tuberculosis, Oral",4806
+"Puberty, Delayed",4801
+Clubfoot,4798
+Ehlers-Danlos Syndrome,4789
+Hallux Valgus,4787
+Urinary Bladder Calculi,4784
+"Fractures, Cartilage",4784
+Hand-Foot Syndrome,4777
+"Alveolitis, Extrinsic Allergic",4770
+Breech Presentation,4763
+Onychomycosis,4762
+"Tuberculosis, Miliary",4755
+Scotoma,4753
+"Hemangioma, Capillary",4726
+Pseudotumor Cerebri,4725
+Tardive Dyskinesia,4722
+Tricuspid Valve Stenosis,4721
+Mediastinal Emphysema,4720
+Epiretinal Membrane,4719
+Neurosyphilis,4716
+"Leukoencephalopathy, Progressive Multifocal",4688
+Cluster Headache,4677
+Arteriosclerosis Obliterans,4667
+"Pneumonia, Staphylococcal",4650
+Choroiditis,4647
+"Multiple Sclerosis, Chronic Progressive",4636
+"Upper Extremity Deformities, Congenital",4628
+Multiple Pulmonary Nodules,4624
+Color Vision Defects,4623
+Myxedema,4620
+"Leprosy, Lepromatous",4608
+Cutaneous Fistula,4602
+"Meningitis, Haemophilus",4600
+"Keratosis, Actinic",4597
+"Jaw, Edentulous, Partially",4589
+Hypercalciuria,4587
+Hidradenitis,4582
+"Malocclusion, Angle Class III",4581
+Fascioliasis,4579
+Chylothorax,4579
+von Hippel-Lindau Disease,4570
+Fetal Macrosomia,4564
+Strongyloidiasis,4561
+"Carcinoma, Signet Ring Cell",4554
+Glomus Tumor,4553
+Hyperphosphatemia,4548
+Adrenocortical Carcinoma,4538
+Anovulation,4534
+Neoplasm Seeding,4531
+Tularemia,4526
+"Hemoglobinuria, Paroxysmal",4526
+Bronchial Spasm,4523
+"Urinary Incontinence, Urge",4510
+"Hydrocephalus, Normal Pressure",4508
+Chronic Kidney Disease-Mineral and Bone Disorder,4504
+"Acidosis, Renal Tubular",4497
+"Meningitis, Aseptic",4491
+Sunburn,4487
+Esotropia,4484
+Chondroma,4481
+Hypoplastic Left Heart Syndrome,4476
+Paratuberculosis,4468
+Brachial Plexus Neuropathies,4463
+Muscle Rigidity,4449
+"Pericarditis, Constrictive",4449
+Lymphocytic Choriomeningitis,4431
+Elephantiasis,4431
+Anosmia,4426
+Bruxism,4422
+Prader-Willi Syndrome,4416
+"Dysentery, Amebic",4414
+Botulism,4412
+Dental Calculus,4403
+"Cystitis, Interstitial",4393
+"Carcinoma, Merkel Cell",4387
+Hypernatremia,4387
+"Candidiasis, Vulvovaginal",4385
+Chikungunya Fever,4384
+"Glomerulonephritis, Membranoproliferative",4339
+"Lupus Erythematosus, Discoid",4327
+Tension-Type Headache,4324
+Budd-Chiari Syndrome,4322
+Rett Syndrome,4308
+AIDS Dementia Complex,4300
+Methemoglobinemia,4299
+Sneezing,4291
+"Meningitis, Fungal",4282
+Arnold-Chiari Malformation,4277
+Maxillary Fractures,4277
+Angiomyolipoma,4275
+"Stomatitis, Aphthous",4267
+Spinal Osteophytosis,4262
+Tooth Mobility,4253
+Reflex Sympathetic Dystrophy,4244
+Hepatoblastoma,4241
+Hypesthesia,4233
+Common Variable Immunodeficiency,4223
+Osteochondroma,4221
+Decompression Sickness,4218
+Pseudorabies,4217
+Tooth Discoloration,4214
+"Telangiectasia, Hereditary Hemorrhagic",4211
+"Leukemia, Myelomonocytic, Acute",4201
+"Tachycardia, Reciprocating",4200
+Porcine Reproductive and Respiratory Syndrome,4196
+Pica,4195
+Hidradenitis Suppurativa,4181
+"Toxoplasmosis, Congenital",4181
+Self Mutilation,4181
+"Anemia, Hypoplastic, Congenital",4180
+Puerperal Infection,4179
+"Paraparesis, Spastic",4178
+Aphakia,4177
+Myiasis,4174
+Intracranial Hypotension,4164
+Mouth Breathing,4160
+"Malaria, Cerebral",4156
+"Hematoma, Subdural, Chronic",4141
+"Syphilis, Congenital",4138
+Ovarian Hyperstimulation Syndrome,4137
+Nocturia,4132
+Photophobia,4121
+Exocrine Pancreatic Insufficiency,4119
+"Asthma, Exercise-Induced",4117
+Anencephaly,4116
+Torsades de Pointes,4093
+Trichomonas Vaginitis,4088
+Oliguria,4087
+Anodontia,4082
+"Burns, Inhalation",4076
+Prolactinoma,4075
+Eosinophilic Granuloma,4066
+Sick Sinus Syndrome,4059
+Heat Stroke,4054
+Pyoderma Gangrenosum,4053
+Polyhydramnios,4050
+Salmonella Food Poisoning,4047
+Prognathism,4047
+Meckel Diverticulum,4045
+Vitamin E Deficiency,4044
+Hemangiopericytoma,4041
+Hypokinesia,4038
+Tachypnea,4035
+"Porphyrias, Hepatic",4033
+Leydig Cell Tumor,4023
+Dentin Sensitivity,4020
+Arsenic Poisoning,4020
+Primary Ovarian Insufficiency,4020
+Pterygium,4013
+Root Caries,4010
+Motion Sickness,4010
+Agnosia,4005
+Wet Macular Degeneration,4005
+"Carcinoma, Adenosquamous",4003
+"Carcinoma, Mucoepidermoid",4000
+"Lymphoma, AIDS-Related",3994
+Extravasation of Diagnostic and Therapeutic Materials,3990
+Mycobacterium avium-intracellulare Infection,3987
+Avian Leukosis,3985
+Gait Ataxia,3984
+"Meningitis, Cryptococcal",3983
+Polydactyly,3983
+Granulosa Cell Tumor,3980
+Pulpitis,3972
+"Fractures, Avulsion",3972
+Gastroparesis,3971
+Miosis,3967
+Radiation Pneumonitis,3962
+Tuberculoma,3952
+Lipomatosis,3949
+Cerebral Amyloid Angiopathy,3942
+Pityriasis,3934
+Invasive Pulmonary Aspergillosis,3932
+22q11 Deletion Syndrome,3927
+Hemianopsia,3927
+Bone Malalignment,3907
+Sickle Cell Trait,3894
+Leukemia P388,3891
+"Encephalopathy, Bovine Spongiform",3869
+Injection Site Reaction,3868
+Lactose Intolerance,3863
+Toothache,3858
+Intestinal Pseudo-Obstruction,3856
+"Granuloma, Foreign-Body",3853
+Fibroadenoma,3844
+Specific Language Disorder,3844
+"Chemical and Drug Induced Liver Injury, Chronic",3835
+Peri-Implantitis,3834
+"Diverticulum, Colon",3824
+Catatonia,3824
+Bicuspid Aortic Valve Disease,3824
+Organophosphate Poisoning,3819
+Eosinophilic Esophagitis,3815
+Intestinal Atresia,3814
+Placenta Accreta,3814
+Persistent Vegetative State,3813
+Catalepsy,3812
+Hydrops Fetalis,3801
+Fanconi Syndrome,3798
+Tooth Erosion,3797
+Sertoli-Leydig Cell Tumor,3794
+Open Bite,3793
+Arachnoid Cysts,3789
+Pallor,3780
+"Hematoma, Subdural, Intracranial",3779
+Coccidioidomycosis,3778
+"Neoplasm Regression, Spontaneous",3777
+Corneal Neovascularization,3774
+"Hematoma, Epidural, Cranial",3747
+Water Intoxication,3742
+"Thyroid Carcinoma, Anaplastic",3739
+Middle Lobe Syndrome,3737
+Nephrocalcinosis,3720
+Wiskott-Aldrich Syndrome,3720
+Diabetic Coma,3714
+"Carcinoma, Islet Cell",3708
+Myotonia,3699
+Sarcoma 180,3690
+Cerebrospinal Fluid Rhinorrhea,3683
+Castleman Disease,3681
+Tooth Abrasion,3677
+Polydipsia,3674
+Folliculitis,3671
+"Bronchiolitis, Viral",3666
+"Carotid Artery, Internal, Dissection",3662
+Dextrocardia,3662
+Polymyalgia Rheumatica,3661
+Retroperitoneal Fibrosis,3644
+Zollinger-Ellison Syndrome,3634
+Fibrocystic Breast Disease,3633
+Osteopetrosis,3627
+Hemosiderosis,3619
+Ring Chromosomes,3618
+"Diverticulosis, Esophageal",3615
+"Granuloma, Giant Cell",3612
+Epididymitis,3609
+Candidemia,3605
+Neurocysticercosis,3605
+"Cicatrix, Hypertrophic",3604
+Placental Insufficiency,3599
+"Tachycardia, Atrioventricular Nodal Reentry",3592
+"Otitis Media, Suppurative",3588
+Adenomyosis,3587
+Ehrlichiosis,3584
+"Dermatitis, Seborrheic",3583
+"Encephalomyelitis, Acute Disseminated",3581
+Bluetongue,3580
+Mediastinal Cyst,3580
+"Vitreoretinopathy, Proliferative",3580
+"Liver Abscess, Amebic",3569
+Hemorrhagic Fever with Renal Syndrome,3566
+"Osteoma, Osteoid",3564
+"Stroke, Lacunar",3564
+Hyaline Membrane Disease,3563
+Feminization,3561
+Meningocele,3556
+Dental Pulp Necrosis,3548
+"Burns, Electric",3546
+White Muscle Disease,3545
+"Diverticulum, Esophageal",3543
+Macrophage Activation Syndrome,3538
+"Cerebral Hemorrhage, Traumatic",3530
+Apraxias,3525
+Dysgammaglobulinemia,3524
+Trismus,3514
+"Fluorosis, Dental",3485
+Leg Length Inequality,3481
+Gingival Overgrowth,3472
+Nelson Syndrome,3466
+"Sarcoma, Myeloid",3465
+Diabetic Cardiomyopathies,3463
+Primary Graft Dysfunction,3462
+Rheumatoid Vasculitis,3455
+Chorioretinitis,3449
+"Tuberculosis, Cardiovascular",3436
+Lice Infestations,3431
+Melioidosis,3427
+"Goiter, Endemic",3420
+Encephalomalacia,3417
+Trigeminal Autonomic Cephalalgias,3407
+Tetany,3406
+Noma,3404
+Choline Deficiency,3402
+"Granuloma, Plasma Cell",3401
+"Leprosy, Multibacillary",3399
+Thromboangiitis Obliterans,3399
+Epidural Abscess,3393
+Otitis Externa,3392
+Lacrimal Duct Obstruction,3385
+Hypersplenism,3384
+Wallerian Degeneration,3377
+Dermatitis Herpetiformis,3376
+Orchitis,3373
+Anomalous Left Coronary Artery,3373
+Autoimmune Pancreatitis,3368
+Aggressive Periodontitis,3367
+Myocardial Stunning,3361
+"Echinococcosis, Pulmonary",3356
+DiGeorge Syndrome,3339
+Gastric Dilatation,3338
+Ventricular Flutter,3336
+"Hand, Foot and Mouth Disease",3335
+Ecchymosis,3330
+Aortitis,3327
+Osteochondrosis,3326
+"Wasting Disease, Chronic",3325
+Adrenocortical Adenoma,3324
+"Micronuclei, Chromosome-Defective",3323
+Pseudophakia,3318
+Periprosthetic Fractures,3307
+Vertebral Artery Dissection,3304
+Metrorrhagia,3302
+"Keratoderma, Palmoplantar",3302
+"Joint Deformities, Acquired",3295
+Exotropia,3287
+Synovial Cyst,3285
+Ganglioneuroma,3278
+Werner Syndrome,3271
+Oligohydramnios,3265
+Egg Hypersensitivity,3259
+"Nose Deformities, Acquired",3254
+Priapism,3254
+Hyperoxaluria,3254
+"Anus, Imperforate",3251
+Monoclonal Gammopathy of Undetermined Significance,3250
+Hepatitis D,3240
+Anti-Glomerular Basement Membrane Disease,3239
+Blastomycosis,3230
+Churg-Strauss Syndrome,3230
+"Dermatitis, Exfoliative",3220
+Hemarthrosis,3219
+Gingival Hemorrhage,3216
+"Hematoma, Subdural, Acute",3211
+"Optic Neuropathy, Ischemic",3206
+Arrhythmogenic Right Ventricular Dysplasia,3206
+"Carcinoma, Giant Cell",3202
+HELLP Syndrome,3202
+Nocturnal Enuresis,3197
+Breast Cancer Lymphedema,3196
+"Syncope, Vasovagal",3194
+Choledochal Cyst,3181
+Friedreich Ataxia,3181
+"Pancreatitis, Alcoholic",3177
+Hypertelorism,3176
+Immunoglobulin Light-chain Amyloidosis,3162
+Bile Reflux,3156
+Arthrogryposis,3152
+Tympanic Membrane Perforation,3145
+Rhabdoid Tumor,3143
+Laryngostenosis,3142
+Flatfoot,3139
+Spermatic Cord Torsion,3137
+Brain Contusion,3135
+Peanut Hypersensitivity,3135
+Flatulence,3135
+"Leukemia, Myelomonocytic, Chronic",3130
+Osteophyte,3129
+"Rhabdomyosarcoma, Embryonal",3128
+Hypertensive Encephalopathy,3125
+Thoracic Outlet Syndrome,3125
+Classical Swine Fever,3122
+"Scleroderma, Limited",3116
+Mutism,3115
+Scarlet Fever,3109
+Achondroplasia,3095
+Distemper,3082
+"Lymphangioma, Cystic",3080
+"Hand Deformities, Acquired",3079
+Cocarcinogenesis,3075
+Marek Disease,3073
+Mixed Connective Tissue Disease,3067
+Non-ST Elevated Myocardial Infarction,3065
+Kwashiorkor,3065
+"Tooth, Supernumerary",3064
+Mydriasis,3064
+Renal Colic,3064
+Mycotoxicosis,3063
+Chagas Cardiomyopathy,3061
+"Dwarfism, Pituitary",3057
+Mastoiditis,3056
+Inappropriate ADH Syndrome,3055
+Cytomegalovirus Retinitis,3051
+Leigh Disease,3051
+"Abortion, Threatened",3048
+Toxocariasis,3047
+Whipple Disease,3046
+Psittacosis,3045
+Hepatorenal Syndrome,3044
+Abruptio Placentae,3041
+Discitis,3037
+Brenner Tumor,3037
+Acute Radiation Syndrome,3036
+Yin Deficiency,3034
+"Elephantiasis, Filarial",3032
+Latex Hypersensitivity,3030
+Decapitation,3030
+Vesicovaginal Fistula,3026
+"Adenoma, Liver Cell",3021
+"Osteoarthritis, Spine",3019
+Endomyocardial Fibrosis,3018
+Fibromuscular Dysplasia,3011
+Gas Gangrene,3005
+"Red-Cell Aplasia, Pure",3000
+Dupuytren Contracture,2999
+"Rickets, Hypophosphatemic",2997
+Bladder Exstrophy,2991
+"Spherocytosis, Hereditary",2980
+"Leukomalacia, Periventricular",2975
+Leukemic Infiltration,2974
+Hyphema,2974
+Azotemia,2972
+Anaplasmosis,2971
+Amyloid Neuropathies,2960
+Phantom Limb,2939
+Polyradiculopathy,2937
+Mitochondrial Encephalomyopathies,2934
+Scurvy,2934
+"Cystadenoma, Mucinous",2925
+Monkeypox,2918
+"Pregnancy, Interstitial",2915
+Overbite,2910
+Tooth Avulsion,2898
+Funnel Chest,2897
+"Adenoma, Sweat Gland",2896
+Neuroleptic Malignant Syndrome,2895
+Retinal Drusen,2891
+"Carcinoma 256, Walker",2887
+Job Syndrome,2886
+Sezary Syndrome,2884
+"Endocarditis, Subacute Bacterial",2883
+"Adenoma, Bile Duct",2881
+"Nephrosis, Lipoid",2880
+Erysipelas,2876
+"Endocarditis, Non-Infective",2870
+Weil Disease,2866
+REM Sleep Behavior Disorder,2860
+"Arthritis, Gouty",2858
+Tick Bites,2858
+Scrub Typhus,2856
+Dirofilariasis,2853
+Central Cord Syndrome,2853
+"Neuralgia, Postherpetic",2853
+Uterine Cervicitis,2852
+Galactorrhea,2847
+Multiple Endocrine Neoplasia Type 1,2845
+Osteoradionecrosis,2844
+African Swine Fever,2843
+Central Serous Chorioretinopathy,2839
+Acrodermatitis,2838
+Salpingitis,2837
+Hypocapnia,2837
+Subacute Sclerosing Panencephalitis,2829
+"Optic Atrophies, Hereditary",2825
+"Hematoma, Epidural, Spinal",2824
+Tinea Capitis,2813
+Frostbite,2812
+Corneal Endothelial Cell Loss,2811
+Mycetoma,2800
+"Aspergillosis, Allergic Bronchopulmonary",2795
+Focal Nodular Hyperplasia,2791
+"Tuberculosis, Female Genital",2789
+Gastroschisis,2787
+Radiodermatitis,2778
+Familial Primary Pulmonary Hypertension,2774
+Ulnar Neuropathies,2772
+Bowen's Disease,2769
+Osteochondritis Dissecans,2761
+Fetal Resorption,2761
+Schistosomiasis japonica,2760
+Sertoli Cell Tumor,2760
+"Vasculitis, Leukocytoclastic, Cutaneous",2758
+Bezoars,2756
+Extensively Drug-Resistant Tuberculosis,2754
+Dental Enamel Hypoplasia,2754
+"Mastocytosis, Systemic",2753
+Noonan Syndrome,2752
+Retinal Vasculitis,2752
+Hypertrichosis,2751
+"Aortic Stenosis, Supravalvular",2750
+"Hyperbilirubinemia, Hereditary",2750
+"Keratitis, Dendritic",2749
+Gangliosidoses,2748
+Smear Layer,2743
+Horner Syndrome,2743
+Vascular Headaches,2742
+Peritoneal Fibrosis,2741
+CREST Syndrome,2740
+"Adenocarcinoma, Bronchiolo-Alveolar",2732
+Serum Sickness,2730
+Spotted Fever Group Rickettsiosis,2729
+"Carcinoma, Acinar Cell",2727
+Laryngeal Edema,2711
+Vitamin K Deficiency,2710
+"Subarachnoid Hemorrhage, Traumatic",2700
+Androgen-Insensitivity Syndrome,2697
+Prostatic Intraepithelial Neoplasia,2695
+"Encephalomyelitis, Equine",2690
+Benign Paroxysmal Positional Vertigo,2688
+Phyllodes Tumor,2687
+"Cystadenocarcinoma, Mucinous",2681
+Channelopathies,2680
+Peutz-Jeghers Syndrome,2679
+Shoulder Impingement Syndrome,2677
+Muscle Cramp,2676
+Cat-Scratch Disease,2669
+"Toxoplasmosis, Ocular",2660
+Acanthosis Nigricans,2657
+Hemangioblastoma,2651
+Teratocarcinoma,2650
+"Focal Infection, Dental",2647
+Afibrinogenemia,2641
+Steatorrhea,2639
+Myositis Ossificans,2638
+Cadmium Poisoning,2630
+Adrenoleukodystrophy,2628
+Patellar Dislocation,2627
+Chondrocalcinosis,2618
+Sweet Syndrome,2617
+Mandibulofacial Dysostosis,2616
+"Brucellosis, Bovine",2615
+Intra-Abdominal Hypertension,2608
+Nephrosclerosis,2597
+Duodenitis,2596
+Microphthalmos,2593
+"Amyloid Neuropathies, Familial",2586
+Catastrophic Illness,2581
+Schistosomiasis haematobia,2579
+Pyuria,2574
+"Adenoma, Villous",2574
+"Spastic Paraplegia, Hereditary",2572
+"Tooth, Unerupted",2570
+Exfoliation Syndrome,2570
+Presbyopia,2568
+Uniparental Disomy,2564
+Night Blindness,2563
+"Alkalosis, Respiratory",2561
+Gingival Hyperplasia,2554
+Sacroiliitis,2551
+Femoracetabular Impingement,2549
+Carotid Body Tumor,2547
+"Tooth, Nonvital",2546
+Relapsing Fever,2544
+"Polyradiculoneuropathy, Chronic Inflammatory Demyelinating",2544
+Central Nervous System Helminthiasis,2543
+Dumping Syndrome,2539
+Elbow Tendinopathy,2537
+Trichuriasis,2536
+"Substance Abuse, Oral",2536
+"Colitis, Microscopic",2532
+Squamous Intraepithelial Lesions of the Cervix,2530
+Tennis Elbow,2530
+"Hernia, Femoral",2526
+Malignant Carcinoid Syndrome,2525
+Insulin Coma,2525
+"Nondisjunction, Genetic",2524
+Travel-Related Illness,2517
+Siderosis,2514
+Hemifacial Spasm,2513
+"Paraparesis, Tropical Spastic",2510
+Masked Hypertension,2509
+"Embolism, Paradoxical",2508
+"Cardiomyopathy, Restrictive",2507
+Frontal Sinusitis,2500
+"Fibromatosis, Aggressive",2500
+Ectropion,2500
+"Epiphyses, Slipped",2498
+Ectromelia,2497
+"Colitis, Ischemic",2493
+Retrognathia,2492
+Paracoccidioidomycosis,2491
+"Infarction, Anterior Cerebral Artery",2482
+Carotid-Cavernous Sinus Fistula,2479
+Keratoacanthoma,2474
+Teratogenesis,2471
+Dental Pulp Exposure,2469
+"Menopause, Premature",2469
+"Dentin, Secondary",2467
+Pleuropneumonia,2466
+Uterine Perforation,2466
+Sporotrichosis,2463
+Scleritis,2461
+"Heart Rupture, Post-Infarction",2458
+Spina Bifida Occulta,2456
+Velopharyngeal Insufficiency,2455
+Inferior Wall Myocardial Infarction,2454
+Homocystinuria,2447
+Testicular Hydrocele,2443
+Dermatofibrosarcoma,2440
+Leg Dermatoses,2435
+"Adenoma, Oxyphilic",2432
+Dacryocystitis,2430
+Progeria,2428
+"Leukemia, Feline",2426
+"Muscular Dystrophies, Limb-Girdle",2426
+"Anemia, Sideroblastic",2426
+"Nephritis, Hereditary",2420
+Stomach Rupture,2419
+Pilonidal Sinus,2418
+Renal Aminoacidurias,2417
+Lupus Vulgaris,2408
+"Toxoplasmosis, Cerebral",2405
+"Typhus, Epidemic Louse-Borne",2403
+Zygomatic Fractures,2402
+"Psychoses, Alcoholic",2396
+Adenofibroma,2393
+Penile Induration,2393
+Theileriasis,2391
+Hydrothorax,2383
+Diffuse Cerebral Sclerosis of Schilder,2383
+Blepharospasm,2383
+Retrograde Degeneration,2381
+"Sarcoma, Yoshida",2380
+Cauda Equina Syndrome,2380
+"Mastocytosis, Cutaneous",2379
+Chemotherapy-Induced Febrile Neutropenia,2378
+Tooth Migration,2377
+"Placenta, Retained",2376
+"Angina Pectoris, Variant",2376
+Neuronal Ceroid-Lipofuscinoses,2373
+"Tuberculosis, Hepatic",2370
+Microscopic Polyangiitis,2366
+Rift Valley Fever,2363
+"Granuloma, Pyogenic",2358
+Protein-Losing Enteropathies,2355
+"Infarction, Posterior Cerebral Artery",2354
+"Porphyria, Acute Intermittent",2352
+Dentigerous Cyst,2351
+Fetofetal Transfusion,2349
+Fissure in Ano,2348
+Pulmonary Alveolar Proteinosis,2345
+"Hypophosphatemia, Familial",2343
+"Sarcoma, Clear Cell",2341
+Exsanguination,2341
+Galactosemias,2340
+"Tuberculosis, Ocular",2339
+Double Outlet Right Ventricle,2338
+"Carcinoma, Verrucous",2337
+Ovarian Torsion,2335
+CHARGE Syndrome,2333
+"Epilepsy, Reflex",2332
+Mast-Cell Sarcoma,2331
+Legg-Calve-Perthes Disease,2331
+Rectovaginal Fistula,2331
+Cheilitis,2330
+Alcohol Withdrawal Delirium,2328
+Hypolipoproteinemias,2328
+Ebstein Anomaly,2327
+Prehypertension,2326
+"Blindness, Cortical",2323
+Myoglobinuria,2319
+Immunoglobulin G4-Related Disease,2319
+Holoprosencephaly,2318
+Blepharitis,2318
+Angiofibroma,2317
+Bovine Virus Diarrhea-Mucosal Disease,2309
+Capsule Opacification,2306
+Vitamin B 6 Deficiency,2306
+Riboflavin Deficiency,2305
+Atrial Premature Complexes,2304
+Morning Sickness,2303
+Bronchopulmonary Sequestration,2300
+"Nails, Malformed",2299
+Mesonephroma,2292
+Arachnoiditis,2290
+Mucoepidermoid Tumor,2289
+REM Sleep Parasomnias,2288
+"Glaucoma, Neovascular",2287
+Porphyria Cutanea Tarda,2286
+"Bone Cysts, Aneurysmal",2285
+Pneumocephalus,2283
+Hyperemesis Gravidarum,2281
+Corneal Perforation,2280
+Ossification of Posterior Longitudinal Ligament,2276
+Tricuspid Atresia,2275
+"Twins, Conjoined",2271
+Hereditary Sensory and Autonomic Neuropathies,2267
+"Leprosy, Tuberculoid",2263
+Leiomyomatosis,2263
+Limbic Encephalitis,2262
+Angiodysplasia,2261
+Lens Subluxation,2257
+Halitosis,2257
+Splenic Infarction,2250
+Cataplexy,2244
+Oxyuriasis,2242
+White Coat Hypertension,2240
+"Nystagmus, Congenital",2236
+Glycogen Storage Disease Type II,2235
+Wernicke Encephalopathy,2235
+"Still's Disease, Adult-Onset",2234
+Growth Hormone-Secreting Pituitary Adenoma,2233
+Metatarsal Valgus,2231
+Geographic Atrophy,2231
+Thymus Hyperplasia,2231
+Tetraploidy,2230
+"Dental Occlusion, Traumatic",2228
+Impetigo,2226
+"Encephalitis, California",2219
+Bisphosphonate-Associated Osteonecrosis of the Jaw,2218
+Gigantism,2217
+Subclavian Steal Syndrome,2213
+Molluscum Contagiosum,2202
+Fasciculation,2201
+"Cystadenoma, Serous",2199
+Osteochondromatosis,2198
+Nut and Peanut Hypersensitivity,2198
+Anisometropia,2193
+Immune Reconstitution Inflammatory Syndrome,2192
+Intraoperative Awareness,2189
+Presbycusis,2188
+"Leprosy, Paucibacillary",2184
+"Paget Disease, Extramammary",2183
+"Rhabdomyosarcoma, Alveolar",2181
+Microsporidiosis,2178
+Periapical Abscess,2174
+Antithrombin III Deficiency,2174
+"Myositis, Inclusion Body",2172
+Croup,2165
+Darier Disease,2164
+Acanthamoeba Keratitis,2162
+Premature Ejaculation,2156
+Prurigo,2155
+Protein C Deficiency,2151
+"Melanoma, Amelanotic",2149
+Tibial Neuropathy,2144
+"Ichthyosiform Erythroderma, Congenital",2137
+Larva Migrans,2136
+Neurofibromatosis 2,2136
+Mesenchymoma,2131
+"Candidiasis, Cutaneous",2127
+Endocardial Fibroelastosis,2126
+Gardner Syndrome,2124
+Orbital Cellulitis,2122
+"Hamartoma Syndrome, Multiple",2121
+Neonatal Abstinence Syndrome,2121
+Pseudoxanthoma Elasticum,2120
+Dental Fistula,2118
+"Peritonitis, Tuberculous",2112
+"Meningitis, Escherichia coli",2109
+Vocal Cord Dysfunction,2109
+"Epilepsy, Post-Traumatic",2109
+Duodenogastric Reflux,2108
+Angelman Syndrome,2104
+Diffuse Axonal Injury,2101
+Bronchogenic Cyst,2100
+Pituitary ACTH Hypersecretion,2096
+Fused Kidney,2096
+Post-Concussion Syndrome,2093
+Choroid Hemorrhage,2092
+"Hernia, Diaphragmatic, Traumatic",2092
+Ventricular Septal Rupture,2091
+Univentricular Heart,2089
+Basal Ganglia Hemorrhage,2086
+Mushroom Poisoning,2083
+Idiopathic Interstitial Pneumonias,2081
+Heat Exhaustion,2081
+Pseudopseudohypoparathyroidism,2071
+"ACTH Syndrome, Ectopic",2067
+Mastocytoma,2063
+Lymphogranuloma Venereum,2062
+Pseudohypoparathyroidism,2062
+Salivary Calculi,2058
+Hepatic Veno-Occlusive Disease,2056
+Posterior Leukoencephalopathy Syndrome,2056
+"Akathisia, Drug-Induced",2048
+Tumor Lysis Syndrome,2048
+"Adenoma, Chromophobe",2041
+Bloom Syndrome,2041
+"Abortion, Missed",2040
+Lymphangioleiomyomatosis,2039
+"Conjunctivitis, Viral",2038
+Factor VII Deficiency,2037
+Atypical Hemolytic Uremic Syndrome,2031
+Pinealoma,2030
+Entamoebiasis,2027
+"Aphasia, Primary Progressive",2026
+Iritis,2024
+Ganglion Cysts,2022
+Kidney Cortex Necrosis,2021
+Tinea Pedis,2019
+"Lymphoma, Primary Effusion",2019
+Ethmoid Sinusitis,2015
+Microvascular Angina,2015
+"Osteoarthropathy, Secondary Hypertrophic",2009
+"Leukemia, Mast-Cell",2006
+Tracheitis,2002
+"Fractures, Malunited",2001
+Bell Palsy,1998
+Emaciation,1995
+Shellfish Poisoning,1995
+Status Asthmaticus,1994
+Stupor,1994
+Laryngopharyngeal Reflux,1991
+Bartter Syndrome,1985
+"Cystadenocarcinoma, Papillary",1972
+"Papilloma, Inverted",1972
+Keratoconjunctivitis Sicca,1966
+"Sinus Arrest, Cardiac",1964
+Radicular Cyst,1963
+Mucopolysaccharidosis I,1963
+"Aphakia, Postcataract",1962
+Furunculosis,1961
+Hepatic Infarction,1960
+Periodontal Cyst,1958
+"Histiocytosis, Sinus",1958
+"Hemangioma, Cavernous, Central Nervous System",1956
+Pneumatosis Cystoides Intestinalis,1953
+"Lymphoma, Extranodal NK-T-Cell",1948
+"Pneumonia, Necrotizing",1942
+Diastema,1937
+"Nevus, Blue",1935
+Sinoatrial Block,1934
+"Stenosis, Pulmonary Vein",1933
+"Pneumonia, Lipid",1929
+Tay-Sachs Disease,1929
+"Fibroma, Ossifying",1928
+Chylous Ascites,1924
+Superior Mesenteric Artery Syndrome,1923
+MELAS Syndrome,1914
+Chromosome Fragility,1911
+"Hemorrhagic Fever, Crimean",1905
+Pseudomyxoma Peritonei,1905
+Cystinuria,1904
+Anti-N-Methyl-D-Aspartate Receptor Encephalitis,1900
+Opisthorchiasis,1899
+"Abortion, Incomplete",1898
+"Keratosis, Seborrheic",1895
+"Fasciitis, Plantar",1893
+"Gangliosidoses, GM2",1885
+"Arthropathy, Neurogenic",1883
+Kernicterus,1881
+Aniridia,1880
+Lymphocele,1878
+MPTP Poisoning,1876
+"Amnesia, Retrograde",1874
+Sialorrhea,1869
+Breakthrough Pain,1869
+Adenolymphoma,1867
+Protein S Deficiency,1864
+Meconium Aspiration Syndrome,1862
+"Aphasia, Broca",1861
+"Pyloric Stenosis, Hypertrophic",1858
+Smoke Inhalation Injury,1858
+Beckwith-Wiedemann Syndrome,1854
+"Polychondritis, Relapsing",1853
+Achlorhydria,1853
+"Fibrous Dysplasia, Polyostotic",1852
+"Myopia, Degenerative",1852
+Psoas Abscess,1850
+Basal Cell Nevus Syndrome,1850
+Andersen Syndrome,1850
+Neoplasm Micrometastasis,1847
+Dysgeusia,1846
+Sturge-Weber Syndrome,1845
+Multiple Endocrine Neoplasia Type 2a,1845
+"Leishmaniasis, Mucocutaneous",1843
+Pouchitis,1839
+Lissencephaly,1837
+"Adenocarcinoma, Scirrhous",1836
+Pierre Robin Syndrome,1833
+Ancylostomiasis,1831
+Brachial Plexus Neuritis,1827
+Pseudolymphoma,1822
+Reye Syndrome,1821
+Enophthalmos,1821
+"Albinism, Oculocutaneous",1820
+Stomach Volvulus,1818
+"Tachycardia, Ectopic Atrial",1816
+Pick Disease of the Brain,1813
+Retinoschisis,1813
+Breast Cyst,1812
+Neurodermatitis,1810
+Osteitis Fibrosa Cystica,1809
+Hemobilia,1808
+"Hemangioendothelioma, Epithelioid",1804
+Fuchs' Endothelial Dystrophy,1801
+Xerophthalmia,1800
+Kuru,1799
+Salivary Gland Calculi,1798
+Brain Stem Infarctions,1797
+Herpes Zoster Ophthalmicus,1792
+Oligomenorrhea,1792
+Persistent Left Superior Vena Cava,1791
+Iridocyclitis,1789
+Oral Submucous Fibrosis,1786
+Rocky Mountain Spotted Fever,1785
+"Abortion, Septic",1783
+"Liver Abscess, Pyogenic",1774
+"Myoclonic Epilepsies, Progressive",1774
+"Rubella Syndrome, Congenital",1773
+"Diabetes Insipidus, Nephrogenic",1767
+Shoulder Dystocia,1760
+Wheat Hypersensitivity,1760
+Adams-Stokes Syndrome,1758
+Endarteritis,1758
+Compassion Fatigue,1757
+Calciphylaxis,1756
+"Cystadenoma, Papillary",1748
+Gastrinoma,1748
+Aortopulmonary Septal Defect,1745
+No-Reflow Phenomenon,1740
+"Cardiomyopathy, Hypertrophic, Familial",1734
+Opiate Overdose,1731
+Giant Cell Tumor of Tendon Sheath,1728
+"Dementia, Multi-Infarct",1728
+Patellofemoral Pain Syndrome,1727
+"Hyperoxaluria, Primary",1726
+"Liposarcoma, Myxoid",1725
+Paronychia,1723
+Endodermal Sinus Tumor,1723
+Rhabdomyoma,1719
+"Leukodystrophy, Metachromatic",1719
+Granuloma Annulare,1719
+ACTH-Secreting Pituitary Adenoma,1717
+Spinal Muscular Atrophies of Childhood,1717
+Epiglottitis,1715
+"Asthma, Aspirin-Induced",1715
+"Tooth Eruption, Ectopic",1711
+"Glycosuria, Renal",1709
+Acrocephalosyndactylia,1708
+Uterine Cervical Incompetence,1708
+Lichen Sclerosus et Atrophicus,1706
+Hyperesthesia,1705
+Peroneal Neuropathies,1703
+"Stomatitis, Denture",1701
+"Embolism, Cholesterol",1697
+Triploidy,1696
+Arterio-Arterial Fistula,1694
+Small Fiber Neuropathy,1693
+Ureterocele,1692
+Cystinosis,1692
+Thyroglossal Cyst,1690
+Micrognathism,1688
+Lennox Gastaut Syndrome,1688
+Athetosis,1684
+Activated Protein C Resistance,1681
+Phimosis,1676
+Periarthritis,1675
+Pellagra,1674
+Sarcocystosis,1673
+Aberrant Crypt Foci,1673
+"Rhinitis, Atrophic",1673
+"Thyroiditis, Subacute",1670
+Mucopolysaccharidosis II,1667
+Histiocytic Sarcoma,1666
+Aortic Valve Prolapse,1659
+Pituitary Apoplexy,1655
+"Anemia, Refractory, with Excess of Blasts",1655
+Lymphangiomyoma,1654
+Optic Nerve Glioma,1654
+"Synovitis, Pigmented Villonodular",1650
+Haemonchiasis,1645
+Urticaria Pigmentosa,1644
+Acantholysis,1643
+Crush Syndrome,1638
+Manganese Poisoning,1633
+"Muscular Dystrophy, Facioscapulohumeral",1630
+"Myopathies, Structural, Congenital",1629
+CADASIL,1626
+Severe Fever with Thrombocytopenia Syndrome,1618
+Macroglossia,1617
+"Sarcoma, Endometrial Stromal",1616
+"Exostoses, Multiple Hereditary",1612
+Serositis,1611
+Port-Wine Stain,1608
+Ganglioglioma,1607
+"Paralyses, Familial Periodic",1607
+Li-Fraumeni Syndrome,1603
+Kartagener Syndrome,1602
+Acalculous Cholecystitis,1601
+"Syphilis, Cutaneous",1600
+Leukoaraiosis,1598
+Thrombasthenia,1592
+Chediak-Higashi Syndrome,1589
+"Meningitis, Listeria",1584
+Body-Weight Trajectory,1584
+Lymphangitis,1582
+Arthus Reaction,1582
+Nasopharyngitis,1577
+Rectocele,1575
+"Ophthalmoplegia, Chronic Progressive External",1573
+Fraser Syndrome,1569
+Immunoblastic Lymphadenopathy,1569
+Anaplasia,1568
+Lyme Neuroborreliosis,1567
+Hypophysitis,1567
+"Leprosy, Borderline",1563
+Flea Infestations,1563
+Periostitis,1562
+Parakeratosis,1561
+Lymphangiectasis,1560
+Biliary Dyskinesia,1558
+Cystocele,1556
+Anomia,1555
+"Embolism, Amniotic Fluid",1555
+HIV-Associated Lipodystrophy Syndrome,1551
+Cardio-Renal Syndrome,1551
+Peritonsillar Abscess,1549
+Cavernous Sinus Thrombosis,1548
+Spider Bites,1548
+Herpes Labialis,1546
+Maple Syrup Urine Disease,1545
+"Leukemia, Prolymphocytic",1541
+"Gonadal Dysgenesis, 46,XY",1541
+Subphrenic Abscess,1540
+Factor XI Deficiency,1537
+Infectious Bovine Rhinotracheitis,1535
+Tooth Attrition,1535
+Glycogen Storage Disease Type I,1535
+Sudden Unexpected Death in Epilepsy,1533
+Odontoma,1532
+Kidney Papillary Necrosis,1531
+Cytochrome-c Oxidase Deficiency,1531
+Follicular Cyst,1527
+Chondromatosis,1527
+Chondroblastoma,1526
+"Myoclonic Epilepsy, Juvenile",1526
+Asthenozoospermia,1525
+Myoepithelioma,1523
+Joint Loose Bodies,1518
+"Angioedemas, Hereditary",1517
+Epidermolysis Bullosa Dystrophica,1516
+Burning Mouth Syndrome,1514
+Lassa Fever,1513
+"Pemphigoid, Benign Mucous Membrane",1513
+"Sprue, Tropical",1506
+Choanal Atresia,1499
+Entropion,1498
+Hemorrhagic Septicemia,1497
+"Dysautonomia, Familial",1496
+Post-Traumatic Headache,1493
+Tendon Entrapment,1491
+Fetomaternal Transfusion,1486
+Paragonimiasis,1485
+Glossitis,1480
+De Lange Syndrome,1480
+Klippel-Trenaunay-Weber Syndrome,1480
+Branchioma,1474
+Radial Neuropathy,1473
+"Leukemia, Megakaryoblastic, Acute",1472
+Bardet-Biedl Syndrome,1472
+"Amnesia, Anterograde",1472
+Staghorn Calculi,1472
+"Anticipation, Genetic",1467
+Implant Capsular Contracture,1465
+Fecal Impaction,1464
+Sleep Bruxism,1463
+"Dermatitis, Phototoxic",1462
+Hypertensive Retinopathy,1460
+Capillary Leak Syndrome,1458
+Postthrombotic Syndrome,1454
+"Polyendocrinopathies, Autoimmune",1453
+Preleukemia,1451
+Dental Fissures,1450
+Lesch-Nyhan Syndrome,1446
+Ocular Hypotension,1445
+"Diabetes Insipidus, Neurogenic",1443
+Dandy-Walker Syndrome,1442
+Hiccup,1442
+Near Drowning,1441
+Uveomeningoencephalitic Syndrome,1438
+Mucopolysaccharidosis IV,1434
+POEMS Syndrome,1433
+Thyroid Crisis,1428
+"Uveitis, Intermediate",1426
+Meningeal Carcinomatosis,1423
+Vulvar Lichen Sclerosus,1419
+Obesity Hypoventilation Syndrome,1417
+Cryptogenic Organizing Pneumonia,1414
+Hypohidrosis,1412
+Basal Ganglia Cerebrovascular Disease,1404
+"Epilepsy, Partial, Motor",1403
+Meibomian Gland Dysfunction,1401
+Cafe-au-Lait Spots,1400
+Mesenteric Cyst,1396
+Cockayne Syndrome,1393
+Machado-Joseph Disease,1391
+Agraphia,1391
+"Neurofibroma, Plexiform",1386
+Slipped Capital Femoral Epiphyses,1386
+Brachydactyly,1386
+Ecthyma,1384
+Osteoblastoma,1383
+Erythema Infectiosum,1382
+Failed Back Surgery Syndrome,1382
+"Encephalitis, St. Louis",1380
+Low Tension Glaucoma,1374
+Dental Pulp Calcification,1373
+"Ear Deformities, Acquired",1372
+Alkaptonuria,1372
+Neuroaxonal Dystrophies,1367
+Persistent Fetal Circulation Syndrome,1364
+"Cystic Adenomatoid Malformation of Lung, Congenital",1363
+Miller Fisher Syndrome,1362
+Corneal Wavefront Aberration,1362
+Single Umbilical Artery,1362
+Hypophosphatasia,1354
+"Cardiomyopathy, Alcoholic",1352
+Livedo Reticularis,1352
+Scimitar Syndrome,1351
+"Impotence, Vasculogenic",1351
+"Xanthogranuloma, Juvenile",1349
+Sulfatidosis,1347
+Anterior Compartment Syndrome,1343
+Hepatopulmonary Syndrome,1343
+Subdural Effusion,1342
+Sagittal Sinus Thrombosis,1342
+Balanitis,1340
+"Polycystic Kidney, Autosomal Recessive",1340
+Tracheomalacia,1339
+Sleep Paralysis,1339
+"Hyperostosis, Diffuse Idiopathic Skeletal",1335
+"Syphilis, Cardiovascular",1334
+Myocardial Bridging,1333
+Rheumatoid Nodule,1330
+Hyperlipoproteinemia Type IV,1329
+Symptom Flare Up,1322
+Dysplastic Nevus Syndrome,1320
+Porokeratosis,1319
+"Syphilis, Latent",1316
+Fluoride Poisoning,1314
+"Malaria, Avian",1312
+"Chondromatosis, Synovial",1306
+"Empyema, Subdural",1304
+Equine Infectious Anemia,1304
+"Leukemia, Myeloid, Accelerated Phase",1301
+Locked-In Syndrome,1301
+Glomus Jugulare Tumor,1300
+Spinal Osteochondrosis,1299
+Sphenoid Sinusitis,1298
+"Optic Atrophy, Hereditary, Leber",1296
+Hemoglobin SC Disease,1293
+Gliosarcoma,1291
+Polymicrogyria,1291
+Congenital Hyperinsulinism,1290
+Myotonia Congenita,1288
+Chancroid,1287
+Retropharyngeal Abscess,1286
+Pulmonary Veno-Occlusive Disease,1285
+Oncogene Addiction,1280
+Leber Congenital Amaurosis,1280
+"Epilepsy, Rolandic",1278
+Klatskin Tumor,1277
+Amelogenesis Imperfecta,1276
+Pneumopericardium,1275
+Colonic Pseudo-Obstruction,1271
+Chromoblastomycosis,1270
+"Ichthyosis, Lamellar",1270
+Hyperlipoproteinemia Type III,1270
+"Gastroenteritis, Transmissible, of Swine",1269
+Cerebrospinal Fluid Otorrhea,1268
+Anophthalmos,1268
+Pyomyositis,1267
+Empty Sella Syndrome,1262
+"Fibromatosis, Abdominal",1261
+Chondrodysplasia Punctata,1259
+Eisenmenger Complex,1257
+Tooth Ankylosis,1256
+Staphylococcal Food Poisoning,1254
+Parapsoriasis,1253
+Incontinentia Pigmenti,1252
+Femoral Neuropathy,1250
+"Nevus, Spindle Cell",1249
+"Lead Poisoning, Nervous System",1249
+"Mercury Poisoning, Nervous System",1249
+Opioid-Induced Constipation,1249
+Fournier Gangrene,1248
+Clonorchiasis,1247
+Tinea Versicolor,1245
+Cowpox,1245
+Salivary Duct Calculi,1241
+"Empyema, Tuberculous",1237
+Carney Complex,1235
+Shwartzman Phenomenon,1234
+Postural Orthostatic Tachycardia Syndrome,1232
+Periodontal Abscess,1231
+Cleidocranial Dysplasia,1231
+"Chondrosarcoma, Mesenchymal",1229
+Orbital Pseudotumor,1229
+Dyskeratosis Congenita,1229
+Erdheim-Chester Disease,1229
+Furcation Defects,1228
+"Dyslexia, Acquired",1228
+Atypical Squamous Cells of the Cervix,1227
+"Trypanosomiasis, Bovine",1226
+"Lymphoma, Large-Cell, Immunoblastic",1226
+Familial Hypophosphatemic Rickets,1226
+Hyperamylasemia,1226
+"Myelinolysis, Central Pontine",1225
+Hypoprothrombinemias,1225
+Rinderpest,1223
+Epispadias,1223
+Waardenburg Syndrome,1222
+"Pregnancy, Heterotopic",1221
+Earache,1220
+Hereditary Breast and Ovarian Cancer Syndrome,1219
+Buruli Ulcer,1218
+"Gingivitis, Necrotizing Ulcerative",1217
+Lambert-Eaton Myasthenic Syndrome,1217
+Mucolipidoses,1217
+Post-Dural Puncture Headache,1217
+Hyperlactatemia,1217
+Transfusion-Related Acute Lung Injury,1212
+"Lupus Vasculitis, Central Nervous System",1211
+Asthenopia,1211
+"Colitis, Collagenous",1209
+Hypokalemic Periodic Paralysis,1208
+Klippel-Feil Syndrome,1206
+Yaws,1205
+"Osteolysis, Essential",1205
+Optic Nerve Hypoplasia,1203
+Neurogenic Bowel,1201
+Marburg Virus Disease,1199
+Adenomatoid Tumor,1197
+"Leukodystrophy, Globoid Cell",1196
+Supraglottitis,1195
+"Intracranial Hemorrhage, Hypertensive",1195
+Bone Anteversion,1193
+Alcohol Amnestic Disorder,1192
+Farmer's Lung,1189
+"Hematoma, Subdural, Spinal",1189
+Autoimmune Lymphoproliferative Syndrome,1183
+Diphyllobothriasis,1177
+Zenker Diverticulum,1177
+Zellweger Syndrome,1176
+Anthracosis,1175
+Stargardt Disease,1174
+Accessory Atrioventricular Bundle,1174
+HIV Wasting Syndrome,1170
+"Amnesia, Transient Global",1169
+Chronic Traumatic Encephalopathy,1169
+Hyperferritinemia,1169
+"Hypoadrenocorticism, Familial",1169
+Massive Hepatic Necrosis,1168
+Leukemoid Reaction,1165
+"Tuberculosis, Laryngeal",1163
+Myelolipoma,1163
+Visna,1162
+Goldenhar Syndrome,1161
+Proctocolitis,1161
+Hymenolepiasis,1160
+"Truncus Arteriosus, Persistent",1158
+Ageusia,1155
+Premenstrual Dysphoric Disorder,1155
+Diaphragmatic Eventration,1150
+Bovine Respiratory Disease Complex,1147
+Angiokeratoma,1146
+Hyperacusis,1142
+Labyrinthitis,1142
+Leukorrhea,1142
+Prosopagnosia,1141
+Scorpion Stings,1140
+Cutis Laxa,1139
+Korsakoff Syndrome,1138
+Uterine Inertia,1137
+Lathyrism,1135
+Congenital Microtia,1134
+Factor XIII Deficiency,1131
+"Candidiasis, Chronic Mucocutaneous",1130
+Facial Hemiatrophy,1130
+Anisakiasis,1129
+Glucagonoma,1127
+Cor Triatriatum,1123
+Systolic Murmurs,1119
+Upper Extremity Deep Vein Thrombosis,1114
+Flail Chest,1114
+Plagiocephaly,1113
+"Pancreatitis, Acute Hemorrhagic",1113
+Alagille Syndrome,1112
+Cubital Tunnel Syndrome,1112
+Alcohol Withdrawal Seizures,1111
+"Goiter, Substernal",1111
+"Conjunctivitis, Inclusion",1110
+"Papilloma, Intraductal",1109
+Purpura Fulminans,1108
+Periapical Granuloma,1106
+Amaurosis Fugax,1100
+"Stomatitis, Herpetic",1099
+Fructose Intolerance,1098
+Autonomic Dysreflexia,1097
+"Papilloma, Choroid Plexus",1094
+Salter-Harris Fractures,1092
+Anisocoria,1092
+Prostatism,1092
+Retinal Telangiectasis,1091
+Hip Contracture,1090
+Popliteal Cyst,1088
+"Megacolon, Toxic",1086
+Dry Socket,1086
+"Neuritis, Autoimmune, Experimental",1086
+"Protoporphyria, Erythropoietic",1085
+"Aphasia, Wernicke",1079
+"Tuberculosis, Male Genital",1078
+Dentofacial Deformities,1077
+Enterobiasis,1075
+Ochronosis,1073
+Hantavirus Pulmonary Syndrome,1072
+"Anemia, Diamond-Blackfan",1070
+Mucopolysaccharidosis III,1070
+"Pyelonephritis, Xanthogranulomatous",1069
+Erythema Chronicum Migrans,1067
+Oroantral Fistula,1066
+Aicardi Syndrome,1064
+Thecoma,1063
+Pyometra,1062
+Borna Disease,1061
+Colles' Fracture,1061
+Beriberi,1061
+Intrauterine Device Migration,1061
+Phaeohyphomycosis,1059
+Colloid Cysts,1059
+"Tuberculosis, Splenic",1056
+"Hyperlipidemia, Familial Combined",1054
+Menkes Kinky Hair Syndrome,1052
+Kallmann Syndrome,1052
+"Encephalomyelitis, Venezuelan Equine",1051
+Stiff-Person Syndrome,1048
+Intraocular Lymphoma,1043
+"Paget's Disease, Mammary",1043
+Retinal Dysplasia,1043
+Epidermolysis Bullosa Acquisita,1043
+Anticholinergic Syndrome,1043
+"Ophthalmia, Sympathetic",1041
+Histiocytic Necrotizing Lymphadenitis,1040
+"Rhinitis, Vasomotor",1039
+Vulvodynia,1038
+Heterotaxy Syndrome,1038
+Thyroid Dysgenesis,1038
+"Bulbar Palsy, Progressive",1037
+Cheyne-Stokes Respiration,1036
+Malacoplakia,1036
+Reticulocytosis,1035
+Laryngismus,1034
+"Diverticulum, Stomach",1033
+Lymphomatoid Papulosis,1032
+"Nevus, Epithelioid and Spindle Cell",1032
+Hemopneumothorax,1028
+Hypoalphalipoproteinemias,1028
+Piedra,1027
+"Thrombocytopenia, Neonatal Alloimmune",1023
+Metatarsalgia,1022
+Extranodal Extension,1021
+"Myasthenia Gravis, Autoimmune, Experimental",1020
+Refsum Disease,1020
+Thyroid Hormone Resistance Syndrome,1020
+"Tuberculoma, Intracranial",1018
+Pilomatrixoma,1018
+Lateral Medullary Syndrome,1014
+Hypervitaminosis A,1014
+Feline Acquired Immunodeficiency Syndrome,1012
+"Mixed Tumor, Mullerian",1011
+Necrobiosis Lipoidica,1011
+Ornithine Carbamoyltransferase Deficiency Disease,1010
+Multicystic Dysplastic Kidney,1010
+Vestibular Neuronitis,1008
+Trichiasis,1008
+Focal Epithelial Hyperplasia,1007
+Emergence Delirium,1007
+Sick Building Syndrome,1006
+Cerebral Cortical Thinning,1005
+Endocardial Cushion Defects,1005
+"Pericarditis, Tuberculous",1004
+Kearns-Sayre Syndrome,1004
+Fused Teeth,1004
+Epidermolysis Bullosa Simplex,1004
+Persian Gulf Syndrome,1002
+Syringoma,1001
+Sepsis-Associated Encephalopathy,1000
+"Sarcoma, Alveolar Soft Part",999
+Shaken Baby Syndrome,995
+"Niemann-Pick Disease, Type C",993
+Space Motion Sickness,993
+Ostertagiasis,991
+"Esthesioneuroblastoma, Olfactory",990
+Factor XII Deficiency,990
+Lymphomatoid Granulomatosis,989
+Factor V Deficiency,988
+Pityriasis Rubra Pilaris,988
+"Panniculitis, Nodular Nonsuppurative",986
+"Poliomyelitis, Bulbar",984
+"Granuloma, Respiratory Tract",982
+Dracunculiasis,980
+"Colitis, Lymphocytic",979
+Enzootic Bovine Leukosis,978
+Enthesopathy,978
+"Larva Migrans, Visceral",973
+Causalgia,973
+"Hydatidiform Mole, Invasive",970
+Melkersson-Rosenthal Syndrome,969
+AIDS-Associated Nephropathy,968
+Megalencephaly,968
+Equinus Deformity,966
+"Porphyria, Erythropoietic",966
+Myotoxicity,964
+Peste-des-Petits-Ruminants,963
+"Epidermolysis Bullosa, Junctional",963
+Ischemic Contracture,960
+Esophageal Cyst,957
+Acute Generalized Exanthematous Pustulosis,957
+Mesenteric Lymphadenitis,956
+Boutonneuse Fever,955
+"Gangliosidosis, GM1",952
+"Leukemia, Basophilic, Acute",950
+Ganglioneuroblastoma,949
+Synkinesis,944
+Tracheobronchomalacia,941
+Hypobetalipoproteinemias,941
+"Albinism, Ocular",940
+"Encephalitis, Varicella Zoster",939
+Berylliosis,939
+Fowlpox,937
+Carcinoid Heart Disease,934
+Isolated Noncompaction of the Ventricular Myocardium,934
+Erythromelalgia,934
+Plasmablastic Lymphoma,933
+"Osteoarthropathy, Primary Hypertrophic",930
+Caroli Disease,929
+Gagging,928
+Arachnodactyly,927
+Ectopia Lentis,927
+Hyperthyroxinemia,922
+Epidermodysplasia Verruciformis,920
+Tabes Dorsalis,918
+"Adenocarcinoma, Sebaceous",918
+"Paralysis, Obstetric",918
+Smith-Lemli-Opitz Syndrome,915
+Enchondromatosis,914
+"Nails, Ingrown",914
+Genu Valgum,913
+Neurocytoma,910
+Feline Infectious Peritonitis,907
+Scheuermann Disease,904
+Dystonia Musculorum Deformans,903
+Pseudohypoaldosteronism,902
+Fusariosis,901
+Multiple Endocrine Neoplasia Type 2b,897
+Meconium Ileus,896
+"Anemia, Hemolytic, Congenital Nonspherocytic",893
+Encopresis,893
+Barth Syndrome,890
+"Hearing Loss, Mixed Conductive-Sensorineural",889
+"Pleuropneumonia, Contagious",887
+Leukemia L5178,880
+Laryngomalacia,879
+"Dermatitis, Photoallergic",877
+Postpoliomyelitis Syndrome,872
+Diaper Rash,872
+Ophthalmia Neonatorum,871
+Angioid Streaks,869
+Prune Belly Syndrome,869
+"Leukemia, Myelomonocytic, Juvenile",868
+"Retinal Necrosis Syndrome, Acute",868
+Gonadoblastoma,867
+Hallux Rigidus,866
+Costello Syndrome,865
+Rhinoscleroma,864
+"Muscular Dystrophy, Emery-Dreifuss",864
+Sphincter of Oddi Dysfunction,864
+"Elliptocytosis, Hereditary",864
+Phencyclidine Abuse,864
+Battered Child Syndrome,864
+Chancre,863
+"Tuberculosis, Avian",860
+Tetrasomy,859
+Proteus Syndrome,858
+"Sweating, Gustatory",858
+Amniotic Band Syndrome,857
+Silicotuberculosis,856
+Wolfram Syndrome,856
+Congenitally Corrected Transposition of the Great Arteries,856
+Trichostrongylosis,854
+Callosities,851
+Adenomyoma,850
+Uterine Inversion,850
+Paraneoplastic Cerebellar Degeneration,849
+Silver-Russell Syndrome,847
+Nasal Septal Perforation,847
+Vitamin K Deficiency Bleeding,847
+Hyperglycemic Hyperosmolar Nonketotic Coma,846
+Edema Disease of Swine,846
+Urinoma,844
+Coxa Vara,843
+"Leukemia, Large Granular Lymphocytic",841
+Pancoast Syndrome,841
+Granulomatous Mastitis,840
+"Coma, Post-Head Injury",839
+Teratozoospermia,839
+"Leukemia, Prolymphocytic, T-Cell",838
+"Jaundice, Chronic Idiopathic",838
+"Leukoplakia, Hairy",837
+Pityriasis Rosea,837
+Tangier Disease,835
+Diffuse Intrinsic Pontine Glioma,833
+Tarsal Tunnel Syndrome,832
+Gerstmann Syndrome,831
+Ciguatera Poisoning,831
+"Typhus, Endemic Flea-Borne",828
+Hyalohyphomycosis,828
+Hutchinson's Melanotic Freckle,826
+Splenosis,825
+"Gastritis, Hypertrophic",823
+Mucopolysaccharidosis VI,821
+Adamantinoma,819
+Sandhoff Disease,819
+Murine Acquired Immunodeficiency Syndrome,818
+Postphlebitic Syndrome,817
+Meigs Syndrome,815
+Rubinstein-Taybi Syndrome,815
+Foot Rot,813
+Lingual Thyroid,813
+"Granuloma, Laryngeal",811
+Cri-du-Chat Syndrome,810
+"Tuberculosis, Endocrine",807
+Blepharophimosis,806
+Byssinosis,805
+Tertiary Lymphoid Structures,804
+Dentinogenesis Imperfecta,802
+Bankart Lesions,802
+Kasabach-Merritt Syndrome,801
+Gitelman Syndrome,796
+Nut Hypersensitivity,795
+Loiasis,792
+"Xanthomatosis, Cerebrotendinous",792
+Chilblains,791
+Smoldering Multiple Myeloma,788
+"Pancreatitis, Graft",788
+"Leukemia, Biphenotypic, Acute",786
+Felty Syndrome,786
+Somnambulism,786
+Desmoplastic Small Round Cell Tumor,785
+"Dyspnea, Paroxysmal",785
+Semicircular Canal Dehiscence,784
+Akinetic Mutism,783
+"Keratoconjunctivitis, Infectious",782
+Platelet Storage Pool Deficiency,781
+Pulmonary Blastoma,779
+Struma Ovarii,779
+Duane Retraction Syndrome,779
+Refeeding Syndrome,778
+Distal Myopathies,777
+Sertoli Cell-Only Syndrome,777
+Birt-Hogg-Dube Syndrome,776
+Mallory-Weiss Syndrome,776
+Bernard-Soulier Syndrome,776
+Post-Cardiac Arrest Syndrome,773
+"Pain Insensitivity, Congenital",773
+Tonic Pupil,772
+Hypoaldosteronism,769
+"Lymphoma, Primary Cutaneous Anaplastic Large Cell",767
+"Onchocerciasis, Ocular",764
+"Hernia, Obturator",763
+Loeys-Dietz Syndrome,761
+"Anemia, Dyserythropoietic, Congenital",761
+Abetalipoproteinemia,761
+Genu Varum,759
+Onycholysis,758
+Cervical Rib Syndrome,754
+Bunion,753
+Pyonephrosis,752
+Opsoclonus-Myoclonus Syndrome,750
+Retropneumoperitoneum,749
+Myokymia,748
+"Myopathies, Nemaline",744
+Shy-Drager Syndrome,744
+Optic Disk Drusen,744
+"Ecthyma, Contagious",743
+delta-Thalassemia,743
+Nocturnal Myoclonus Syndrome,742
+Cerebral Ventriculitis,740
+"Encephalomyelitis, Eastern Equine",739
+Rothmund-Thomson Syndrome,738
+Composite Lymphoma,737
+"Fibrous Dysplasia, Monostotic",737
+Lecithin Cholesterol Acyltransferase Deficiency,736
+African Horse Sickness,734
+Propionic Acidemia,734
+Pantothenate Kinase-Associated Neurodegeneration,733
+"Angiomatosis, Bacillary",732
+Gerstmann-Straussler-Scheinker Disease,732
+Balkan Nephropathy,731
+Pemphigoid Gestationis,730
+High Pressure Neurological Syndrome,727
+Leriche Syndrome,727
+Kounis Syndrome,724
+Lynch Syndrome II,723
+Digital Dermatitis,722
+Trigger Finger Disorder,722
+Oophoritis,722
+Jet Lag Syndrome,721
+"Lymphangiectasis, Intestinal",721
+Microstomia,719
+"Encephalomyelitis, Western Equine",718
+"Leukemia, Prolymphocytic, B-Cell",717
+"Hip Dysplasia, Canine",716
+Pelizaeus-Merzbacher Disease,714
+"Actinomycosis, Cervicofacial",713
+Hydrophthalmos,713
+Olivopontocerebellar Atrophies,712
+Swine Vesicular Disease,711
+Citrullinemia,711
+Glycogen Storage Disease Type V,705
+Eunuchism,704
+"Esophageal Spasm, Diffuse",702
+"Optic Atrophy, Autosomal Dominant",701
+Dyscalculia,701
+Cone-Rod Dystrophies,699
+Favism,697
+Isochromosomes,696
+"Ichthyosis, X-Linked",695
+Feline Panleukopenia,692
+May-Thurner Syndrome,692
+Nijmegen Breakage Syndrome,690
+Cephalopelvic Disproportion,689
+Trisomy 18 Syndrome,688
+"Bone Demineralization, Pathologic",685
+"Pregnancy, Cornual",685
+Krukenberg Tumor,684
+Brown-Sequard Syndrome,683
+"Hemorrhagic Fever, American",682
+Angiolipoma,681
+"Hyperostosis, Cortical, Congenital",681
+Leukostasis,681
+Ranula,680
+"Pemphigus, Benign Familial",680
+Granuloma Inguinale,679
+Lemierre Syndrome,679
+Platybasia,679
+Gingival Hypertrophy,679
+Neurofibrosarcoma,678
+"Solitary Fibrous Tumor, Pleural",678
+Urachal Cyst,675
+Pruritus Ani,675
+Subacute Combined Degeneration,675
+Linear IgA Bullous Dermatosis,667
+Sparganosis,666
+Uterine Cervical Erosion,666
+Herpes Zoster Oticus,665
+Biotinidase Deficiency,665
+"Nephroma, Mesoblastic",664
+Dandruff,664
+"Diastasis, Bone",663
+Blind Loop Syndrome,663
+Autoimmune Hypophysitis,663
+Choroideremia,663
+"Hyperkeratosis, Epidermolytic",663
+Kaposi Varicelliform Eruption,662
+Adenosarcoma,662
+Lateral Sinus Thrombosis,662
+Rhinosporidiosis,659
+"Carcinoma, Basosquamous",659
+Hallux Varus,659
+Tricuspid Valve Prolapse,658
+"Lipomatosis, Multiple Symmetrical",657
+Latent Autoimmune Diabetes in Adults,657
+Retrobulbar Hemorrhage,654
+Tick Paralysis,654
+Arteriolosclerosis,653
+"Muscular Dystrophy, Oculopharyngeal",652
+Pericoronitis,652
+Ellis-Van Creveld Syndrome,651
+Chalazion,650
+"Epilepsy, Benign Neonatal",650
+"Skull Fracture, Depressed",650
+Vitelliform Macular Dystrophy,650
+"Hemorrhagic Septicemia, Viral",649
+Hyperostosis Frontalis Interna,649
+Hyperlipoproteinemia Type I,649
+Hydranencephaly,648
+"Tachycardia, Ectopic Junctional",646
+Wandering Spleen,645
+Crigler-Najjar Syndrome,645
+"Fibromatosis, Gingival",644
+Epilepsia Partialis Continua,642
+Ankyloglossia,641
+Inhalant Abuse,641
+Hand-Arm Vibration Syndrome,640
+Nephrogenic Fibrosing Dermopathy,639
+Multiple Carboxylase Deficiency,638
+"Trophoblastic Tumor, Placental Site",637
+Medullary Sponge Kidney,637
+Ergotism,637
+Laurence-Moon Syndrome,636
+Pityriasis Lichenoides,636
+Rhinophyma,632
+Pelvic Girdle Pain,631
+Staphylococcal Scalded Skin Syndrome,630
+Leukocyte-Adhesion Deficiency Syndrome,630
+Isaacs Syndrome,629
+Cardiac Papillary Fibroelastoma,627
+Hemoglobin C Disease,627
+Factor X Deficiency,627
+Bone Retroversion,625
+Nesidioblastosis,625
+Interatrial Block,625
+Aphonia,624
+Linitis Plastica,622
+Nail-Patella Syndrome,622
+Carbuncle,621
+"Choriocarcinoma, Non-gestational",621
+XYY Karyotype,621
+"Reticuloendotheliosis, Avian",619
+Canavan Disease,617
+Synesthesia,617
+Angiomyoma,616
+Vipoma,616
+Postcholecystectomy Syndrome,616
+Lafora Disease,616
+Acrospiroma,614
+"Nevus, Intradermal",613
+Porencephaly,613
+Multifocal Choroiditis,610
+Salivary Gland Fistula,609
+Hematometra,609
+Trisomy 13 Syndrome,608
+Eosinophilia-Myalgia Syndrome,606
+Ichthyosis Vulgaris,606
+Chemotherapy-Related Cognitive Impairment,600
+Nevus of Ota,599
+"Carcinoma, Skin Appendage",597
+Orbital Myositis,597
+Chromothripsis,597
+Acanthoma,595
+Dens in Dente,594
+Eructation,594
+Glycogen Storage Disease Type III,593
+"Dendritic Cell Sarcoma, Follicular",591
+Craniofacial Fibrous Dysplasia,591
+Pectus Carinatum,591
+Hematocolpos,591
+Rigor Mortis,591
+Chlamydial Pneumonia,589
+Pyruvate Dehydrogenase Complex Deficiency Disease,589
+Bird Fancier's Lung,588
+"Positive-Pressure Respiration, Intrinsic",583
+Cogan Syndrome,583
+Poroma,582
+Sotos Syndrome,582
+Peliosis Hepatis,581
+Erythroplasia,580
+Hemimegalencephaly,578
+Tolosa-Hunt Syndrome,577
+"Gonadal Dysgenesis, Mixed",577
+Panophthalmitis,576
+Wolf-Hirschhorn Syndrome,576
+Mirizzi Syndrome,575
+"Dermatitis, Perioral",575
+Argyria,575
+Acquired Hyperostosis Syndrome,574
+Intertrigo,574
+Glanders,573
+MERRF Syndrome,573
+Phlebotomus Fever,572
+"Leukemia, Neutrophilic, Chronic",571
+Mobius Syndrome,570
+Shellfish Hypersensitivity,570
+Hydropneumothorax,567
+"Anemia, Myelophthisic",566
+Exanthema Subitum,565
+Scleromyxedema,565
+Cherubism,561
+Septo-Optic Dysplasia,561
+"Pasteurellosis, Pneumonic",560
+Paraneoplastic Polyneuropathy,560
+Microaneurysm,558
+Microvascular Rarefaction,558
+Waterhouse-Friderichsen Syndrome,554
+"Granuloma, Lethal Midline",554
+Smith-Magenis Syndrome,554
+Nonodontogenic Cysts,553
+Aniseikonia,553
+"Pneumonia of Swine, Mycoplasmal",552
+Meningism,552
+Postpartum Thyroiditis,552
+Acro-Osteolysis,550
+Gastric Antral Vascular Ectasia,550
+Miliaria,550
+Shwachman-Diamond Syndrome,549
+Pure Autonomic Failure,547
+Pseudobulbar Palsy,545
+"Phenylketonuria, Maternal",544
+Enteropathy-Associated T-Cell Lymphoma,543
+Quadricuspid Aortic Valve,543
+Heartwater Disease,542
+Muir-Torre Syndrome,542
+Afferent Loop Syndrome,541
+Renal Nutcracker Syndrome,540
+Thanatophoric Dysplasia,539
+Vasoplegia,539
+"Parkinson Disease, Postencephalitic",538
+Landau-Kleffner Syndrome,538
+Encephalitozoonosis,537
+"Insomnia, Fatal Familial",537
+"Adenoma, Acidophil",537
+Rotator Cuff Tear Arthropathy,537
+Posterior Tibial Tendon Dysfunction,535
+"Thyroiditis, Suppurative",534
+"Adenomatosis, Pulmonary",534
+"Enterocolitis, Neutropenic",534
+Mesial Movement of Teeth,534
+"Tongue, Hairy",534
+Spina Bifida Cystica,532
+"Odontogenic Cyst, Calcifying",531
+Osteopoikilosis,531
+Anthracosilicosis,531
+Alcoholic Neuropathy,531
+Lumpy Skin Disease,529
+Myofibromatosis,529
+Pruritus Vulvae,528
+Swine Erysipelas,526
+Typhlitis,526
+Cholesterol Ester Storage Disease,526
+Aleutian Mink Disease,525
+Cementoma,524
+Pachyonychia Congenita,524
+Striae Distensae,523
+Tarsal Coalition,522
+Transient Tachypnea of the Newborn,522
+Persistent Hyperplastic Primary Vitreous,519
+Nuchal Cord,517
+Laron Syndrome,516
+"Leukemia, Myeloid, Chronic, Atypical, BCR-ABL Negative",515
+Kleine-Levin Syndrome,515
+Monteggia's Fracture,514
+Lymphangiosarcoma,513
+Schizencephaly,512
+"Apraxia, Ideomotor",511
+Tyrosinemias,508
+"Panniculitis, Lupus Erythematosus",508
+Median Arcuate Ligament Syndrome,507
+Idiopathic Hypersomnia,507
+Erysipeloid,506
+Ludwig's Angina,506
+Myofibroma,506
+Acute Febrile Encephalopathy,506
+Cellulite,506
+Enterotoxemia,505
+Putaminal Hemorrhage,505
+"Panniculitis, Peritoneal",504
+Primary Progressive Nonfluent Aphasia,504
+Hyper-IgM Immunodeficiency Syndrome,504
+LEOPARD Syndrome,502
+"Tongue, Fissured",502
+"Fibroma, Desmoplastic",501
+Pulmonary Subvalvular Stenosis,500
+Immersion Foot,500
+Charles Bonnet Syndrome,497
+"Obesity, Metabolically Benign",496
+Oculocerebrorenal Syndrome,495
+"Lipodystrophy, Congenital Generalized",494
+Myxosarcoma,493
+Melorheostosis,493
+Laryngocele,493
+Lipoblastoma,492
+Apudoma,492
+"Carcinoma, Krebs 2",488
+Postpericardiotomy Syndrome,487
+"Leishmaniasis, Diffuse Cutaneous",486
+Porcine Postweaning Multisystemic Wasting Syndrome,486
+Mevalonate Kinase Deficiency,486
+Walker-Warburg Syndrome,486
+Wolman Disease,486
+Papillon-Lefevre Disease,485
+"Hepatitis D, Chronic",483
+"Dermatitis, Toxicodendron",482
+Tinea cruris,481
+"Plasma Cell Granuloma, Pulmonary",481
+Vaginismus,480
+Parturient Paresis,480
+Anterior Spinal Artery Syndrome,478
+"Mesothelioma, Cystic",477
+Paroxysmal Hemicrania,477
+Dihydropyrimidine Dehydrogenase Deficiency,477
+Langerhans Cell Sarcoma,476
+"Urinary Bladder, Underactive",473
+Mucopolysaccharidosis VII,473
+"Vomiting, Anticipatory",464
+Acrodynia,462
+Opium Dependence,461
+Kashin-Beck Disease,460
+Hyperekplexia,460
+Somatostatinoma,458
+Lipoid Proteinosis of Urbach and Wiethe,458
+"Nevus, Sebaceous of Jadassohn",456
+Coronary-Subclavian Steal Syndrome,456
+Netherton Syndrome,456
+"Mucinosis, Follicular",455
+Focal Dermal Hypoplasia,453
+Myocardial Contusions,453
+Retrocaval Ureter,452
+alpha-Mannosidosis,452
+Acute Retroviral Syndrome,450
+"Mixed Tumor, Mesodermal",449
+Mikulicz' Disease,449
+Popliteal Artery Entrapment Syndrome,449
+Ascaridiasis,447
+"Porphyria, Variegate",447
+"Hyperglycinemia, Nonketotic",443
+Pinta,441
+Hermanski-Pudlak Syndrome,441
+Periventricular Nodular Heterotopia,440
+Gnathostomiasis,438
+Discrete Subaortic Stenosis,438
+Malignant Catarrh,437
+Parasystole,437
+Post-Exercise Hypotension,434
+"Glossitis, Benign Migratory",433
+"Leukoencephalitis, Acute Hemorrhagic",433
+Pelger-Huet Anomaly,433
+Scleredema Adultorum,432
+Toxic Optic Neuropathy,431
+Sjogren-Larsson Syndrome,431
+Necatoriasis,430
+Meige Syndrome,430
+"Ectromelia, Infectious",428
+Eccrine Porocarcinoma,428
+Rheumatic Nodule,427
+"Skull Fracture, Basilar",426
+"Keratoderma, Palmoplantar, Diffuse",426
+Mastodynia,426
+Propofol Infusion Syndrome,426
+Adrenal Rest Tumor,425
+"Neuroectodermal Tumor, Melanotic",424
+Schnitzler Syndrome,423
+Striatonigral Degeneration,421
+"Lipodystrophy, Familial Partial",421
+De Quervain Disease,420
+Chronic Exertional Compartment Syndrome,419
+"Myopathy, Central Core",419
+"Uveitis, Suppurative",417
+Susac Syndrome,417
+Delayed Emergence from Anesthesia,417
+Oesophagostomiasis,416
+"Pneumonia, Progressive Interstitial, of Sheep",416
+"Paralysis, Hyperkalemic Periodic",416
+Echolalia,416
+Dentin Dysplasia,415
+"Gonadal Dysgenesis, 46,XX",414
+Emphysematous Cholecystitis,413
+Bilateral Vestibulopathy,412
+Night Terrors,412
+Ectopia Cordis,409
+"Leukemia, Eosinophilic, Acute",406
+Yellow Nail Syndrome,405
+"Leiomyoma, Epithelioid",404
+Alstrom Syndrome,403
+Bland White Garland Syndrome,403
+Piebaldism,402
+Bronchomalacia,400
+Romano-Ward Syndrome,399
+Tietze's Syndrome,398
+Gyrate Atrophy,396
+Tick Toxicoses,396
+Rat-Bite Fever,395
+Visceral Prolapse,392
+Iliotibial Band Syndrome,392
+Adie Syndrome,391
+Caplan Syndrome,390
+Gait Apraxia,390
+"Carcinoma, Brown-Pearce",389
+"Glioma, Subependymal",388
+Metatarsus Varus,388
+"Lead Poisoning, Nervous System, Adult",388
+Sarcoma 37,387
+"Plagiocephaly, Nonsynostotic",387
+Asthma-Chronic Obstructive Pulmonary Disease Overlap Syndrome,385
+"DNA Degradation, Necrotic",381
+Paraduodenal Hernia,380
+Branchio-Oto-Renal Syndrome,379
+Respiratory Aspiration of Gastric Contents,378
+Glossoptosis,378
+Neuroacanthocytosis,377
+Liddle Syndrome,376
+Chondromalacia Patellae,375
+Acne Conglobata,375
+"Hepatitis, Infectious Canine",374
+Hydrarthrosis,374
+Balantidiasis,373
+Herpangina,372
+"Pleurodynia, Epidemic",371
+Heel Spur,371
+"Nevus, Halo",370
+"Lung, Hyperlucent",370
+Spermatocele,370
+Hidrocystoma,366
+Lipedema,366
+"Eczema, Dyshidrotic",366
+Trench Fever,365
+"Mastocytoma, Skin",365
+Nicolau Syndrome,365
+Piriformis Muscle Syndrome,364
+Otomycosis,363
+Odontodysplasia,363
+Hydroa Vacciniforme,362
+Erythema Induratum,361
+Coxa Valga,361
+Tungiasis,360
+Pancreaticobiliary Maljunction,360
+Pythiosis,359
+Diurnal Enuresis,359
+Anetoderma,359
+Trichosporonosis,356
+Isosporiasis,356
+Fucosidosis,354
+Camurati-Engelmann Syndrome,353
+Pars Planitis,351
+Inert Gas Narcosis,351
+Hypodermyiasis,349
+"Conjunctivitis, Acute Hemorrhagic",347
+Sneddon Syndrome,345
+Vulvar Vestibulitis,344
+Cyclosporiasis,341
+Neonatal Brachial Plexus Palsy,341
+Pycnodysostosis,340
+Echogenic Bowel,340
+Plummer-Vinson Syndrome,337
+"Cerebral Amyloid Angiopathy, Familial",337
+Hemospermia,337
+Neurolymphomatosis,336
+Necrolytic Migratory Erythema,335
+Echinostomiasis,333
+Denys-Drash Syndrome,332
+"Aphasia, Conduction",332
+"Coproporphyria, Hereditary",331
+Glycogen Storage Disease Type IV,330
+"Chondrodysplasia Punctata, Rhizomelic",328
+"Decalcification, Pathologic",328
+Pubic Symphysis Diastasis,325
+"Mineralocorticoid Excess Syndrome, Apparent",325
+Vasa Previa,323
+Ephemeral Fever,320
+"Epilepsy, Partial, Sensory",320
+SUNCT Syndrome,319
+Tarlov Cysts,318
+Chloracne,318
+Pulmonary Sclerosing Hemangioma,317
+"T-Lymphocytopenia, Idiopathic CD4-Positive",313
+HIV Enteropathy,311
+Neurothekeoma,311
+Glossalgia,311
+"Alexia, Pure",311
+Tracheobronchomegaly,310
+Acne Keloid,309
+Jervell-Lange Nielsen Syndrome,308
+Necrobiotic Xanthogranuloma,308
+Lichen Nitidus,308
+Sister Mary Joseph's Nodule,307
+"Granulomatosis, Orofacial",307
+Pentalogy of Cantrell,307
+"Sialometaplasia, Necrotizing",306
+Marchiafava-Bignami Disease,305
+Atrophic Vaginitis,305
+"Odontogenic Tumor, Squamous",301
+Argininosuccinic Aciduria,301
+Birdshot Chorioretinopathy,298
+Gynatresia,298
+Aerophagy,297
+Cracked Tooth Syndrome,296
+Hematocele,296
+Accelerated Idioventricular Rhythm,295
+GATA2 Deficiency,295
+Iridocorneal Endothelial Syndrome,294
+Campomelic Dysplasia,291
+"Diabetes Mellitus, Lipoatrophic",291
+Alcoholic Korsakoff Syndrome,290
+Hydrocolpos,290
+Louping Ill,289
+Giant Axonal Neuropathy,289
+Pudendal Neuralgia,289
+"Purpura, Hyperglobulinemic",289
+Neuroaspergillosis,288
+Rumination Syndrome,287
+Levocardia,287
+"Myasthenia Gravis, Neonatal",286
+Hyperargininemia,286
+Perinephritis,285
+Hammer Toe Syndrome,284
+Arcus Senilis,284
+Malignant Atrophic Papulosis,284
+"Polydipsia, Psychogenic",284
+Macrostomia,283
+Hartnup Disease,283
+Artificial Lens Implant Migration,283
+Sunstroke,283
+Buschke-Lowenstein Tumor,281
+"von Willebrand Disease, Type 1",281
+Adenomyoepithelioma,280
+Medial Tibial Stress Syndrome,280
+Kluver-Bucy Syndrome,280
+Abducens Nerve Injury,280
+Balanitis Xerotica Obliterans,280
+Steatocystoma Multiplex,280
+Dicrocoeliasis,279
+Colorado Tick Fever,279
+Mansonelliasis,278
+"Myxomatosis, Infectious",278
+"Chondrosarcoma, Clear Cell",278
+Ophthalmoplegic Migraine,277
+Choroidal Effusions,276
+"Pulmonary Adenomatosis, Ovine",275
+Parametritis,275
+Tinea Favosa,274
+Cobblestone Lissencephaly,270
+Blackwater Fever,269
+"von Willebrand Disease, Type 2",267
+Kyasanur Forest Disease,265
+"Ectodermal Dysplasia 1, Anhidrotic",265
+Short Rib-Polydactyly Syndrome,263
+Alien Hand Syndrome,263
+"Porphyria, Hepatoerythropoietic",262
+Hyperlipoproteinemia Type V,262
+Reinjuries,262
+Commotio Cordis,260
+Gray Platelet Syndrome,260
+Hypertriglyceridemic Waist,258
+Sialic Acid Storage Disease,257
+WAGR Syndrome,256
+Ainhum,254
+Hamman-Rich Syndrome,254
+Myoclonic Cerebellar Dyssynergia,254
+Coffin-Lowry Syndrome,254
+Canaliculitis,253
+Acatalasia,252
+Parovarian Cyst,251
+Pyelectasis,251
+Glomus Tympanicum Tumor,249
+Langer-Giedion Syndrome,249
+X-Linked Emery-Dreifuss Muscular Dystrophy,249
+Chilaiditi Syndrome,247
+Immunoproliferative Small Intestinal Disease,245
+"Brain Stem Hemorrhage, Traumatic",245
+"Keratoderma, Palmoplantar, Epidermolytic",244
+"Bulbo-Spinal Atrophy, X-Linked",240
+Paraphimosis,240
+Erythrasma,238
+"Lead Poisoning, Nervous System, Childhood",237
+"Pregnancy, Angular",237
+Multiple Acyl Coenzyme A Dehydrogenase Deficiency,237
+Pneumorrhachis,235
+Cystadenofibroma,233
+Prolidase Deficiency,233
+Donohue Syndrome,232
+Monilethrix,232
+Post-Lyme Disease Syndrome,228
+Alternariosis,228
+Myringosclerosis,228
+Blue Toe Syndrome,226
+"Warburg Effect, Oncologic",225
+Familial Exudative Vitreoretinopathies,224
+"Diastasis, Muscle",221
+"Fibromatosis, Plantar",220
+Aspartylglucosaminuria,219
+Geotrichosis,218
+Myopericytoma,218
+Screw Worm Infection,216
+Nodding Syndrome,215
+Luteoma,214
+Freemartinism,214
+"Tachycardia, Sinoatrial Nodal Reentry",214
+"Hyalinosis, Systemic",212
+Hajdu-Cheney Syndrome,211
+Hallermann's Syndrome,211
+Retinal Arterial Macroaneurysm,211
+Adiposis Dolorosa,211
+Neuroschistosomiasis,210
+Glycogen Storage Disease Type IIb,210
+Non-Filarial Lymphedema,210
+Sinus Pericranii,209
+Mammary Analogue Secretory Carcinoma,208
+Unverricht-Lundborg Syndrome,207
+Slit Ventricle Syndrome,207
+Sclerema Neonatorum,206
+"Osteosarcoma, Juxtacortical",205
+Uterine Retroversion,205
+Mongolian Spot,204
+Morton Neuroma,204
+Hordeolum,201
+Autosomal Emery-Dreifuss Muscular Dystrophy,201
+Nairobi Sheep Disease,199
+Hallux Limitus,196
+"Refsum Disease, Infantile",194
+Uveal Effusion Syndrome,194
+Aspermia,194
+Lutembacher Syndrome,192
+Classical Lissencephalies and Subcortical Band Heterotopias,190
+Pallister-Hall Syndrome,189
+"Adenoma, Basophil",189
+"Hyperostosis, Sternocostoclavicular",189
+Petrositis,187
+Sarcoglycanopathies,187
+"Dendritic Cell Sarcoma, Interdigitating",186
+Pyruvate Carboxylase Deficiency Disease,186
+"Posterior Capsular Rupture, Ocular",185
+Hereditary Angioedema Types I and II,184
+Fox-Fordyce Disease,181
+Pinguecula,180
+Weill-Marchesani Syndrome,179
+Hypercementosis,178
+Frasier Syndrome,177
+"Pneumonia, Rickettsial",176
+Wissler's Syndrome,176
+beta-Mannosidosis,172
+Dientamoebiasis,170
+Cerebral Phaeohyphomycosis,168
+Zoster Sine Herpete,167
+Alice in Wonderland Syndrome,167
+Erythrokeratodermia Variabilis,166
+Setariasis,164
+Acrocallosal Syndrome,163
+Chiari-Frommel Syndrome,162
+Lobomycosis,159
+Aortico-Ventricular Tunnel,155
+Holocarboxylase Synthetase Deficiency,155
+Central Nervous System Venous Angioma,154
+"Microtrauma, Physical",154
+Pott Puffy Tumor,153
+Monieziasis,153
+Milk Sickness,153
+Talipes Cavus,149
+Multiple Sulfatase Deficiency Disease,149
+"Fructose-1,6-Diphosphatase Deficiency",149
+Pagetoid Reticulosis,148
+"Pre-Excitation, Mahaim-Type",148
+Loose Anagen Hair Syndrome,148
+"Hemorrhagic Syndrome, Bovine",147
+Vesicular Exanthema of Swine,143
+"Niemann-Pick Disease, Type B",137
+Steatitis,135
+"Niemann-Pick Disease, Type A",130
+Trombiculiasis,129
+Sweating Sickness,129
+"Leukoedema, Oral",128
+Sulfhemoglobinemia,128
+Glycogen Storage Disease Type VII,127
+Carbamoyl-Phosphate Synthase I Deficiency Disease,127
+Contrecoup Injury,127
+"Anterior Capsular Rupture, Ocular",125
+Collagenous Sprue,124
+Glycogen Storage Disease Type VI,123
+Sea-Blue Histiocyte Syndrome,122
+"Alert Fatigue, Health Personnel",120
+Posterior Cervical Sympathetic Syndrome,116
+"Hyperthyroxinemia, Familial Dysalbuminemic",116
+Coxa Magna,115
+"Diverticulosis, Stomach",114
+"Enteritis, Transmissible, of Turkeys",112
+Nocturnal Paroxysmal Dystonia,112
+Jacobsen Distal 11q Deletion Syndrome,112
+Hereditary Angioedema Type III,111
+Lown-Ganong-Levine Syndrome,109
+"von Willebrand Disease, Type 3",109
+Actinobacillosis,108
+Dourine,103
+"Hemorrhagic Fever, Omsk",103
+"Bunion, Tailor's",103
+"Brief, Resolved, Unexplained Event",102
+Crisscross Heart,102
+Morgellons Disease,101
+"Epidermitis, Exudative, of Swine",100
+"Ectodermal Dysplasia, Hypohidrotic, Autosomal Recessive",98
+Uveoparotid Fever,96
+Farber Lipogranulomatosis,94
+"Pneumonia of Calves, Enzootic",93
+Monckeberg Medial Calcific Sclerosis,92
+Antley-Bixler Syndrome Phenotype,91
+Chorea Gravidarum,91
+Mink Viral Enteritis,90
+"Encephalomyelitis, Enzootic Porcine",90
+Mulibrey Nanism,86
+"Hyper-IgM Immunodeficiency Syndrome, Type 1",86
+Cyclodialysis Clefts,85
+Trilogy of Fallot,85
+Lingual Goiter,85
+"Pneumonia, Atypical Interstitial, of Cattle",84
+Tubular Sweat Gland Adenomas,82
+Familial Multiple Lipomatosis,80
+Corpse Dismemberment,80
+Silo Filler's Disease,78
+Fascioloidiasis,72
+Ichthyosis Bullosa of Siemens,63
+Poult Enteritis Mortality Syndrome,62
+Pyelocystitis,62
+King's Evil,49
+"Tay-Sachs Disease, AB Variant",47
+Diffuse Neurofibrillary Tangles with Calcification,45
+Toxascariasis,43
+"AIDS Arteritis, Central Nervous System",42
+"Leukokeratosis, Hereditary Mucosal",42
+"Hypobetalipoproteinemia, Familial, Apolipoprotein B",41
+Cholera Morbus,39
+Allesthesia,36
+Karoshi Death,32
+Glycogen Storage Disease Type VIII,31
+White Heifer Disease,25
+"Corneal Dystrophy, Juvenile Epithelial of Meesmann",23
+Acanthocheilonemiasis,22
+Hyperlysinemias,19
+"Ectodermal Dysplasia 3, Anhidrotic",8
